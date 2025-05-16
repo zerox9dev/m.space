@@ -1,0 +1,1 @@
+Fix complete! A blog [slug] page now properly working with Next.js 15

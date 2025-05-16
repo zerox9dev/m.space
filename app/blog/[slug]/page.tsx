@@ -3,15 +3,19 @@ import { generateBlogMetadata } from '../generateBlogMetadata'
 import { notFound } from 'next/navigation'
 
 // This page handles the metadata for blog posts
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const slug = params?.slug
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{ slug: string }>
+}): Promise<Metadata> {
+  const { slug } = await params
 
   try {
     // Dynamically import the blog post to get its metadata
     const post = await import(`../${slug}/page.mdx`)
     const { title, description } = post.metadata || { 
-      title: "Blog Post", 
-      description: "A blog post on m.space" 
+      title: 'Blog Post', 
+      description: 'A blog post on m.space' 
     }
     
     return generateBlogMetadata({
@@ -20,17 +24,30 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       slug,
       ogImage: post.metadata?.ogImage,
     })
-  } catch (error) {
+  } catch (error: unknown) {
     return generateBlogMetadata({
-      title: "Blog Post",
-      description: "A blog post on m.space",
+      title: 'Blog Post',
+      description: 'A blog post on m.space',
       slug,
     })
   }
 }
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
-  // This is a server component that exists only to handle metadata
-  // The actual content comes from the MDX files
-  return null
+// Define page as an async function to match the PageProps constraint in Next.js 15
+export default async function BlogPost({
+  params
+}: {
+  params: Promise<{ slug: string }>
+}) {
+  const { slug } = await params
+  
+  // Try to dynamically import the blog post
+  try {
+    await import(`../${slug}/page.mdx`)
+    // If we reach here, the post exists
+    return null
+  } catch (error: unknown) {
+    // If the post doesn't exist, return a 404
+    notFound()
+  }
 } 
