@@ -5,6 +5,8 @@ import { XIcon } from 'lucide-react'
 import { Magnetic } from '@/components/ui/magnetic'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
+import Image from 'next/image'
+import { useEffect, useState } from 'react'
 import {
   PROJECTS,
   WORK_EXPERIENCE,
@@ -16,7 +18,7 @@ import {
 // Dynamically import components that aren't needed on initial load
 const Spotlight = dynamic(() => import('@/components/ui/spotlight').then(mod => mod.Spotlight), { ssr: false })
 const AnimatedBackground = dynamic(() => import('@/components/ui/animated-background').then(mod => mod.AnimatedBackground), { ssr: false })
-const MorphingDialog = dynamic(() => import('@/components/ui/morphing-dialog').then(mod => mod.MorphingDialog))
+const MorphingDialog = dynamic(() => import('@/components/ui/morphing-dialog').then(mod => mod.MorphingDialog), { ssr: false })
 const MorphingDialogTrigger = dynamic(() => import('@/components/ui/morphing-dialog').then(mod => mod.MorphingDialogTrigger))
 const MorphingDialogContent = dynamic(() => import('@/components/ui/morphing-dialog').then(mod => mod.MorphingDialogContent)) 
 const MorphingDialogClose = dynamic(() => import('@/components/ui/morphing-dialog').then(mod => mod.MorphingDialogClose))
@@ -46,6 +48,26 @@ type ProjectVideoProps = {
 }
 
 function ProjectVideo({ src }: ProjectVideoProps) {
+  const [isLoaded, setIsLoaded] = useState(false);
+  
+  // Only load video when component is visible
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsLoaded(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+    
+    const element = document.getElementById(`video-container-${src.slice(-10)}`);
+    if (element) observer.observe(element);
+    
+    return () => observer.disconnect();
+  }, [src]);
+
   return (
     <MorphingDialog
       transition={{
@@ -55,13 +77,24 @@ function ProjectVideo({ src }: ProjectVideoProps) {
       }}
     >
       <MorphingDialogTrigger>
-        <video
-          src={src}
-          autoPlay
-          loop
-          muted
-          className="aspect-video w-full cursor-zoom-in rounded-xl"
-        />
+        <div 
+          id={`video-container-${src.slice(-10)}`}
+          className="aspect-video w-full cursor-zoom-in rounded-xl bg-zinc-100 dark:bg-zinc-800"
+        >
+          {isLoaded ? (
+            <video
+              src={src}
+              autoPlay
+              loop
+              muted
+              className="aspect-video w-full rounded-xl"
+            />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center">
+              <div className="h-8 w-8 animate-spin rounded-full border-2 border-zinc-300 border-t-zinc-600"></div>
+            </div>
+          )}
+        </div>
       </MorphingDialogTrigger>
       <MorphingDialogContainer>
         <MorphingDialogContent className="relative aspect-video rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
