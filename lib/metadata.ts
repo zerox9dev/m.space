@@ -16,7 +16,7 @@ export function generateMetadata({
 }: GenerateMetadataProps): Metadata {
   const metadataBase = new URL(WEBSITE_URL)
   const canonicalUrl = `${WEBSITE_URL}${path}`
-  const defaultOgImage = `${WEBSITE_URL}/image.png` // Use existing image.png
+  const defaultOgImage = `${WEBSITE_URL}/m.png` // Use existing image.png
   
   return {
     title: title,
