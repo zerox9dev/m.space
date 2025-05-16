@@ -43,31 +43,11 @@ const TRANSITION_SECTION = {
   duration: 0.3,
 }
 
-type ProjectVideoProps = {
+type ProjectImageProps = {
   src: string
 }
 
-function ProjectVideo({ src }: ProjectVideoProps) {
-  const [isLoaded, setIsLoaded] = useState(false);
-  
-  // Only load video when component is visible
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setIsLoaded(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-    
-    const element = document.getElementById(`video-container-${src.slice(-10)}`);
-    if (element) observer.observe(element);
-    
-    return () => observer.disconnect();
-  }, [src]);
-
+function ProjectImage({ src }: ProjectImageProps) {
   return (
     <MorphingDialog
       transition={{
@@ -78,33 +58,29 @@ function ProjectVideo({ src }: ProjectVideoProps) {
     >
       <MorphingDialogTrigger>
         <div 
-          id={`video-container-${src.slice(-10)}`}
-          className="aspect-video w-full cursor-zoom-in rounded-xl bg-zinc-100 dark:bg-zinc-800"
+          className="aspect-video w-full cursor-zoom-in rounded-xl bg-zinc-100 dark:bg-zinc-800 overflow-hidden relative"
         >
-          {isLoaded ? (
-            <video
-              src={src}
-              autoPlay
-              loop
-              muted
-              className="aspect-video w-full rounded-xl"
-            />
-          ) : (
-            <div className="flex h-full w-full items-center justify-center">
-              <div className="h-8 w-8 animate-spin rounded-full border-2 border-zinc-300 border-t-zinc-600"></div>
-            </div>
-          )}
+          <Image
+            src={src}
+            alt="Project screenshot"
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-contain"
+            priority
+          />
         </div>
       </MorphingDialogTrigger>
       <MorphingDialogContainer>
         <MorphingDialogContent className="relative aspect-video rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
-          <video
-            src={src}
-            autoPlay
-            loop
-            muted
-            className="aspect-video h-[50vh] w-full rounded-xl md:h-[70vh]"
-          />
+          <div className="relative w-full h-full">
+            <Image
+              src={src}
+              alt="Project screenshot"
+              fill
+              sizes="100vw"
+              className="object-contain"
+            />
+          </div>
         </MorphingDialogContent>
         <MorphingDialogClose
           className="fixed top-6 right-6 h-fit w-fit rounded-full bg-white p-1"
@@ -205,7 +181,7 @@ export default function Personal() {
           {PROJECTS.map((project) => (
             <div key={project.name} className="space-y-2">
               <div className="relative rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50">
-                <ProjectVideo src={project.video} />
+                <ProjectImage src={project.image} />
               </div>
               <div className="px-1">
                 <a
