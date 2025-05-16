@@ -12,6 +12,24 @@ const nextConfig = {
     // Disable TypeScript checking during build
     ignoreBuildErrors: true,
   },
+  // Add compiler optimization to tree-shake and optimize JS
+  compiler: {
+    // Remove all console.* calls and debugger statements in production
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+  // Specify some modules to be transpiled by Next.js
+  transpilePackages: [],
+  // Configure modularizeImports to prevent importing unused code from libraries
+  modularizeImports: {
+    'lucide-react': {
+      transform: 'lucide-react/dist/esm/icons/{{member}}',
+      preventFullImport: true,
+    },
+  },
+  // Optimize production build
+  experimental: {
+    optimizePackageImports: ['lucide-react'],
+  },
 };
 
 const withMDX = createMDX({

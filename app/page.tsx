@@ -1,17 +1,10 @@
 'use client'
+// Use the standard imports but with dynamic components for code splitting
 import { motion } from 'motion/react'
 import { XIcon } from 'lucide-react'
-import { Spotlight } from '@/components/ui/spotlight'
 import { Magnetic } from '@/components/ui/magnetic'
-import {
-  MorphingDialog,
-  MorphingDialogTrigger,
-  MorphingDialogContent,
-  MorphingDialogClose,
-  MorphingDialogContainer,
-} from '@/components/ui/morphing-dialog'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
-import { AnimatedBackground } from '@/components/ui/animated-background'
 import {
   PROJECTS,
   WORK_EXPERIENCE,
@@ -19,6 +12,15 @@ import {
   EMAIL,
   SOCIAL_LINKS,
 } from './data'
+
+// Dynamically import components that aren't needed on initial load
+const Spotlight = dynamic(() => import('@/components/ui/spotlight').then(mod => mod.Spotlight), { ssr: false })
+const AnimatedBackground = dynamic(() => import('@/components/ui/animated-background').then(mod => mod.AnimatedBackground), { ssr: false })
+const MorphingDialog = dynamic(() => import('@/components/ui/morphing-dialog').then(mod => mod.MorphingDialog))
+const MorphingDialogTrigger = dynamic(() => import('@/components/ui/morphing-dialog').then(mod => mod.MorphingDialogTrigger))
+const MorphingDialogContent = dynamic(() => import('@/components/ui/morphing-dialog').then(mod => mod.MorphingDialogContent)) 
+const MorphingDialogClose = dynamic(() => import('@/components/ui/morphing-dialog').then(mod => mod.MorphingDialogClose))
+const MorphingDialogContainer = dynamic(() => import('@/components/ui/morphing-dialog').then(mod => mod.MorphingDialogContainer))
 
 const VARIANTS_CONTAINER = {
   hidden: { opacity: 0 },
@@ -124,6 +126,7 @@ function MagneticSocialLink({
 }
 
 export default function Personal() {
+  // Lazy load motion features
   return (
     <motion.main
       className="space-y-24"
