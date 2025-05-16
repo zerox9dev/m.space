@@ -4,6 +4,8 @@ import './globals.css'
 import { Header } from './header'
 import { Footer } from './footer'
 import { ThemeProvider } from 'next-themes'
+import { WEBSITE_URL } from '@/lib/constants'
+import { generateMetadata as generateSiteMetadata } from '@/lib/metadata'
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -11,11 +13,11 @@ export const viewport: Viewport = {
   themeColor: '#ffffff',
 }
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generateSiteMetadata({
   title: 'm.space - from design to finished product',
-  description:
-    'I will create a design for your project and then develop it into a finished product.',
-}
+  description: 'I will create a design for your project and then develop it into a finished product.',
+  path: '/',
+})
 
 const overpass = Overpass({
   variable: '--font-overpass',

@@ -1,4 +1,12 @@
 import Link from 'next/link';
+import { Metadata } from 'next';
+import { generateMetadata } from '@/lib/metadata';
+
+export const metadata: Metadata = generateMetadata({
+  title: 'Page Not Found | m.space',
+  description: 'The page you were looking for could not be found.',
+  path: '/404',
+});
 
 export default function NotFound() {
   return (
