@@ -16,6 +16,7 @@ export function generateMetadata({
 }: GenerateMetadataProps): Metadata {
   const metadataBase = new URL(WEBSITE_URL)
   const canonicalUrl = `${WEBSITE_URL}${path}`
+  const defaultOgImage = `${WEBSITE_URL}/image.png` // Use existing image.png
   
   return {
     title: title,
@@ -24,8 +25,20 @@ export function generateMetadata({
     alternates: {
       canonical: canonicalUrl,
     },
-    openGraph: ogImage ? {
-      images: [ogImage],
-    } : undefined,
+    openGraph: {
+      type: 'website',
+      url: canonicalUrl,
+      title: title,
+      description: description,
+      siteName: 'm.space',
+      images: [ogImage || defaultOgImage],
+      locale: 'en_US',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: title,
+      description: description,
+      images: [ogImage || defaultOgImage],
+    },
   }
 } 
