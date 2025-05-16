@@ -21,25 +21,35 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ]
 
   // Dynamically get blog posts
-  const blogDir = path.join(process.cwd(), 'app/blog')
-  const blogFolders = fs
-    .readdirSync(blogDir, { withFileTypes: true })
-    .filter(dirent => 
-      dirent.isDirectory() && 
-      dirent.name !== 'node_modules' && 
-      !dirent.name.startsWith('_') &&
-      !dirent.name.startsWith('.')
-    )
-    .map(dirent => dirent.name)
-    .filter(name => name !== '[slug]') // Exclude dynamic route folder
+  try {
+    const blogDir = path.join(process.cwd(), 'app/blog')
+    
+    if (fs.existsSync(blogDir)) {
+      const blogFolders = fs
+        .readdirSync(blogDir, { withFileTypes: true })
+        .filter(dirent => 
+          dirent.isDirectory() && 
+          dirent.name !== 'node_modules' && 
+          !dirent.name.startsWith('_') &&
+          !dirent.name.startsWith('.') &&
+          dirent.name !== '[slug]' // Exclude dynamic route folder
+        )
+        .map(dirent => dirent.name)
 
-  // Add blog posts to sitemap
-  const blogPosts = blogFolders.map(slug => ({
-    url: `${WEBSITE_URL}/blog/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-  }))
+      // Add blog posts to sitemap
+      const blogPosts = blogFolders.map(slug => ({
+        url: `${WEBSITE_URL}/blog/${slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.7,
+      }))
 
-  return [...routes, ...blogPosts]
+      return [...routes, ...blogPosts]
+    }
+  } catch (error) {
+    console.error('Error generating sitemap:', error)
+  }
+  
+  // Return just base routes if there was an error
+  return routes
 } 
