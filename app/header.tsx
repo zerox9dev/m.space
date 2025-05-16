@@ -7,10 +7,10 @@ export function Header() {
     <header className="mb-8 flex items-center justify-between">
       <div>
         <Link href="/" className="font-medium text-black dark:text-white">
-          Vadym
+          <p className="inline font-medium text-black dark:text-white">Vadym</p>
         </Link>
         <TextEffect
-          as="p"
+          as="h1"
           preset="fade"
           per="char"
           className="text-zinc-600 dark:text-zinc-500"
