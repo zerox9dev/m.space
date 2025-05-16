@@ -213,9 +213,9 @@ export default function Personal() {
               <div className="relative h-full w-full rounded-[15px] bg-white p-4 dark:bg-zinc-950">
                 <div className="relative flex w-full flex-row justify-between">
                   <div>
-                    <h4 className="font-normal dark:text-zinc-100">
+                    <p className="font-normal text-base dark:text-zinc-100">
                       {job.title}
-                    </h4>
+                    </p>
                     <p className="text-zinc-500 dark:text-zinc-400">
                       {job.company}
                     </p>
@@ -253,9 +253,9 @@ export default function Personal() {
                 data-id={post.uid}
               >
                 <div className="flex flex-col space-y-1">
-                  <h4 className="font-normal dark:text-zinc-100">
+                  <p className="font-medium text-base dark:text-zinc-100">
                     {post.title}
-                  </h4>
+                  </p>
                   <p className="text-zinc-500 dark:text-zinc-400">
                     {post.description}
                   </p>
