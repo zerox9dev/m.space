@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 @custom-variant dark (&:is(.dark *));
+@import './markdown.css';
 
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,

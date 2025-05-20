@@ -13,7 +13,7 @@ import {
   SOCIAL_LINKS,
 } from './data'
 import { useDribbbleShots } from '@/hooks/useDribbbleShots'
-import { FaTelegram, FaXmark, FaArrowUpRightFromSquare, FaArrowRight } from 'react-icons/fa6'
+import { FaTelegram, FaXmark, FaArrowUpRightFromSquare, FaArrowRight, FaRobot } from 'react-icons/fa6'
 
 // Dynamically import components that aren't needed on initial load
 const Spotlight = dynamic(() => import('@/components/ui/spotlight').then(mod => mod.Spotlight), { ssr: false })
@@ -23,6 +23,7 @@ const MorphingDialogTrigger = dynamic(() => import('@/components/ui/morphing-dia
 const MorphingDialogContent = dynamic(() => import('@/components/ui/morphing-dialog').then(mod => mod.MorphingDialogContent)) 
 const MorphingDialogClose = dynamic(() => import('@/components/ui/morphing-dialog').then(mod => mod.MorphingDialogClose))
 const MorphingDialogContainer = dynamic(() => import('@/components/ui/morphing-dialog').then(mod => mod.MorphingDialogContainer))
+const AiCloneChat = dynamic(() => import('@/components/ui/ai-clone-chat').then(mod => mod.AiCloneChat), { ssr: false })
 
 const VARIANTS_CONTAINER = {
   hidden: { opacity: 0 },
@@ -123,72 +124,83 @@ function MagneticSocialLink({
 export default function Personal() {
   const { shots, loading, error } = useDribbbleShots();
   
-  // Lazy load motion features
   return (
-    <motion.main
-      className="space-y-24"
-      variants={VARIANTS_CONTAINER}
-      initial="hidden"
-      animate="visible"
-    >
-      <motion.section
-        variants={VARIANTS_SECTION}
-        transition={TRANSITION_SECTION}
+    <>
+      <motion.main
+        className="space-y-24"
+        variants={VARIANTS_CONTAINER}
+        initial="hidden"
+        animate="visible"
       >
-        <div className="flex-1">
-          <div className="text-zinc-600 dark:text-zinc-400">
-            <p className="mb-4">Founder, Startup or Agency?
+        <motion.section
+          variants={VARIANTS_SECTION}
+          transition={TRANSITION_SECTION}
+        >
+          <div className="flex-1">
+            <div className="text-zinc-600 dark:text-zinc-400">
+              <p className="mb-4">Founder, Startup or Agency?
 Let's collaborate to design your vision
 into solutions that drive customer
 and business growth.</p>
-            <p className="mb-4">
-              I create end-to-end digital products that combine design excellence with automation power:
-            </p>
+              <p className="mb-4">
+                I create end-to-end digital products that combine design excellence with automation power:
+              </p>
 
-            <p className="mb-3">
-              <strong>DESIGN:</strong> Research-driven UX/UI for fintech, EdTech & SaaS (Figma, design systems, wireframes) and AI Vibe Coding.
-            </p>
+              <p className="mb-3">
+                <strong>DESIGN:</strong> Research-driven UX/UI for fintech, EdTech & SaaS (Figma, design systems, wireframes) and AI Vibe Coding.
+              </p>
 
-            <p className="mb-4">
-              <strong>DEVELOPMENT:</strong> Telegram bots with AI integration, web scrapers, workflow automation (Python, Aiogram)
-            </p>
+              <p className="mb-4">
+                <strong>DEVELOPMENT:</strong> Telegram bots with AI integration, web scrapers, workflow automation (Python, Aiogram)
+              </p>
 
-            <p className="mb-4">
-              My dual expertise delivers complete solutions — beautiful interfaces backed by intelligent automation that increases metrics by 15-30% while reducing manual operations by 90%.
-            </p>
+              <p className="mb-4">
+                My dual expertise delivers complete solutions — beautiful interfaces backed by intelligent automation that increases metrics by 15-30% while reducing manual operations by 90%.
+              </p>
 
-            <p className="font-medium">
-              Let's build something exceptional together!
-            </p>
+              <p className="font-medium">
+                Let's build something exceptional together!
+              </p>
+            </div>
+            
+            <div className="mt-6 flex gap-3">
+              <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
+                <a
+                  href="https://t.me/mirvaId" 
+                  className="group inline-flex items-center gap-2 rounded-full bg-[#0088cc] px-4 py-2 text-sm font-medium text-white transition-colors duration-200 hover:bg-[#0077b5]"
+                >
+                  <FaTelegram className="h-4 w-4" />
+                  Chat telegram
+                </a>
+              </Magnetic>
+              
+              <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
+                <AiCloneChat 
+                  floatingButton={false}
+                  customTrigger={
+                    <div className="group inline-flex items-center gap-2 rounded-full border border-zinc-300 dark:border-zinc-700 px-4 py-2 text-sm font-medium transition-colors duration-200 hover:bg-[#0088cc] hover:text-white">
+                      <FaRobot className="h-4 w-4" />
+                      Ask AI Assistant
+                    </div>
+                  }
+                />
+              </Magnetic>
+            </div>
           </div>
-          
-          <div className="mt-6">
-            <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
-              <a
-                href="https://t.me/mirvaId" 
-                className="group inline-flex items-center gap-2 rounded-full bg-[#0088cc] px-4 py-2 text-sm font-medium text-white transition-colors duration-200 hover:bg-[#0077b5]"
-              >
-                <FaTelegram className="h-4 w-4" />
-                Chat
-              </a>
-            </Magnetic>
-          </div>
-        </div>
-      </motion.section>
+        </motion.section>
 
-      <motion.section
-        variants={VARIANTS_SECTION}
-        transition={TRANSITION_SECTION}
-      >
-        <h3 className="mb-5 text-lg font-medium">Dribbble Shots</h3>
-        {loading ? (
-          <div className="flex justify-center py-8">
-            <div className="h-6 w-6 animate-spin rounded-full border-2 border-zinc-300 border-t-zinc-900 dark:border-zinc-600 dark:border-t-zinc-100"></div>
-          </div>
-        ) : error ? (
-          <p className="text-center text-zinc-500 dark:text-zinc-400">{error}</p>
-        ) : shots && shots.length > 0 ? (
-          <>
+        <motion.section
+          variants={VARIANTS_SECTION}
+          transition={TRANSITION_SECTION}
+        >
+          <h3 className="mb-5 text-lg font-medium">Dribbble Shots</h3>
+          {loading ? (
+            <div className="flex justify-center py-8">
+              <div className="h-6 w-6 animate-spin rounded-full border-2 border-zinc-300 border-t-zinc-900 dark:border-zinc-600 dark:border-t-zinc-100"></div>
+            </div>
+          ) : error ? (
+            <p className="text-center text-zinc-500 dark:text-zinc-400">{error}</p>
+          ) : shots && shots.length > 0 ? (
             <div className="relative">
               <div className="flex space-x-6 overflow-x-auto scrollbar-hide pb-4 -mx-4 px-4 snap-x">
                 {shots.map((shot) => (
@@ -252,145 +264,134 @@ and business growth.</p>
                   </div>
                 ))}
               </div>
-              <div className="flex justify-end mt-4">
-                <motion.div
-                  className="flex items-center text-zinc-500 dark:text-zinc-400"
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-                >
-                  <span className="mr-1">Scroll</span>
-                  <FaArrowRight className="h-4 w-4" />
-                </motion.div>
-              </div>
             </div>
-          </>
-        ) : (
-          <p className="text-center text-zinc-500 dark:text-zinc-400">No shots available</p>
-        )}
-      </motion.section>
+          ) : (
+            <p className="text-center text-zinc-500 dark:text-zinc-400">No dribbble shots found.</p>
+          )}
+        </motion.section>
 
-      <motion.section
-        variants={VARIANTS_SECTION}
-        transition={TRANSITION_SECTION}
-      >
-        <h3 className="mb-5 text-lg font-medium">Selected Projects</h3>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-          {PROJECTS.map((project) => (
-            <div key={project.name} className="space-y-2">
-              <div className="relative rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50">
-                <ProjectImage src={project.image} />
-              </div>
-              <div className="px-1">
-                <a
-                  className="font-base group relative inline-block font-[450] text-zinc-900 dark:text-zinc-50"
-                  href={project.link}
-                  target="_blank"
-                >
-                  {project.name}
-                  <span className="absolute bottom-0.5 left-0 block h-[1px] w-full max-w-0 bg-zinc-900 transition-all duration-200 group-hover:max-w-full"></span>
-                </a>
-                <p className="text-base text-zinc-600 dark:text-zinc-400">
-                  {project.description}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </motion.section>
-
-      <motion.section
-        variants={VARIANTS_SECTION}
-        transition={TRANSITION_SECTION}
-      >
-        <h3 className="mb-5 text-lg font-medium">Work Experience</h3>
-        <div className="flex flex-col space-y-2">
-          {WORK_EXPERIENCE.map((job) => (
-            <a
-              className="relative overflow-hidden rounded-2xl bg-zinc-300/30 p-[1px] dark:bg-zinc-600/30"
-              href={job.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              key={job.id}
-            >
-              <Spotlight
-                className="from-zinc-900 via-zinc-800 to-zinc-700 blur-2xl dark:from-zinc-100 dark:via-zinc-200 dark:to-zinc-50"
-                size={64}
-              />
-              <div className="relative h-full w-full rounded-[15px] bg-white p-4 dark:bg-zinc-950">
-                <div className="relative flex w-full flex-row justify-between">
-                  <div>
-                    <p className="font-normal text-base dark:text-zinc-100">
-                      {job.title}
-                    </p>
-                    <p className="text-zinc-500 dark:text-zinc-400">
-                      {job.company}
-                    </p>
-                  </div>
-                  <p className="text-zinc-600 dark:text-zinc-400">
-                    {job.start} - {job.end}
+        <motion.section
+          variants={VARIANTS_SECTION}
+          transition={TRANSITION_SECTION}
+        >
+          <h3 className="mb-5 text-lg font-medium">Recent Work</h3>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            {PROJECTS.map((project) => (
+              <div
+                key={project.id}
+                className="relative rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50"
+              >
+                <div className="p-4">
+                  <h4 className="mb-1.5 text-base font-medium">
+                    {project.name}
+                  </h4>
+                  <p className="mb-4 text-sm text-zinc-600 dark:text-zinc-400">
+                    {project.description}
                   </p>
+                  <ProjectImage src={project.image} />
+                  <div className="mt-4 flex justify-end">
+                    <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group inline-flex items-center gap-1 text-sm font-medium text-black transition-colors hover:text-blue-600 dark:text-white dark:hover:text-blue-400"
+                      >
+                        View Project
+                        <FaArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
+                      </a>
+                    </Magnetic>
+                  </div>
                 </div>
               </div>
-            </a>
-          ))}
-        </div>
-      </motion.section>
+            ))}
+          </div>
+        </motion.section>
 
-      <motion.section
-        variants={VARIANTS_SECTION}
-        transition={TRANSITION_SECTION}
-      >
-        <h3 className="mb-3 text-lg font-medium">Blog</h3>
-        <div className="flex flex-col space-y-0">
-          <AnimatedBackground
-            enableHover
-            className="h-full w-full rounded-lg bg-zinc-100 dark:bg-zinc-900/80"
-            transition={{
-              type: 'spring',
-              bounce: 0,
-              duration: 0.2,
-            }}
-          >
-            {BLOG_POSTS.map((post) => (
-              <Link
-                key={post.uid}
-                className="-mx-3 rounded-xl px-3 py-3"
-                href={post.link}
-                data-id={post.uid}
+        <motion.section
+          variants={VARIANTS_SECTION}
+          transition={TRANSITION_SECTION}
+        >
+          <h3 className="mb-5 text-lg font-medium">Work Experience</h3>
+          <div className="space-y-5">
+            {WORK_EXPERIENCE.map((work) => (
+              <div
+                key={work.id}
+                className="relative rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50"
               >
-                <div className="flex flex-col space-y-1">
-                  <p className="font-medium text-base dark:text-zinc-100">
+                <div className="p-4">
+                  <div className="mb-1 flex items-center justify-between gap-2">
+                    <h4 className="text-base font-medium">{work.title}</h4>
+                    <span className="shrink-0 text-xs font-medium text-zinc-500 dark:text-zinc-400">
+                      {work.start} — {work.end}
+                    </span>
+                  </div>
+                  <a
+                    href={work.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-black hover:text-blue-600 dark:text-white dark:hover:text-blue-400"
+                  >
+                    {work.company}
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.section>
+
+        <motion.section
+          variants={VARIANTS_SECTION}
+          transition={TRANSITION_SECTION}
+        >
+          <h3 className="mb-5 text-lg font-medium">Latest Posts</h3>
+          <div className="space-y-5">
+            {BLOG_POSTS.map((post) => (
+              <div
+                key={post.uid}
+                className="relative rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50"
+              >
+                <div className="p-4">
+                  <Link
+                    href={post.link}
+                    className="mb-2 block text-base font-medium hover:text-blue-600 dark:hover:text-blue-400"
+                  >
                     {post.title}
-                  </p>
-                  <p className="text-zinc-500 dark:text-zinc-400">
+                  </Link>
+                  <p className="mb-3 text-sm text-zinc-600 dark:text-zinc-400">
                     {post.description}
                   </p>
+                  <div className="flex justify-end">
+                    <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
+                      <Link
+                        href={post.link}
+                        className="group inline-flex items-center gap-1 text-sm font-medium text-black transition-colors hover:text-blue-600 dark:text-white dark:hover:text-blue-400"
+                      >
+                        Read More
+                        <FaArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
+                      </Link>
+                    </Magnetic>
+                  </div>
                 </div>
-              </Link>
+              </div>
             ))}
-          </AnimatedBackground>
-        </div>
-      </motion.section>
+          </div>
+        </motion.section>
 
-      <motion.section
-        variants={VARIANTS_SECTION}
-        transition={TRANSITION_SECTION}
-      >
-        <h3 className="mb-5 text-lg font-medium">Connect</h3>
-        <p className="mb-5 text-zinc-600 dark:text-zinc-400">
-          Feel free to contact me at{' '}
-          <a className="underline dark:text-zinc-300" href={`mailto:${EMAIL}`}>
-            {EMAIL}
-          </a>
-        </p>
-        <div className="flex items-center justify-start space-x-3">
-          {SOCIAL_LINKS.map((link) => (
-            <MagneticSocialLink key={link.label} link={link.link}>
-              {link.label}
-            </MagneticSocialLink>
-          ))}
-        </div>
-      </motion.section>
-    </motion.main>
+        <motion.section
+          variants={VARIANTS_SECTION}
+          transition={TRANSITION_SECTION}
+        >
+          <h3 className="mb-5 text-lg font-medium">Let's Connect</h3>
+          <div className="flex gap-2 flex-wrap">
+            {SOCIAL_LINKS.map(social => (
+              <MagneticSocialLink key={social.label} link={social.link}>
+                {social.label}
+              </MagneticSocialLink>
+            ))}
+          </div>
+        </motion.section>
+      </motion.main>
+    </>
   )
-}
+} 
