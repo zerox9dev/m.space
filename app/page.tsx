@@ -13,7 +13,7 @@ import {
   SOCIAL_LINKS,
 } from './data'
 import { useDribbbleShots } from '@/hooks/useDribbbleShots'
-import { FaTelegram, FaXmark, FaArrowUpRightFromSquare } from 'react-icons/fa6'
+import { FaTelegram, FaXmark, FaArrowUpRightFromSquare, FaArrowRight } from 'react-icons/fa6'
 
 // Dynamically import components that aren't needed on initial load
 const Spotlight = dynamic(() => import('@/components/ui/spotlight').then(mod => mod.Spotlight), { ssr: false })
@@ -111,7 +111,7 @@ function MagneticSocialLink({
     <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
       <a
         href={link}
-        className="group relative inline-flex shrink-0 items-center gap-[1px] rounded-full bg-zinc-100 px-2.5 py-1 text-sm text-black transition-colors duration-200 hover:bg-zinc-950 hover:text-zinc-50 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700"
+        className="group relative inline-flex shrink-0 items-center gap-[1px] rounded-full bg-white px-2.5 py-1 text-sm text-black transition-colors duration-200 hover:bg-zinc-950 hover:text-zinc-50 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700"
       >
         {children}
         <FaArrowUpRightFromSquare className="h-3 w-3" />
@@ -192,7 +192,7 @@ and business growth.</p>
             <div className="relative">
               <div className="flex space-x-6 overflow-x-auto scrollbar-hide pb-4 -mx-4 px-4 snap-x">
                 {shots.map((shot) => (
-                  <div key={shot.id} className="flex-none space-y-2 w-80 snap-start first:ml-4 last:mr-4">
+                  <div key={shot.id} className="flex-none w-80 snap-start first:ml-4 last:mr-4">
                     <div className="relative rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50 h-full">
                       <div 
                         className="relative cursor-pointer"
@@ -252,12 +252,16 @@ and business growth.</p>
                   </div>
                 ))}
               </div>
-
-            </div>
-            <div className="flex justify-center mt-2 space-x-2">
-              <span className="w-16 h-1 bg-zinc-300 dark:bg-zinc-700 rounded-full"></span>
-              <span className="w-2 h-1 bg-zinc-300 dark:bg-zinc-700 rounded-full"></span>
-              <span className="w-2 h-1 bg-zinc-300 dark:bg-zinc-700 rounded-full"></span>
+              <div className="flex justify-end mt-4">
+                <motion.div
+                  className="flex items-center text-zinc-500 dark:text-zinc-400"
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+                >
+                  <span className="mr-1">Scroll</span>
+                  <FaArrowRight className="h-4 w-4" />
+                </motion.div>
+              </div>
             </div>
           </>
         ) : (
