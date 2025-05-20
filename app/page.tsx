@@ -6,7 +6,6 @@ import { Magnetic } from '@/components/ui/magnetic'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
 import {
   PROJECTS,
   WORK_EXPERIENCE,
@@ -14,6 +13,7 @@ import {
   EMAIL,
   SOCIAL_LINKS,
 } from './data'
+import { FaTelegram } from 'react-icons/fa6'
 
 // Dynamically import components that aren't needed on initial load
 const Spotlight = dynamic(() => import('@/components/ui/spotlight').then(mod => mod.Spotlight), { ssr: false })
@@ -169,6 +169,18 @@ export default function Personal() {
               Let's build something exceptional together!
             </div>
           </p>
+          
+          <div className="mt-6">
+            <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
+              <a
+                href="https://t.me/mirvaId" 
+                className="group inline-flex items-center gap-2 rounded-full bg-[#0088cc] px-4 py-2 text-sm font-medium text-white transition-colors duration-200 hover:bg-[#0077b5]"
+              >
+                <FaTelegram className="h-4 w-4" />
+                Chat
+              </a>
+            </Magnetic>
+          </div>
         </div>
       </motion.section>
 
