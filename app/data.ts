@@ -27,6 +27,17 @@ type SocialLink = {
   link: string
 }
 
+export type DribbbleShot = {
+  id: number
+  title: string
+  description: string | null
+  images: {
+    normal: string
+    [key: string]: string
+  }
+  html_url: string
+}
+
 export const PROJECTS: Project[] = [
   {
     name: 'Mou.today',

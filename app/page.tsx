@@ -12,6 +12,7 @@ import {
   EMAIL,
   SOCIAL_LINKS,
 } from './data'
+import { useDribbbleShots } from '@/hooks/useDribbbleShots'
 import { FaTelegram, FaXmark, FaArrowUpRightFromSquare } from 'react-icons/fa6'
 
 // Dynamically import components that aren't needed on initial load
@@ -120,6 +121,8 @@ function MagneticSocialLink({
 }
 
 export default function Personal() {
+  const { shots, loading, error } = useDribbbleShots();
+  
   // Lazy load motion features
   return (
     <motion.main
@@ -171,6 +174,95 @@ and business growth.</p>
             </Magnetic>
           </div>
         </div>
+      </motion.section>
+
+      <motion.section
+        variants={VARIANTS_SECTION}
+        transition={TRANSITION_SECTION}
+      >
+        <h3 className="mb-5 text-lg font-medium">Dribbble Shots</h3>
+        {loading ? (
+          <div className="flex justify-center py-8">
+            <div className="h-6 w-6 animate-spin rounded-full border-2 border-zinc-300 border-t-zinc-900 dark:border-zinc-600 dark:border-t-zinc-100"></div>
+          </div>
+        ) : error ? (
+          <p className="text-center text-zinc-500 dark:text-zinc-400">{error}</p>
+        ) : shots && shots.length > 0 ? (
+          <>
+            <div className="relative">
+              <div className="flex space-x-6 overflow-x-auto scrollbar-hide pb-4 -mx-4 px-4 snap-x">
+                {shots.map((shot) => (
+                  <div key={shot.id} className="flex-none space-y-2 w-80 snap-start first:ml-4 last:mr-4">
+                    <div className="relative rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50 h-full">
+                      <div 
+                        className="relative cursor-pointer"
+                        onClick={() => window.open(shot.html_url, '_blank', 'noopener,noreferrer')}
+                      >
+                        <MorphingDialog
+                          transition={{
+                            type: 'spring',
+                            bounce: 0,
+                            duration: 0.3,
+                          }}
+                        >
+                          <MorphingDialogTrigger>
+                            <div 
+                              className="aspect-[4/3] w-full cursor-zoom-in rounded-xl bg-zinc-100 dark:bg-zinc-800 overflow-hidden relative"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <Image
+                                src={shot.images.normal}
+                                alt={shot.title}
+                                fill
+                                sizes="(max-width: 768px) 100vw, 50vw"
+                                className="object-cover"
+                                priority
+                              />
+                            </div>
+                          </MorphingDialogTrigger>
+                          <MorphingDialogContainer>
+                            <MorphingDialogContent className="relative aspect-[4/3] rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
+                              <div className="relative w-full h-full">
+                                <Image
+                                  src={shot.images.normal}
+                                  alt={shot.title}
+                                  fill
+                                  sizes="100vw"
+                                  className="object-contain"
+                                />
+                              </div>
+                            </MorphingDialogContent>
+                            <MorphingDialogClose
+                              className="fixed top-6 right-6 h-fit w-fit rounded-full bg-white p-1"
+                              variants={{
+                                initial: { opacity: 0 },
+                                animate: {
+                                  opacity: 1,
+                                  transition: { delay: 0.3, duration: 0.1 },
+                                },
+                                exit: { opacity: 0, transition: { duration: 0 } },
+                              }}
+                            >
+                              <FaXmark className="h-5 w-5 text-zinc-500" />
+                            </MorphingDialogClose>
+                          </MorphingDialogContainer>
+                        </MorphingDialog>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+            </div>
+            <div className="flex justify-center mt-2 space-x-2">
+              <span className="w-16 h-1 bg-zinc-300 dark:bg-zinc-700 rounded-full"></span>
+              <span className="w-2 h-1 bg-zinc-300 dark:bg-zinc-700 rounded-full"></span>
+              <span className="w-2 h-1 bg-zinc-300 dark:bg-zinc-700 rounded-full"></span>
+            </div>
+          </>
+        ) : (
+          <p className="text-center text-zinc-500 dark:text-zinc-400">No shots available</p>
+        )}
       </motion.section>
 
       <motion.section
