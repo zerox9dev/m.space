@@ -66,7 +66,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${overpass.variable} ${overpassMono.variable} bg-white tracking-tight antialiased dark:bg-zinc-950`}
+        className={`${overpass.variable} ${overpassMono.variable} bg-[#F8FAFC] tracking-tight antialiased dark:bg-zinc-950`}
       >
         <ThemeProvider
           enableSystem={true}
