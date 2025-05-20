@@ -13,7 +13,7 @@ import type { Transition, Variant } from 'motion/react'
 import { motion, AnimatePresence, MotionConfig } from 'motion/react'
 import { createPortal } from 'react-dom'
 import { cn } from '@/lib/utils'
-import { XIcon } from 'lucide-react'
+import { FaXmark } from 'react-icons/fa6'
 import useClickOutside from '@/hooks/useClickOutside'
 
 export type MorphingDialogContextType = {
@@ -400,7 +400,7 @@ function MorphingDialogClose({
       exit="exit"
       variants={variants}
     >
-      {children || <XIcon size={24} />}
+      {children || <FaXmark size={24} />}
     </motion.button>
   )
 }

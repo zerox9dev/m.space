@@ -1,7 +1,6 @@
 'use client'
 // Use the standard imports but with dynamic components for code splitting
 import { motion } from 'motion/react'
-import { XIcon } from 'lucide-react'
 import { Magnetic } from '@/components/ui/magnetic'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
@@ -13,7 +12,7 @@ import {
   EMAIL,
   SOCIAL_LINKS,
 } from './data'
-import { FaTelegram } from 'react-icons/fa6'
+import { FaTelegram, FaXmark, FaArrowUpRightFromSquare } from 'react-icons/fa6'
 
 // Dynamically import components that aren't needed on initial load
 const Spotlight = dynamic(() => import('@/components/ui/spotlight').then(mod => mod.Spotlight), { ssr: false })
@@ -93,7 +92,7 @@ function ProjectImage({ src }: ProjectImageProps) {
             exit: { opacity: 0, transition: { duration: 0 } },
           }}
         >
-          <XIcon className="h-5 w-5 text-zinc-500" />
+          <FaXmark className="h-5 w-5 text-zinc-500" />
         </MorphingDialogClose>
       </MorphingDialogContainer>
     </MorphingDialog>
@@ -114,21 +113,7 @@ function MagneticSocialLink({
         className="group relative inline-flex shrink-0 items-center gap-[1px] rounded-full bg-zinc-100 px-2.5 py-1 text-sm text-black transition-colors duration-200 hover:bg-zinc-950 hover:text-zinc-50 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700"
       >
         {children}
-        <svg
-          width="15"
-          height="15"
-          viewBox="0 0 15 15"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-3 w-3"
-        >
-          <path
-            d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z"
-            fill="currentColor"
-            fillRule="evenodd"
-            clipRule="evenodd"
-          ></path>
-        </svg>
+        <FaArrowUpRightFromSquare className="h-3 w-3" />
       </a>
     </Magnetic>
   )
@@ -148,27 +133,31 @@ export default function Personal() {
         transition={TRANSITION_SECTION}
       >
         <div className="flex-1">
-          <p className="text-zinc-600 dark:text-zinc-400">
-            <div className="mb-4">
+          <div className="text-zinc-600 dark:text-zinc-400">
+            <p className="mb-4">Founder, Startup or Agency?
+Let's collaborate to design your vision
+into solutions that drive customer
+and business growth.</p>
+            <p className="mb-4">
               I create end-to-end digital products that combine design excellence with automation power:
-            </div>
+            </p>
 
-            <div className="mb-3">
+            <p className="mb-3">
               <strong>DESIGN:</strong> Research-driven UX/UI for fintech, EdTech & SaaS (Figma, design systems, wireframes) and AI Vibe Coding.
-            </div>
+            </p>
 
-            <div className="mb-4">
+            <p className="mb-4">
               <strong>DEVELOPMENT:</strong> Telegram bots with AI integration, web scrapers, workflow automation (Python, Aiogram)
-            </div>
+            </p>
 
-            <div className="mb-4">
+            <p className="mb-4">
               My dual expertise delivers complete solutions — beautiful interfaces backed by intelligent automation that increases metrics by 15-30% while reducing manual operations by 90%.
-            </div>
+            </p>
 
-            <div className="font-medium">
+            <p className="font-medium">
               Let's build something exceptional together!
-            </div>
-          </p>
+            </p>
+          </div>
           
           <div className="mt-6">
             <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
