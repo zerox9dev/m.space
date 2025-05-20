@@ -69,9 +69,27 @@ export function AiCloneChat({ customTrigger, floatingButton = true }: AiCloneCha
     } catch (error) {
       console.error('Error communicating with AI:', error)
       
-      // Add error message
+      // Get specific error message if available
+      let errorContent = "Sorry, I'm having trouble connecting. Please try again later.";
+      
+      if (error instanceof Error) {
+        console.error('Error details:', error.message);
+      }
+      
+      // Try to extract error message from the API response
+      try {
+        if (error instanceof Response || (error as any).json) {
+          const errorData = await (error as Response).json();
+          if (errorData && errorData.error) {
+            errorContent = errorData.error;
+          }
+        }
+      } catch (e) {
+        // If we can't parse the error, use the default message
+      }
+      
       const errorMessage: Message = {
-        content: "Sorry, I'm having trouble connecting. Please try again later.",
+        content: errorContent,
         isUser: false,
         timestamp: new Date()
       }

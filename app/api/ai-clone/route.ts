@@ -2,11 +2,15 @@ export async function POST(request: Request) {
   try {
     const { message } = await request.json();
 
+    if (!process.env.XAI_API_KEY) {
+      throw new Error('XAI_API_KEY is not defined in the environment variables');
+    }
+
     const response = await fetch('https://api.x.ai/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer xai-ZBj8lawslrDZR0fWqoKwTDArK0JostJc8CaiB3VmWO2R490BxPvcZkv3XoOvbbXSsLtN1ohtROKpSC8G'
+        'Authorization': `Bearer ${process.env.XAI_API_KEY}`
       },
       body: JSON.stringify({
         messages: [
@@ -33,6 +37,16 @@ export async function POST(request: Request) {
     return Response.json({ response: data.choices[0].message.content });
   } catch (error) {
     console.error('Error in AI clone API:', error);
+    
+    // More specific error messages based on the error type
+    if (error instanceof Error) {
+      if (error.message.includes('XAI_API_KEY is not defined')) {
+        return Response.json({ error: 'API key configuration error. Please contact the administrator.' }, { status: 500 });
+      } else if (error.message.includes('API request failed')) {
+        return Response.json({ error: 'AI service is currently unavailable. Please try again later.' }, { status: 503 });
+      }
+    }
+    
     return Response.json({ error: 'Failed to communicate with AI' }, { status: 500 });
   }
 } 
