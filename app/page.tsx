@@ -209,7 +209,6 @@ and business growth.</p>
             variants={VARIANTS_SECTION}
             transition={TRANSITION_SECTION}
           >
-            <h3 className="mb-5 text-lg font-medium">Dribbble Shots</h3>
             {loading ? (
               <div className="flex justify-center py-8">
                 <div className="h-6 w-6 animate-spin rounded-full border-2 border-zinc-300 border-t-zinc-900 dark:border-zinc-600 dark:border-t-zinc-100"></div>
@@ -292,7 +291,6 @@ and business growth.</p>
             variants={VARIANTS_SECTION}
             transition={TRANSITION_SECTION}
           >
-            <h3 className="mb-5 text-lg font-medium">Recent Work</h3>
             <ProjectList projects={PROJECTS} />
           </motion.section>
         )}
@@ -303,7 +301,6 @@ and business growth.</p>
             variants={VARIANTS_SECTION}
             transition={TRANSITION_SECTION}
           >
-            <h3 className="mb-5 text-lg font-medium">Latest Posts</h3>
             <BlogPostList posts={BLOG_POSTS} />
           </motion.section>
         )}
