@@ -37,8 +37,8 @@ export default function ProjectImage({ src }: ProjectImageProps) {
         </div>
       </MorphingDialogTrigger>
       <MorphingDialogContainer>
-        <MorphingDialogContent className="relative aspect-[4/3] rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
-          <div className="relative w-full h-full">
+        <MorphingDialogContent className="fixed inset-0 flex items-center justify-center bg-zinc-50/90 dark:bg-zinc-950/90 p-6">
+          <div className="relative w-full max-w-4xl max-h-[80vh] aspect-[4/3]">
             <Image
               src={src}
               alt="Project screenshot"
@@ -49,7 +49,7 @@ export default function ProjectImage({ src }: ProjectImageProps) {
           </div>
         </MorphingDialogContent>
         <MorphingDialogClose
-          className="fixed top-6 right-6 h-fit w-fit rounded-full bg-white p-1"
+          className="fixed top-6 right-6 z-50 h-fit w-fit rounded-full bg-white p-1.5 shadow-md"
           variants={{
             initial: { opacity: 0 },
             animate: {
