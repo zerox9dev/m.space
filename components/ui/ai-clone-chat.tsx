@@ -103,7 +103,7 @@ export function AiCloneChat({ customTrigger, floatingButton = true }: AiCloneCha
   const defaultTrigger = (
     <motion.div 
       className={cn(
-        "flex h-14 w-14 cursor-pointer items-center justify-center rounded-full bg-zinc-900 text-white shadow-lg hover:bg-zinc-800 dark:bg-zinc-800 dark:hover:bg-zinc-700",
+        "flex h-14 w-14 cursor-pointer items-center justify-center rounded-full bg-white text-black shadow-lg hover:bg-zinc-800 dark:bg-zinc-800 dark:hover:bg-zinc-700",
         floatingButton && "fixed bottom-6 right-6"
       )}
       whileHover={{ scale: 1.05 }}
