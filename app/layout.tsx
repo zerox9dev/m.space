@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Overpass, Overpass_Mono } from 'next/font/google'
 import './globals.css'
-import { Header } from './header'
 import { Footer } from './footer'
 import { ThemeProvider } from 'next-themes'
 import { generateMetadata as generateSiteMetadata } from '@/lib/metadata'
@@ -75,9 +74,10 @@ export default function RootLayout({
           defaultTheme="system"
         >
           <div className="flex min-h-screen w-full flex-col font-[family-name:var(--font-overpass)]">
-            <div className="relative mx-auto w-full max-w-screen-sm flex-1 px-4 pt-20">
-              <Header />
-              {children}
+            <div className="relative mx-auto w-full max-w-screen-sm flex-1 px-4 pt-4 flex flex-col">
+              <main className="flex-1">
+                {children}
+              </main>
               <Footer />
             </div>
           </div>
