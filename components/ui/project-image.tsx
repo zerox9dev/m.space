@@ -24,7 +24,7 @@ export default function ProjectImage({ src }: ProjectImageProps) {
     >
       <MorphingDialogTrigger>
         <div 
-          className="aspect-video w-full cursor-zoom-in rounded-xl bg-zinc-100 dark:bg-zinc-800 overflow-hidden relative"
+          className="aspect-[4/3] w-full cursor-zoom-in rounded-xl bg-zinc-100 dark:bg-zinc-800 overflow-hidden relative"
         >
           <Image
             src={src}
@@ -37,7 +37,7 @@ export default function ProjectImage({ src }: ProjectImageProps) {
         </div>
       </MorphingDialogTrigger>
       <MorphingDialogContainer>
-        <MorphingDialogContent className="relative aspect-video rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
+        <MorphingDialogContent className="relative aspect-[4/3] rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
           <div className="relative w-full h-full">
             <Image
               src={src}
