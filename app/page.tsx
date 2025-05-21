@@ -105,22 +105,33 @@ export default function Personal() {
             variants={VARIANTS_SECTION}
             transition={TRANSITION_SECTION}
           >
-            <div className="flex-1">
-              <div className="text-zinc-600 dark:text-zinc-400">
-              <div>
-        <Link href="/" className="font-medium text-black dark:text-white">
-          <p className="inline font-medium text-black dark:text-white">Vadym</p>
-        </Link>
-        <TextEffect
-          as="h1"
-          preset="fade"
-          per="char"
-          className="text-zinc-600 dark:text-zinc-500 mb-4"
-          delay={0.5}
-        >
-          Digital Product UX/UI Designer & Developer
-        </TextEffect>
-      </div>
+                        <div className="flex-1  ">
+              <div className="text-zinc-600 dark:text-zinc-400 ">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="h-16 w-16 shrink-0 rounded-full overflow-hidden">
+                    <Image 
+                      src="/avatar.png" 
+                      alt="Vadym's avatar"
+                      width={64}
+                      height={64}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                  <div>
+                    <Link href="/" className="font-medium text-black dark:text-white">
+                      <p className="inline font-medium text-black dark:text-white">Vadym</p>
+                    </Link>
+                    <TextEffect
+                      as="h1"
+                      preset="fade"
+                      per="char"
+                      className="text-zinc-600 dark:text-zinc-500"
+                      delay={0.5}
+                    >
+                      Digital Product UX/UI Designer & Developer
+                    </TextEffect>
+                  </div>
+                </div>
                 
                 <p className="mb-4">Founder, Startup or Agency?
 Let's collaborate to design your vision
