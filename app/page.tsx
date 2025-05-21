@@ -14,6 +14,7 @@ import {
 } from './data'
 import { useDribbbleShots } from '@/hooks/useDribbbleShots'
 import { FaTelegram, FaXmark, FaArrowUpRightFromSquare, FaArrowRight, FaRobot } from 'react-icons/fa6'
+import { BlogPostList } from '@/components/ui/blog-post-card'
 
 // Dynamically import components that aren't needed on initial load
 const Spotlight = dynamic(() => import('@/components/ui/spotlight').then(mod => mod.Spotlight), { ssr: false })
@@ -345,37 +346,7 @@ and business growth.</p>
           transition={TRANSITION_SECTION}
         >
           <h3 className="mb-5 text-lg font-medium">Latest Posts</h3>
-          <div className="space-y-5">
-            {BLOG_POSTS.map((post) => (
-              <div
-                key={post.uid}
-                className="relative rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50"
-              >
-                <div className="p-4">
-                  <Link
-                    href={post.link}
-                    className="mb-2 block text-base font-medium hover:text-blue-600 dark:hover:text-blue-400"
-                  >
-                    {post.title}
-                  </Link>
-                  <p className="mb-3 text-sm text-zinc-600 dark:text-zinc-400">
-                    {post.description}
-                  </p>
-                  <div className="flex justify-end">
-                    <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
-                      <Link
-                        href={post.link}
-                        className="group inline-flex items-center gap-1 text-sm font-medium text-black transition-colors hover:text-blue-600 dark:text-white dark:hover:text-blue-400"
-                      >
-                        Read More
-                        <FaArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
-                      </Link>
-                    </Magnetic>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <BlogPostList posts={BLOG_POSTS} />
         </motion.section>
 
         <motion.section
