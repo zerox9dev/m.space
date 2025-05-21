@@ -74,9 +74,7 @@ const TABS = [
   { id: 'about', label: 'About' },
   { id: 'portfolio', label: 'Portfolio' },
   { id: 'work', label: 'Work' },
-  { id: 'experience', label: 'Experience' },
   { id: 'blog', label: 'Blog' },
-  { id: 'contact', label: 'Contact' },
 ]
 
 export default function Personal() {
@@ -171,6 +169,25 @@ and business growth.</p>
                     }
                   />
                 </Magnetic>
+              </div>
+            </div>
+            
+            <div className="mt-8">
+              <h3 className="mb-5 text-lg font-medium">Work Experience</h3>
+              <WorkExperienceList experiences={WORK_EXPERIENCE} />
+            </div>
+            
+            <div className="mt-8">
+              <h3 className="mb-5 text-lg font-medium">Let's Connect</h3>
+              <div className="flex gap-2 flex-wrap">
+                {SOCIAL_LINKS.map((social) => (
+                  <MagneticSocialLink key={social.label} link={social.link}>
+                    {social.label}
+                  </MagneticSocialLink>
+                ))}
+                <MagneticSocialLink link={`mailto:${EMAIL}`}>
+                  Email
+                </MagneticSocialLink>
               </div>
             </div>
           </motion.section>
@@ -269,15 +286,6 @@ and business growth.</p>
           </motion.section>
         )}
 
-        {activeTab === 'experience' && (
-          <motion.section
-            variants={VARIANTS_SECTION}
-            transition={TRANSITION_SECTION}
-          >
-            <h3 className="mb-5 text-lg font-medium">Work Experience</h3>
-            <WorkExperienceList experiences={WORK_EXPERIENCE} />
-          </motion.section>
-        )}
 
         {activeTab === 'blog' && (
           <motion.section
@@ -289,29 +297,7 @@ and business growth.</p>
           </motion.section>
         )}
 
-        {activeTab === 'contact' && (
-          <motion.section
-            variants={VARIANTS_SECTION}
-            transition={TRANSITION_SECTION}
-          >
-            <h3 className="mb-5 text-lg font-medium">Let's Connect</h3>
-            <div className="flex gap-2 flex-wrap">
-              {SOCIAL_LINKS.map((social) => (
-                <MagneticSocialLink key={social.label} link={social.link}>
-                  {social.label}
-                </MagneticSocialLink>
-              ))}
-            </div>
-            <div className="mt-4">
-              <a
-                href={`mailto:${EMAIL}`}
-                className="inline-flex items-center gap-1 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
-              >
-                {EMAIL} <FaArrowRight className="h-3 w-3" />
-              </a>
-            </div>
-          </motion.section>
-        )}
+
       </motion.main>
     </>
   )
