@@ -15,6 +15,8 @@ import {
 import { useDribbbleShots } from '@/hooks/useDribbbleShots'
 import { FaTelegram, FaXmark, FaArrowUpRightFromSquare, FaArrowRight, FaRobot } from 'react-icons/fa6'
 import { BlogPostList } from '@/components/ui/blog-post-card'
+import { WorkExperienceList } from '@/components/ui/work-experience-card'
+import { ProjectList } from '@/components/ui/project-card'
 
 // Dynamically import components that aren't needed on initial load
 const Spotlight = dynamic(() => import('@/components/ui/spotlight').then(mod => mod.Spotlight), { ssr: false })
@@ -45,62 +47,7 @@ const TRANSITION_SECTION = {
   duration: 0.3,
 }
 
-type ProjectImageProps = {
-  src: string
-}
 
-function ProjectImage({ src }: ProjectImageProps) {
-  return (
-    <MorphingDialog
-      transition={{
-        type: 'spring',
-        bounce: 0,
-        duration: 0.3,
-      }}
-    >
-      <MorphingDialogTrigger>
-        <div 
-          className="aspect-video w-full cursor-zoom-in rounded-xl bg-zinc-100 dark:bg-zinc-800 overflow-hidden relative"
-        >
-          <Image
-            src={src}
-            alt="Project screenshot"
-            fill
-            sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-contain"
-            priority
-          />
-        </div>
-      </MorphingDialogTrigger>
-      <MorphingDialogContainer>
-        <MorphingDialogContent className="relative aspect-video rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
-          <div className="relative w-full h-full">
-            <Image
-              src={src}
-              alt="Project screenshot"
-              fill
-              sizes="100vw"
-              className="object-contain"
-            />
-          </div>
-        </MorphingDialogContent>
-        <MorphingDialogClose
-          className="fixed top-6 right-6 h-fit w-fit rounded-full bg-white p-1"
-          variants={{
-            initial: { opacity: 0 },
-            animate: {
-              opacity: 1,
-              transition: { delay: 0.3, duration: 0.1 },
-            },
-            exit: { opacity: 0, transition: { duration: 0 } },
-          }}
-        >
-          <FaXmark className="h-5 w-5 text-zinc-500" />
-        </MorphingDialogClose>
-      </MorphingDialogContainer>
-    </MorphingDialog>
-  )
-}
 
 function MagneticSocialLink({
   children,
@@ -276,37 +223,7 @@ and business growth.</p>
           transition={TRANSITION_SECTION}
         >
           <h3 className="mb-5 text-lg font-medium">Recent Work</h3>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-            {PROJECTS.map((project) => (
-              <div
-                key={project.id}
-                className="relative rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50"
-              >
-                <div className="p-4">
-                  <h4 className="mb-1.5 text-base font-medium">
-                    {project.name}
-                  </h4>
-                  <p className="mb-4 text-sm text-zinc-600 dark:text-zinc-400">
-                    {project.description}
-                  </p>
-                  <ProjectImage src={project.image} />
-                  <div className="mt-4 flex justify-end">
-                    <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group inline-flex items-center gap-1 text-sm font-medium text-black transition-colors hover:text-blue-600 dark:text-white dark:hover:text-blue-400"
-                      >
-                        View Project
-                        <FaArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
-                      </a>
-                    </Magnetic>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ProjectList projects={PROJECTS} />
         </motion.section>
 
         <motion.section
@@ -314,31 +231,7 @@ and business growth.</p>
           transition={TRANSITION_SECTION}
         >
           <h3 className="mb-5 text-lg font-medium">Work Experience</h3>
-          <div className="space-y-5">
-            {WORK_EXPERIENCE.map((work) => (
-              <div
-                key={work.id}
-                className="relative rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50"
-              >
-                <div className="p-4">
-                  <div className="mb-1 flex items-center justify-between gap-2">
-                    <h4 className="text-base font-medium">{work.title}</h4>
-                    <span className="shrink-0 text-xs font-medium text-zinc-500 dark:text-zinc-400">
-                      {work.start} — {work.end}
-                    </span>
-                  </div>
-                  <a
-                    href={work.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-black hover:text-blue-600 dark:text-white dark:hover:text-blue-400"
-                  >
-                    {work.company}
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
+          <WorkExperienceList experiences={WORK_EXPERIENCE} />
         </motion.section>
 
         <motion.section
