@@ -1,4 +1,5 @@
 import { motion } from 'motion/react'
+import Image from 'next/image'
 
 type WorkExperienceProps = {
   id: string
@@ -7,9 +8,10 @@ type WorkExperienceProps = {
   link: string
   start: string
   end: string
+  logo: string
 }
 
-export function WorkExperienceCard({ title, company, link, start, end }: Omit<WorkExperienceProps, 'id'>) {
+export function WorkExperienceCard({ title, company, link, start, end, logo }: Omit<WorkExperienceProps, 'id'>) {
   return (
     <motion.div
       className="relative rounded-2xl bg-white p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50"
@@ -23,14 +25,25 @@ export function WorkExperienceCard({ title, company, link, start, end }: Omit<Wo
             {start} — {end}
           </span>
         </div>
-        <a
-          href={link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm text-black hover:text-blue-600 dark:text-white dark:hover:text-blue-400"
-        >
-          {company}
-        </a>
+        <div className="flex items-center gap-2">
+          <div className="flex h-5 w-5 items-center justify-center flex-shrink-0 overflow-hidden">
+            <Image 
+              src={logo} 
+              alt={`${company} logo`} 
+              width={20} 
+              height={20} 
+              className="max-h-full max-w-full object-contain"
+            />
+          </div>
+          <a
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-black hover:text-blue-600 dark:text-white dark:hover:text-blue-400"
+          >
+            {company}
+          </a>
+        </div>
       </div>
     </motion.div>
   )
@@ -47,6 +60,7 @@ export function WorkExperienceList({ experiences }: { experiences: WorkExperienc
           link={work.link}
           start={work.start}
           end={work.end}
+          logo={work.logo}
         />
       ))}
     </div>

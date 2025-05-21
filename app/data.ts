@@ -12,6 +12,7 @@ type WorkExperience = {
   start: string
   end: string
   link: string
+  logo: string
   id: string
 }
 
@@ -63,6 +64,7 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
     start: '2023',
     end: 'Present',
     link: 'https://freelancehunt.com/',
+    logo: '/Freelancehunt_favicon.ico',
     id: 'work2',
   },
   {
@@ -71,6 +73,7 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
     start: '2019',
     end: '2023',
     link: '/',
+    logo: '/Upwork.svg',
     id: 'work1',
   },
 ]
