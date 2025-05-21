@@ -60,7 +60,7 @@ export const PROJECTS: Project[] = [
 export const WORK_EXPERIENCE: WorkExperience[] = [
   {
     company: 'Freelancehunt',
-    title: 'Product Designer',
+    title: 'Full-time Product UX/UI Designer',
     start: '2023',
     end: 'Present',
     link: 'https://freelancehunt.com/',
