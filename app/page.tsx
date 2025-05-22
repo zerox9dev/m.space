@@ -133,29 +133,14 @@ export default function Personal() {
                   </div>
                 </div>
                 
-                <p className="mb-4">Founder, Startup or Agency?
-Let's collaborate to design your vision
-into solutions that drive customer
-and business growth.</p>
                 <p className="mb-4">
-                  I create end-to-end digital products that combine design excellence with automation power:
+                  <strong>Founder, Startup or Agency?</strong> Creating end-to-end digital products: <br />
+                  <br /><strong>DESIGN:</strong> UX/UI for fintech, EdTech, SaaS (Figma, design systems) + AI Vibe Coding
+                  <br /><strong>DEVELOPMENT:</strong> Telegram bots with AI, web scrapers, automation (Python, Aiogram) <br />
+                  <br /><strong>Result:</strong> +15-30% metrics, -80% manual. <br />
+                  <br /><strong>Let's build something exceptional together!</strong>
                 </p>
 
-                <p className="mb-3">
-                  <strong>DESIGN:</strong> Research-driven UX/UI for fintech, EdTech & SaaS (Figma, design systems, wireframes) and AI Vibe Coding.
-                </p>
-
-                <p className="mb-4">
-                  <strong>DEVELOPMENT:</strong> Telegram bots with AI integration, web scrapers, workflow automation (Python, Aiogram)
-                </p>
-
-                <p className="mb-4">
-                  My dual expertise delivers complete solutions — beautiful interfaces backed by intelligent automation that increases metrics by 15-30% while reducing manual operations by 90%.
-                </p>
-
-                <p className="font-medium">
-                  Let's build something exceptional together!
-                </p>
               </div>
               
               <div className="mt-6 flex gap-3">
