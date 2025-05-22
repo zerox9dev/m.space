@@ -73,7 +73,6 @@ function MagneticSocialLink({
 const TABS = [
   { id: 'about', label: 'About' },
   { id: 'portfolio', label: 'Portfolio' },
-  { id: 'work', label: 'Work' },
   { id: 'blog', label: 'Blog' },
 ]
 
@@ -105,7 +104,7 @@ export default function Personal() {
             variants={VARIANTS_SECTION}
             transition={TRANSITION_SECTION}
           >
-                        <div className="flex-1  ">
+            <div className="flex-1">
               <div className="text-zinc-600 dark:text-zinc-400 ">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="h-16 w-16 shrink-0 rounded-full overflow-hidden">
@@ -143,29 +142,12 @@ export default function Personal() {
 
               </div>
               
-              <div className="mt-6 flex gap-3">
-                <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
-                  <a
-                    href="https://t.me/mirvaId" 
-                    className="group inline-flex items-center gap-2 rounded-full bg-[#0088cc] px-4 py-2 text-sm font-medium text-white transition-colors duration-200 hover:bg-[#0077b5]"
-                  >
-                    <FaTelegram className="h-4 w-4" />
-                    Chat telegram
-                  </a>
-                </Magnetic>
-                
-                <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
-                  <AiCloneChat 
-                    floatingButton={false}
-                    customTrigger={
-                      <div className="group inline-flex items-center gap-2 rounded-full border border-zinc-300 dark:border-zinc-700 px-4 py-2 text-sm font-medium transition-colors duration-200 hover:bg-[#0088cc] hover:text-white">
-                        <FaRobot className="h-4 w-4" />
-                        Ask AI Assistant
-                      </div>
-                    }
-                  />
-                </Magnetic>
-              </div>
+
+            </div>
+            
+            <div className="mt-8">
+              <h3 className="mb-5 text-lg font-medium">Projects</h3>
+              <ProjectList projects={PROJECTS} />
             </div>
             
             <div className="mt-8">
@@ -173,9 +155,25 @@ export default function Personal() {
               <WorkExperienceList experiences={WORK_EXPERIENCE} />
             </div>
             
-            <div className="mt-8">
+                          <div className="mt-8">
               <h3 className="mb-5 text-lg font-medium">Let's Connect</h3>
               <div className="flex gap-2 flex-wrap">
+                <MagneticSocialLink link="https://t.me/mirvaId">
+                  Telegram
+                </MagneticSocialLink>
+                <div className="relative inline-block">
+                  <AiCloneChat 
+                    floatingButton={false}
+                    customTrigger={
+                      <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
+                        <div className="group relative inline-flex shrink-0 items-center gap-[1px] rounded-full bg-white px-2.5 py-1 text-sm text-black transition-colors duration-200 hover:bg-zinc-950 hover:text-zinc-50 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700">
+                          AI Assistant
+                          <FaArrowUpRightFromSquare className="h-3 w-3" />
+                        </div>
+                      </Magnetic>
+                    }
+                  />
+                </div>
                 {SOCIAL_LINKS.map((social) => (
                   <MagneticSocialLink key={social.label} link={social.link}>
                     {social.label}
@@ -271,14 +269,6 @@ export default function Personal() {
           </motion.section>
         )}
 
-        {activeTab === 'work' && (
-          <motion.section
-            variants={VARIANTS_SECTION}
-            transition={TRANSITION_SECTION}
-          >
-            <ProjectList projects={PROJECTS} />
-          </motion.section>
-        )}
 
 
         {activeTab === 'blog' && (
