@@ -22,6 +22,12 @@ export async function GET() {
     }
 
     const shots = await response.json();
+    
+    // Логируем структуру первого изображения, чтобы увидеть доступные размеры
+    if (shots && shots.length > 0) {
+      console.log('Sample Dribbble shot structure:', JSON.stringify(shots[0], null, 2));
+    }
+    
     return NextResponse.json(shots);
   } catch (error) {
     console.error('Error fetching Dribbble shots:', error);

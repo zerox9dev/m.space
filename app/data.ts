@@ -34,7 +34,8 @@ export type DribbbleShot = {
   description: string | null
   images: {
     normal: string
-    [key: string]: string
+    hidpi?: string
+    [key: string]: string | undefined
   }
   html_url: string
 }
