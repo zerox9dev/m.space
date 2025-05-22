@@ -200,9 +200,9 @@ export default function Personal() {
               <p className="text-center text-zinc-500 dark:text-zinc-400">{error}</p>
             ) : shots && shots.length > 0 ? (
               <div className="relative">
-                <div className="flex space-x-6 overflow-x-auto scrollbar-hide pb-4 -mx-4 px-4 snap-x">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                   {shots.map((shot) => (
-                    <div key={shot.id} className="flex-none w-80 snap-start first:ml-4 last:mr-4">
+                    <div key={shot.id}>
                       <div className="relative rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50 h-full">
                         <div 
                           className="relative cursor-pointer"
