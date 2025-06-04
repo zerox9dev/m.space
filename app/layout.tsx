@@ -3,6 +3,7 @@ import { Overpass, Overpass_Mono } from 'next/font/google'
 import './globals.css'
 import { Footer } from './footer'
 import { ThemeProvider } from 'next-themes'
+import { Analytics } from '@vercel/analytics/react'
 import { generateMetadata as generateSiteMetadata } from '@/lib/metadata'
 
 export const viewport: Viewport = {
@@ -82,6 +83,7 @@ export default function RootLayout({
             </div>
           </div>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   )

@@ -14,7 +14,7 @@ import {
   SOCIAL_LINKS,
 } from './data'
 import { useDribbbleShots } from '@/hooks/useDribbbleShots'
-import { FaTelegram, FaXmark, FaArrowUpRightFromSquare, FaArrowRight, FaRobot } from 'react-icons/fa6'
+import { FaTelegram, FaXmark, FaArrowUpRightFromSquare } from 'react-icons/fa6'
 import { BlogPostList } from '@/components/ui/blog-post-card'
 import { WorkExperienceList } from '@/components/ui/work-experience-card'
 import { ProjectList } from '@/components/ui/project-card'

@@ -42,6 +42,13 @@ export type DribbbleShot = {
 
 export const PROJECTS: Project[] = [
   {
+    name: 'Holyheld',
+    description: 'One Card for All Crypto Natives',
+    link: 'https://holyheld.com',
+    image: '/Holyheld.png',
+    id: 'project2',
+  },
+  {
     name: 'Mou.today',
       description:
         'Your Guide to Ukrainian Medicine.',
@@ -49,13 +56,7 @@ export const PROJECTS: Project[] = [
     image: '/MOU.png',
     id: 'project1',
   },
-  {
-    name: 'Holyheld',
-    description: 'One Card for All Crypto Natives',
-    link: 'https://holyheld.com',
-    image: '/Holyheld.png',
-    id: 'project2',
-  },
+  
 ]
 
 export const WORK_EXPERIENCE: WorkExperience[] = [
