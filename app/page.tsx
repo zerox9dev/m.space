@@ -5,7 +5,7 @@ import { Magnetic } from '@/components/ui/magnetic'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import {
   PROJECTS,
   WORK_EXPERIENCE,
@@ -77,7 +77,8 @@ const TABS = [
   { id: 'blog', label: 'Blog' },
 ]
 
-export default function Personal() {
+// Create a wrapper component to use searchParams
+function PersonalContent() {
   const { shots, loading, error } = useDribbbleShots();
   const [activeTab, setActiveTab] = useState('about');
   const searchParams = useSearchParams();
@@ -288,5 +289,18 @@ export default function Personal() {
 
       </motion.main>
     </>
-  )
+  );
+}
+
+// Main component with Suspense boundary
+export default function Personal() {
+  return (
+    <Suspense fallback={
+      <div className="flex justify-center py-8">
+        <div className="h-6 w-6 animate-spin rounded-full border-2 border-zinc-300 border-t-zinc-900 dark:border-zinc-600 dark:border-t-zinc-100"></div>
+      </div>
+    }>
+      <PersonalContent />
+    </Suspense>
+  );
 } 
