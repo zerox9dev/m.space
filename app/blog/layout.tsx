@@ -2,6 +2,8 @@
 import { TextMorph } from '@/components/ui/text-morph'
 import { ScrollProgress } from '@/components/ui/scroll-progress'
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
+import { FaArrowLeft } from 'react-icons/fa6'
 
 function CopyButton() {
   const [text, setText] = useState('Copy')
@@ -42,6 +44,14 @@ function BlogPostLayout({ children }: { children: React.ReactNode }) {
       <div className="absolute right-4 top-24">
         <CopyButton />
       </div>
+      
+      <div className=" absolute left-4 top-24">
+        <Link href="/?tab=blog" className="flex items-center gap-2 text-sm text-zinc-500 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200 transition-colors">
+          <FaArrowLeft className="h-3 w-3" />
+          <span>Back to Blog</span>
+        </Link>
+      </div>
+      
       <main className="prose prose-gray mt-24 pb-20 prose-h4:prose-base dark:prose-invert prose-h1:text-xl prose-h1:font-medium prose-h2:mt-12 prose-h2:scroll-m-20 prose-h2:text-lg prose-h2:font-medium prose-h3:text-base prose-h3:font-medium prose-h4:font-medium prose-h5:text-base prose-h5:font-medium prose-h6:text-base prose-h6:font-medium">
         {children}
       </main>

@@ -5,7 +5,7 @@ import { Magnetic } from '@/components/ui/magnetic'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {
   PROJECTS,
   WORK_EXPERIENCE,
@@ -20,6 +20,7 @@ import { WorkExperienceList } from '@/components/ui/work-experience-card'
 import { ProjectList } from '@/components/ui/project-card'
 import { TabNavigation } from '@/components/ui/tab-navigation'
 import { TextEffect } from '@/components/ui/text-effect'
+import { useSearchParams } from 'next/navigation'
 
 // Dynamically import components that aren't needed on initial load
 const Spotlight = dynamic(() => import('@/components/ui/spotlight').then(mod => mod.Spotlight), { ssr: false })
@@ -79,6 +80,14 @@ const TABS = [
 export default function Personal() {
   const { shots, loading, error } = useDribbbleShots();
   const [activeTab, setActiveTab] = useState('about');
+  const searchParams = useSearchParams();
+  
+  useEffect(() => {
+    const tabParam = searchParams.get('tab');
+    if (tabParam && TABS.some(tab => tab.id === tabParam)) {
+      setActiveTab(tabParam);
+    }
+  }, [searchParams]);
   
   const handleTabChange = (tabId: string) => {
     setActiveTab(tabId);
