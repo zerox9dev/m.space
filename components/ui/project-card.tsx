@@ -1,3 +1,5 @@
+"use client"
+
 import { motion } from 'motion/react'
 import { Magnetic } from '@/components/ui/magnetic'
 import { FaArrowRight } from 'react-icons/fa6'
