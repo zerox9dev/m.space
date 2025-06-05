@@ -50,13 +50,11 @@ export const PROJECTS: Project[] = [
   },
   {
     name: 'Mou.today',
-      description:
-        'Your Guide to Ukrainian Medicine.',
+    description: 'Your Guide to Ukrainian Medicine.',
     link: 'https://mou.today',
     image: '/MOU.png',
     id: 'project1',
   },
-  
 ]
 
 export const WORK_EXPERIENCE: WorkExperience[] = [
