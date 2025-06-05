@@ -45,7 +45,7 @@ export const PROJECTS: Project[] = [
     name: 'Holyheld',
     description: 'One Card for All Crypto Natives',
     link: 'https://holyheld.com',
-    image: '/images/holyheld/1.png',
+    image: '/images/holyheld/cover.png',
     id: 'project2',
   },
   {

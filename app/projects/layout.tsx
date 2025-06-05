@@ -4,6 +4,8 @@ import { ScrollProgress } from '@/components/ui/scroll-progress'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { FaArrowLeft } from 'react-icons/fa6'
+import { TabNavigation } from '@/components/ui/tab-navigation'
+import { useSearchParams } from 'next/navigation'
 
 function CopyButton() {
   const [text, setText] = useState('Copy')
@@ -30,7 +32,29 @@ function CopyButton() {
   )
 }
 
+// Define the tabs exactly like on the main page
+const TABS = [
+  { id: 'about', label: 'About' },
+  { id: 'portfolio', label: 'Portfolio' },
+  { id: 'blog', label: 'Blog' },
+]
+
 function ProjectLayout({ children }: { children: React.ReactNode }) {
+  const [activeTab, setActiveTab] = useState('about')
+  const searchParams = useSearchParams()
+  
+  useEffect(() => {
+    const tabParam = searchParams.get('tab')
+    if (tabParam && TABS.some(tab => tab.id === tabParam)) {
+      setActiveTab(tabParam)
+    }
+  }, [searchParams])
+  
+  const handleTabChange = (tabId: string) => {
+    // Navigate to the main page with the selected tab
+    window.location.href = `/?tab=${tabId}`
+  }
+
   return (
     <>
       <div className="pointer-events-none fixed left-0 top-0 z-10 h-12 w-full bg-gray-100 to-transparent backdrop-blur-xl [-webkit-mask-image:linear-gradient(to_bottom,black,transparent)] dark:bg-zinc-950" />
@@ -39,6 +63,13 @@ function ProjectLayout({ children }: { children: React.ReactNode }) {
         springOptions={{
           bounce: 0,
         }}
+      />
+
+      <TabNavigation 
+        tabs={TABS} 
+        activeTab={activeTab} 
+        onChange={handleTabChange} 
+        className="sticky top-0 pt-6 pb-2 z-10"
       />
 
       <div className="absolute right-4 top-24">
