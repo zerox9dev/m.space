@@ -1,7 +1,7 @@
 'use client'
 import { TextMorph } from '@/components/ui/text-morph'
 import { ScrollProgress } from '@/components/ui/scroll-progress'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import Link from 'next/link'
 import { FaArrowLeft } from 'react-icons/fa6'
 import { TabNavigation } from '@/components/ui/tab-navigation'
@@ -39,8 +39,7 @@ const TABS = [
   { id: 'blog', label: 'Blog' },
 ]
 
-function ProjectLayout({ children }: { children: React.ReactNode }) {
-  const [activeTab, setActiveTab] = useState('about')
+function SearchParamsHandler({ setActiveTab }: { setActiveTab: (tab: string) => void }) {
   const searchParams = useSearchParams()
   
   useEffect(() => {
@@ -48,7 +47,13 @@ function ProjectLayout({ children }: { children: React.ReactNode }) {
     if (tabParam && TABS.some(tab => tab.id === tabParam)) {
       setActiveTab(tabParam)
     }
-  }, [searchParams])
+  }, [searchParams, setActiveTab])
+  
+  return null
+}
+
+function ProjectLayout({ children }: { children: React.ReactNode }) {
+  const [activeTab, setActiveTab] = useState('about')
   
   const handleTabChange = (tabId: string) => {
     // Navigate to the main page with the selected tab
@@ -64,6 +69,10 @@ function ProjectLayout({ children }: { children: React.ReactNode }) {
           bounce: 0,
         }}
       />
+
+      <Suspense fallback={null}>
+        <SearchParamsHandler setActiveTab={setActiveTab} />
+      </Suspense>
 
       <TabNavigation 
         tabs={TABS} 
