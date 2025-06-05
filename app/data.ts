@@ -55,6 +55,13 @@ export const PROJECTS: Project[] = [
     image: '/images/mou/cover.png',
     id: 'project1',
   },
+  {
+    name: 'CRM TurboWork',
+    description: 'CRM for brokerage companies',
+    link: '/projects/turbowork',
+    image: '/images/turbowork/cover.png',
+    id: 'project3',
+  },
 ]
 
 export const WORK_EXPERIENCE: WorkExperience[] = [
