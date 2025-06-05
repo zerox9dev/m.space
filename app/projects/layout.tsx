@@ -35,7 +35,7 @@ function CopyButton() {
 // Define the tabs exactly like on the main page
 const TABS = [
   { id: 'about', label: 'About' },
-  { id: 'portfolio', label: 'Portfolio' },
+  { id: 'shots', label: 'Shots' },
   { id: 'blog', label: 'Blog' },
 ]
 

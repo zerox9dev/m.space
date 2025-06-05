@@ -73,7 +73,7 @@ function MagneticSocialLink({
 
 const TABS = [
   { id: 'about', label: 'About' },
-  { id: 'portfolio', label: 'Portfolio' },
+  { id: 'shots', label: 'Shots' },
   { id: 'blog', label: 'Blog' },
 ]
 
@@ -197,7 +197,7 @@ function PersonalContent() {
           </motion.section>
         )}
 
-        {activeTab === 'portfolio' && (
+        {activeTab === 'shots' && (
           <motion.section
             variants={VARIANTS_SECTION}
             transition={TRANSITION_SECTION}
