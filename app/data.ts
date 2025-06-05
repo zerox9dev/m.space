@@ -52,7 +52,7 @@ export const PROJECTS: Project[] = [
     name: 'Mou.today',
     description: 'Your Guide to Ukrainian Medicine.',
     link: 'https://mou.today',
-    image: '/MOU.png',
+    image: '/images/mou/cover.png',
     id: 'project1',
   },
 ]
