@@ -1,0 +1,157 @@
+export const metadata = {
+  title: "Vidzilla: How I Adapted a Client Project into an Open Telegram Bot",
+  description: "The story of creating a free bot for downloading videos from social media based on a client project.",
+}
+
+# How Vidzilla Was Born: From Client Project to Public Bot
+
+![Vidzilla Cover](/images/vidzilla/cover.png)
+
+In this article, I want to share the story of creating Vidzilla — a Telegram bot for downloading videos from social media that is now used by several hundred people.
+
+## Creation Story
+
+It all started quite prosaically — with a client request. I received an order to develop a Telegram bot that would allow downloading videos from various social networks. I implemented a basic version with core functionality, and the client was satisfied.
+
+After completing the project, I realized this idea could be developed further. I liked the concept itself and decided to create my own improved version of the bot with expanded functionality. That's how Vidzilla was born — a completely free bot for personal use that I simply deployed on hosting.
+
+## Bot Functionality
+
+Vidzilla allows downloading videos from popular platforms with one simple action — sending a link:
+
+- **Instagram** - Reels and regular video posts
+- **TikTok** - Videos of any length
+- **YouTube** - Regular videos and Shorts
+- **Facebook** - Videos and Reels
+- **Twitter/X** - Videos and GIFs
+- **Pinterest** - Video pins
+
+The working principle is extremely simple:
+1. User sends a link
+2. Bot processes the request
+3. Bot returns the video in two formats — as media and as a file
+
+## Technical Aspects
+
+### Basic Structure
+
+The bot is built on Python using the aiogram framework for Telegram API. The basic structure is quite simple:
+
+```python
+from aiogram import Bot, Dispatcher, types
+from aiogram.utils import executor
+from config import BOT_TOKEN
+import handlers
+
+# Bot and dispatcher initialization
+bot = Bot(token=BOT_TOKEN)
+dp = Dispatcher(bot)
+
+# Registering handlers
+handlers.register_handlers(dp)
+
+# Running the bot
+if __name__ == '__main__':
+    executor.start_polling(dp, skip_updates=True)
+```
+
+### Processing Videos from Different Platforms
+
+The main technical challenge is the differences in structure and API of various platforms. For each of them, I had to implement a separate approach:
+
+```python
+async def process_url(url: str) -> str:
+    """Determines the platform by URL and calls the appropriate handler"""
+    if "instagram.com" in url:
+        return await download_instagram(url)
+    elif "tiktok.com" in url:
+        return await download_tiktok(url)
+    elif "youtube.com" in url or "youtu.be" in url:
+        return await download_youtube(url)
+    elif "facebook.com" in url or "fb.watch" in url:
+        return await download_facebook(url)
+    elif "twitter.com" in url or "x.com" in url:
+        return await download_twitter(url)
+    elif "pinterest" in url:
+        return await download_pinterest(url)
+    else:
+        raise UnsupportedPlatformError("Unsupported platform")
+```
+
+### Implementation Features for Different Platforms
+
+**Instagram** requires authorization and working with cookies:
+
+```python
+async def download_instagram(url: str) -> str:
+    # Using Instaloader for downloading
+    # It automatically handles authorization and media retrieval
+    L = instaloader.Instaloader()
+    
+    # Getting post ID from URL
+    shortcode = extract_instagram_shortcode(url)
+    post = instaloader.Post.from_shortcode(L.context, shortcode)
+    
+    # Downloading video
+    video_path = f"temp_videos/{shortcode}.mp4"
+    L.download_post(post, target=os.path.dirname(video_path))
+    
+    return video_path
+```
+
+**TikTok** frequently updates its protection systems, so I had to use specialized APIs:
+
+```python
+async def download_tiktok(url: str) -> str:
+    # Using RapidAPI for TikTok
+    # This simplifies bypassing TikTok's restrictions
+    response = await make_api_request(
+        "social-media-video-downloader.p.rapidapi.com",
+        "/tiktok",
+        {"url": url}
+    )
+    
+    video_url = response["data"]["video_url"]
+    
+    # Downloading video from the obtained link
+    video_path = f"temp_videos/{uuid.uuid4()}.mp4"
+    await download_file(video_url, video_path)
+    
+    return video_path
+```
+
+## Lessons Learned from the Project
+
+Working on Vidzilla taught me several important things:
+
+1. **Code Reuse** — client projects can be adapted to create useful public tools
+2. **Working with APIs** — it's necessary to consider constant changes in social platforms' APIs
+3. **Asynchronous Programming** — important for quickly processing multiple requests
+
+## User Response
+
+Despite the lack of marketing, several hundred people are currently using the bot. This mainly happens through word of mouth — people share the link with friends when they need to quickly download a video.
+
+The most popular requests are for TikTok and Instagram Reels, which is not surprising given the difficulty of downloading videos from these platforms.
+
+## Future Plans
+
+Although the bot was created mainly for personal use and friends, I plan to develop it further:
+
+1. Optimize YouTube handling (especially for long videos)
+2. Add support for new platforms, such as Threads
+3. Improve error handling and user notifications
+
+## Try It Yourself
+
+Vidzilla is a completely free bot, and I don't plan to introduce paid features. If you want to try it out:
+
+1. Open Telegram and find [@Vidzillabot](https://t.me/Vidzillabot)
+2. Send a link to any video from the supported platforms
+3. Receive the video without watermarks
+
+The project's source code is available on [GitHub](https://github.com/mirvald-space/Vidzilla). I welcome your suggestions for improvement or just general feedback!
+
+---
+
+This project shows how sometimes client tasks can turn into useful tools for a wide range of users. If you have ideas or questions — feel free to contact me via Telegram [@mirvald_](https://t.me/mirvald_). 

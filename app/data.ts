@@ -87,6 +87,12 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    title: 'Vidzilla: My Telegram Bot for Downloading Social Media Videos',
+    description: "A deep dive into creating a Telegram bot that allows users to easily download videos from multiple social media platforms including Instagram, TikTok, YouTube, and more.",
+    link: '/blog/vidzilla-telegram-bot-for-downloading-social-media-videos',
+    uid: 'blog-4',
+  },
+  {
     title: 'Welcome to My Digital Space',
     description: "I'm glad you've visited my site. Here I'll share my thoughts on design, development, and everything in between. Let's build something exceptional together!",
     link: '/blog/welcome-to-my-digital-space',
