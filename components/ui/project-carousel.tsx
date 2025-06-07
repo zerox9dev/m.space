@@ -115,7 +115,7 @@ export function ProjectCarousel({ projects }: { projects: ProjectProps[] }) {
               onClick={() => goToSlide(pageIdx)}
               className={`rounded-full transition-all ${
                 currentIndex === pageIdx * maxVisibleProjects
-                  ? 'bg-blue-500 scale-110' 
+                  ? 'bg-black dark:bg-white scale-110' 
                   : 'bg-zinc-300 dark:bg-zinc-600 hover:bg-zinc-400 dark:hover:bg-zinc-500'
               }`}
               style={{ width: '8px', height: '8px' }}
