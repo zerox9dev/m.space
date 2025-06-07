@@ -116,7 +116,7 @@ function PersonalContent() {
           >
             <div className="flex-1">
               <div className="text-zinc-600 dark:text-zinc-400 ">
-                <div className="flex items-center gap-4 mb-4">
+                <div className="flex items-center gap-4 mb-4 bg-white p-4 rounded-2xl">
                   <div className="h-16 w-16 shrink-0 rounded-full overflow-hidden">
                     <Image 
                       src="/avatar.png" 
@@ -142,14 +142,13 @@ function PersonalContent() {
                   </div>
                 </div>
                 
-                <p className="mb-4">
-                  <strong>Founder, Startup or Agency?</strong> Creating end-to-end digital products: <br />
+                <div className="bg-white p-4 rounded-2xl">
+                  <strong>Founder, Startup or Agency?</strong> Creating end-to-end digital products:
                   <br /><strong>DESIGN:</strong> UX/UI for fintech, EdTech, SaaS (Figma, design systems) + AI Vibe Coding
-                  <br /><strong>DEVELOPMENT:</strong> Telegram bots with AI, web scrapers, automation (Python, Aiogram) <br />
+                  <br /><strong>DEVELOPMENT:</strong> Telegram bots with AI, web scrapers, automation (Python, Aiogram)
                   <br /><strong>Result:</strong> +15-30% metrics, -80% manual. <br />
                   <br /><strong>Let's build something exceptional together!</strong>
-                </p>
-
+                </div>
               </div>
               
 
