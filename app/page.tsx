@@ -17,7 +17,7 @@ import { useDribbbleShots } from '@/hooks/useDribbbleShots'
 import { FaXmark, FaArrowUpRightFromSquare } from 'react-icons/fa6'
 import { BlogPostList } from '@/components/ui/blog-post-card'
 import { WorkExperienceList } from '@/components/ui/work-experience-card'
-import { ProjectList } from '@/components/ui/project-card'
+import { ProjectCarousel } from '@/components/ui/project-carousel'
 import { TabNavigation } from '@/components/ui/tab-navigation'
 import { TextEffect } from '@/components/ui/text-effect'
 import { useSearchParams } from 'next/navigation'
@@ -160,7 +160,7 @@ function PersonalContent() {
             
             <div className="mt-8">
               <h3 className="mb-5 text-lg font-medium">Projects</h3>
-              <ProjectList projects={PROJECTS} />
+              <ProjectCarousel projects={PROJECTS} />
             </div>
             
             <div className="mt-8">

@@ -48,23 +48,26 @@ export function ProjectCard({ name, description, image, link, slug }: Omit<Proje
 
   return (
     <motion.div
-      className="relative rounded-2xl bg-white p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50"
+      className="relative rounded-2xl bg-white p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50 h-full"
       whileHover={{ y: -4 }}
       transition={{ duration: 0.2 }}
     >
-      <div className="p-4">
-        <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
-          <LinkWrapper>
-            <span className="inline-flex items-center gap-1">
-              {name}
-              <FaArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
-            </span>
-          </LinkWrapper>
-        </Magnetic>
-        <p className="mb-4 text-sm text-zinc-600 dark:text-zinc-400">
-          {description}
-        </p>
-        <div className="cursor-pointer" onClick={handleImageClick}>
+      <div className="p-4 flex flex-col h-full">
+        <div className="mb-3">
+          <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
+            <LinkWrapper>
+              <span className="inline-flex items-center gap-1">
+                {name}
+                <FaArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
+              </span>
+            </LinkWrapper>
+          </Magnetic>
+          <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
+            {description}
+          </p>
+        </div>
+        
+        <div className="cursor-pointer mt-auto bg-zinc-100 dark:bg-zinc-800 rounded-xl p-3" onClick={handleImageClick}>
           <ProjectImage src={image} />
         </div>
       </div>

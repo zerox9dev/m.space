@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { FaXmark } from 'react-icons/fa6'
 import dynamic from 'next/dynamic'
+import { useState, useEffect } from 'react'
 
 // Dynamically import MorphingDialog components
 const MorphingDialog = dynamic(() => import('@/components/ui/morphing-dialog').then(mod => mod.MorphingDialog), { ssr: false })
@@ -25,28 +26,36 @@ export default function ProjectImage({ src }: ProjectImageProps) {
       }}
     >
       <MorphingDialogTrigger>
-        <div 
-          className="aspect-[4/3] w-full cursor-zoom-in rounded-xl bg-zinc-100 dark:bg-zinc-800 overflow-hidden relative"
-        >
-          <Image
-            src={src}
-            alt="Project screenshot"
-            fill
-            sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-contain"
-            priority
-          />
+        <div className="w-full h-[160px] flex items-center justify-center rounded-xl overflow-hidden cursor-zoom-in">
+          <div className="w-full h-full flex items-center justify-center">
+            <Image
+              src={src}
+              alt="Project screenshot"
+              width={280}
+              height={160}
+              className="max-h-full max-w-full object-contain shadow-sm"
+              style={{
+                filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.05))',
+                borderRadius: '4px'
+              }}
+              priority
+            />
+          </div>
         </div>
       </MorphingDialogTrigger>
       <MorphingDialogContainer>
         <MorphingDialogContent className="fixed inset-0 flex items-center justify-center bg-zinc-50/90 dark:bg-zinc-950/90 p-6">
-          <div className="relative w-full max-w-4xl max-h-[80vh] aspect-[4/3]">
+          <div className="relative w-full max-w-4xl max-h-[80vh]">
             <Image
               src={src}
               alt="Project screenshot"
-              fill
-              sizes="100vw"
-              className="object-contain"
+              width={1200}
+              height={800}
+              className="max-h-[80vh] max-w-full object-contain"
+              style={{ 
+                boxShadow: '0 4px 16px rgba(0,0,0,0.2)',
+                borderRadius: '8px'
+              }}
             />
           </div>
         </MorphingDialogContent>
