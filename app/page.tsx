@@ -14,7 +14,7 @@ import {
   SOCIAL_LINKS,
 } from './data'
 import { useDribbbleShots } from '@/hooks/useDribbbleShots'
-import { FaTelegram, FaXmark, FaArrowUpRightFromSquare } from 'react-icons/fa6'
+import { FaXmark, FaArrowUpRightFromSquare } from 'react-icons/fa6'
 import { BlogPostList } from '@/components/ui/blog-post-card'
 import { WorkExperienceList } from '@/components/ui/work-experience-card'
 import { ProjectList } from '@/components/ui/project-card'
@@ -23,8 +23,6 @@ import { TextEffect } from '@/components/ui/text-effect'
 import { useSearchParams } from 'next/navigation'
 
 // Dynamically import components that aren't needed on initial load
-const Spotlight = dynamic(() => import('@/components/ui/spotlight').then(mod => mod.Spotlight), { ssr: false })
-const AnimatedBackground = dynamic(() => import('@/components/ui/animated-background').then(mod => mod.AnimatedBackground), { ssr: false })
 const MorphingDialog = dynamic(() => import('@/components/ui/morphing-dialog').then(mod => mod.MorphingDialog), { ssr: false })
 const MorphingDialogTrigger = dynamic(() => import('@/components/ui/morphing-dialog').then(mod => mod.MorphingDialogTrigger), { ssr: false })
 const MorphingDialogContent = dynamic(() => import('@/components/ui/morphing-dialog').then(mod => mod.MorphingDialogContent), { ssr: false }) 
@@ -100,7 +98,7 @@ function PersonalContent() {
         tabs={TABS} 
         activeTab={activeTab} 
         onChange={handleTabChange} 
-        className="sticky top-0 pt-6 pb-2 z-10"
+        className="sticky top-0 pb-2 z-10"
       />
       
       <motion.main
