@@ -54,7 +54,7 @@ export function WorkExperience() {
                     className="object-contain"
                   />
                 </div>
-                <strong>{work.title}</strong>
+                <p>{work.title}</p>
               </div>
               <span className="text-sm text-gray-500">{work.start} — {work.end}</span>
             </div>

@@ -94,7 +94,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
     link: 'https://github.com/mirvald-space',
   },
   {
-    label: 'Twitter',
+    label: 'X',
     link: 'https://x.com/mirvald_',
   },
   {
