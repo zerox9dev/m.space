@@ -1,26 +1,25 @@
 'use client'
 // Use the standard imports but with dynamic components for code splitting
 import { motion } from 'motion/react'
-import { Magnetic } from '@/components/ui/magnetic'
 import dynamic from 'next/dynamic'
-import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useEffect, Suspense } from 'react'
 import {
   PROJECTS,
-  WORK_EXPERIENCE,
   BLOG_POSTS,
-  EMAIL,
-  SOCIAL_LINKS,
 } from './data'
 import { useDribbbleShots } from '@/hooks/useDribbbleShots'
-import { FaXmark, FaArrowUpRightFromSquare } from 'react-icons/fa6'
+import { FaXmark } from 'react-icons/fa6'
 import { BlogPostList } from '@/components/ui/blog-post-card'
-import { WorkExperienceList } from '@/components/ui/work-experience-card'
+import { WorkExperience } from '@/components/ui/work-experience-card'
 import { ProjectCarousel } from '@/components/ui/project-carousel'
 import { TabNavigation } from '@/components/ui/tab-navigation'
-import { TextEffect } from '@/components/ui/text-effect'
+
+import { WhatIDo } from '@/components/ui/what-i-do'
+import { ProfileHeader } from '@/components/ui/profile-header'  
+import { ConnectLinks } from '@/components/ui/connect-links'
 import { useSearchParams } from 'next/navigation'
+import { AiCloneChat } from '@/components/ui/ai-clone-chat'
 
 // Dynamically import components that aren't needed on initial load
 const MorphingDialog = dynamic(() => import('@/components/ui/morphing-dialog').then(mod => mod.MorphingDialog), { ssr: false })
@@ -28,7 +27,7 @@ const MorphingDialogTrigger = dynamic(() => import('@/components/ui/morphing-dia
 const MorphingDialogContent = dynamic(() => import('@/components/ui/morphing-dialog').then(mod => mod.MorphingDialogContent), { ssr: false }) 
 const MorphingDialogClose = dynamic(() => import('@/components/ui/morphing-dialog').then(mod => mod.MorphingDialogClose), { ssr: false })
 const MorphingDialogContainer = dynamic(() => import('@/components/ui/morphing-dialog').then(mod => mod.MorphingDialogContainer), { ssr: false })
-const AiCloneChat = dynamic(() => import('@/components/ui/ai-clone-chat').then(mod => mod.AiCloneChat), { ssr: false })
+
 
 const VARIANTS_CONTAINER = {
   hidden: { opacity: 0 },
@@ -49,25 +48,7 @@ const TRANSITION_SECTION = {
   duration: 0.3,
 }
 
-function MagneticSocialLink({
-  children,
-  link,
-}: {
-  children: React.ReactNode
-  link: string
-}) {
-  return (
-    <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
-      <a
-        href={link}
-        className="group relative inline-flex shrink-0 items-center gap-[1px] rounded-full bg-white px-2.5 py-1 text-sm text-black transition-colors duration-200 hover:bg-zinc-950 hover:text-zinc-50 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700"
-      >
-        {children}
-        <FaArrowUpRightFromSquare className="h-3 w-3" />
-      </a>
-    </Magnetic>
-  )
-}
+
 
 const TABS = [
   { id: 'about', label: 'About' },
@@ -102,7 +83,7 @@ function PersonalContent() {
       />
       
       <motion.main
-        className="space-y-12 my-8"
+        className="flex "
         variants={VARIANTS_CONTAINER}
         initial="hidden"
         animate="visible"
@@ -111,92 +92,14 @@ function PersonalContent() {
           <motion.section
             variants={VARIANTS_SECTION}
             transition={TRANSITION_SECTION}
+            className="flex flex-col gap-4"
           >
-            <div className="flex-1">
-              <div className="text-zinc-600 dark:text-zinc-400 ">
-                <div className="flex items-center gap-4 mb-4 bg-white p-4 rounded-2xl">
-                  <div className="h-16 w-16 shrink-0 rounded-full overflow-hidden">
-                    <Image 
-                      src="/avatar.png" 
-                      alt="Vadym's avatar"
-                      width={64}
-                      height={64}
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                  <div className="flex-1">
-                    <Link href="/" className="font-medium text-black dark:text-white">
-                      <p className="inline font-medium text-black dark:text-white">Vadym</p>
-                    </Link>
-                    <TextEffect
-                      as="h1"
-                      preset="fade"
-                      per="char"
-                      className="text-zinc-600 dark:text-zinc-500"
-                      delay={0.5}
-                    >
-                      Digital Product UX/UI Designer & Developer
-                    </TextEffect>
-                  </div>
-                  <div className="flex items-center">
-                    <span className="flex items-center gap-1.5">
-                      <span className="h-2.5 w-2.5 rounded-full bg-green-500 animate-pulse"></span>
-                      <span className="text-sm font-medium text-green-600 dark:text-green-500">Available</span>
-                    </span>
-                  </div>
-                </div>
-                
-                <div className="bg-white p-4 rounded-2xl">
-                  <strong>Founder, Startup or Agency?</strong> Creating end-to-end digital products:
-                  <br /><strong>DESIGN:</strong> UX/UI for fintech, EdTech, SaaS (Figma, design systems) + AI Vibe Coding
-                  <br /><strong>DEVELOPMENT:</strong> Telegram bots with AI, web scrapers, automation (Python, Aiogram)
-                  <br /><strong>Result:</strong> +15-30% metrics, -80% manual. <br />
-                  <br /><strong>Let's build something exceptional together!</strong>
-                </div>
-              </div>
-              
-
-            </div>
-            
-            <div className="mt-8">
-              <h3 className="mb-5 text-lg font-medium">Projects</h3>
-              <ProjectCarousel projects={PROJECTS} />
-            </div>
-            
-            <div className="mt-8">
-              <h3 className="mb-5 text-lg font-medium">Work Experience</h3>
-              <WorkExperienceList experiences={WORK_EXPERIENCE} />
-            </div>
-            
-                          <div className="mt-8">
-              <h3 className="mb-5 text-lg font-medium">Let's Connect</h3>
-              <div className="flex gap-2 flex-wrap">
-                <MagneticSocialLink link="https://t.me/mirvaId">
-                  Telegram
-                </MagneticSocialLink>
-                <div className="relative inline-block">
-                  <AiCloneChat 
-                    floatingButton={false}
-                    customTrigger={
-                      <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
-                        <div className="group relative inline-flex shrink-0 items-center gap-[1px] rounded-full bg-white px-2.5 py-1 text-sm text-black transition-colors duration-200 hover:bg-zinc-950 hover:text-zinc-50 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700">
-                          AI Assistant
-                          <FaArrowUpRightFromSquare className="h-3 w-3" />
-                        </div>
-                      </Magnetic>
-                    }
-                  />
-                </div>
-                {SOCIAL_LINKS.map((social) => (
-                  <MagneticSocialLink key={social.label} link={social.link}>
-                    {social.label}
-                  </MagneticSocialLink>
-                ))}
-                <MagneticSocialLink link={`mailto:${EMAIL}`}>
-                  Email
-                </MagneticSocialLink>
-              </div>
-            </div>
+                <ProfileHeader />
+                <WorkExperience />
+                <WhatIDo />
+                <ProjectCarousel projects={PROJECTS} />
+                <ConnectLinks />
+                <AiCloneChat />
           </motion.section>
         )}
 
@@ -204,6 +107,7 @@ function PersonalContent() {
           <motion.section
             variants={VARIANTS_SECTION}
             transition={TRANSITION_SECTION}
+            className="flex flex-col gap-4"
           >
             {loading ? (
               <div className="flex justify-center py-8">
@@ -284,6 +188,7 @@ function PersonalContent() {
           <motion.section
             variants={VARIANTS_SECTION}
             transition={TRANSITION_SECTION}
+            className="flex flex-col gap-4"
           >
             <BlogPostList posts={BLOG_POSTS} />
           </motion.section>
@@ -299,7 +204,7 @@ function PersonalContent() {
 export default function Personal() {
   return (
     <Suspense fallback={
-      <div className="flex justify-center py-8">
+      <div className="flex justify-center">
         <div className="h-6 w-6 animate-spin rounded-full border-2 border-zinc-300 border-t-zinc-900 dark:border-zinc-600 dark:border-t-zinc-100"></div>
       </div>
     }>

@@ -6,16 +6,6 @@ type Project = {
   id: string
 }
 
-type WorkExperience = {
-  company: string
-  title: string
-  start: string
-  end: string
-  link: string
-  logo: string
-  id: string
-}
-
 type BlogPost = {
   title: string
   description: string
@@ -64,26 +54,7 @@ export const PROJECTS: Project[] = [
   },
 ]
 
-export const WORK_EXPERIENCE: WorkExperience[] = [
-  {
-    company: 'Freelancehunt',
-    title: 'Full-time Product UX/UI Designer',
-    start: '2023',
-    end: 'Present',
-    link: 'https://freelancehunt.com/',
-    logo: '/Freelancehunt_favicon.ico',
-    id: 'work2',
-  },
-  {
-    company: 'Freelancing Freelancehunt & Upwork',
-    title: 'UI/UX Designer',
-    start: '2019',
-    end: '2023',
-    link: '/',
-    logo: '/Upwork.svg',
-    id: 'work1',
-  },
-]
+
 
 export const BLOG_POSTS: BlogPost[] = [
   {

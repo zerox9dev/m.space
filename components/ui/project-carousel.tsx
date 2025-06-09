@@ -78,7 +78,7 @@ export function ProjectCarousel({ projects }: { projects: ProjectProps[] }) {
 
   return (
     <div className="relative">
-      <div className="overflow-hidden rounded-lg pb-2">
+      <div className="overflow-hidden rounded-sm pb-2">
         <AnimatePresence initial={false} mode="wait">
           <motion.div 
             key={currentIndex}
@@ -113,7 +113,7 @@ export function ProjectCarousel({ projects }: { projects: ProjectProps[] }) {
             <button
               key={pageIdx}
               onClick={() => goToSlide(pageIdx)}
-              className={`rounded-full transition-all ${
+              className={`rounded-sm transition-all ${
                 currentIndex === pageIdx * maxVisibleProjects
                   ? 'bg-black dark:bg-white scale-110' 
                   : 'bg-zinc-300 dark:bg-zinc-600 hover:bg-zinc-400 dark:hover:bg-zinc-500'
