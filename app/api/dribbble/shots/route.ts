@@ -15,25 +15,58 @@ export async function GET() {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
+      // Установим временные ограничения запроса
+      cache: 'no-store',
     });
 
     if (!response.ok) {
       throw new Error(`Failed to fetch shots: ${response.statusText}`);
     }
 
-    const shots = await response.json();
+    // Получаем данные в виде текста
+    const text = await response.text();
     
-    // Логируем структуру первого изображения, чтобы увидеть доступные размеры
-    if (shots && shots.length > 0) {
-      console.log('Sample Dribbble shot structure:', JSON.stringify(shots[0], null, 2));
+    // Проверяем, что текст не пустой
+    if (!text || text.trim() === '') {
+      console.error('Empty response received from Dribbble API');
+      return NextResponse.json([]);
     }
     
-    return NextResponse.json(shots);
+    try {
+      // Безопасный парсинг с обработкой ошибок
+      const shots = JSON.parse(text);
+      
+      // Валидируем данные, убедившись что это массив
+      const validShots = Array.isArray(shots) ? shots : [];
+      
+      // Проверяем что данные соответствуют ожидаемой структуре
+      const sanitizedShots = validShots.map(shot => ({
+        id: shot.id || 0,
+        title: shot.title || '',
+        description: shot.description || null,
+        images: {
+          normal: shot.images?.normal || '',
+          hidpi: shot.images?.hidpi || shot.images?.normal || '',
+        },
+        html_url: shot.html_url || '',
+      }));
+      
+      // Отключаем кэширование на стороне браузера
+      const headers = new Headers();
+      headers.append('Cache-Control', 'no-cache, no-store, must-revalidate');
+      headers.append('Pragma', 'no-cache');
+      headers.append('Expires', '0');
+      
+      return new NextResponse(JSON.stringify(sanitizedShots), {
+        status: 200,
+        headers: headers,
+      });
+    } catch (jsonError) {
+      console.error('Error parsing JSON from Dribbble API:', jsonError);
+      return NextResponse.json([], { status: 200 });
+    }
   } catch (error) {
     console.error('Error fetching Dribbble shots:', error);
-    return NextResponse.json(
-      { error: 'Failed to fetch Dribbble shots' },
-      { status: 500 }
-    );
+    return NextResponse.json([], { status: 200 });
   }
 } 

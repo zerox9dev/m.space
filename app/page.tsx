@@ -87,6 +87,7 @@ function PersonalContent() {
         variants={VARIANTS_CONTAINER}
         initial="hidden"
         animate="visible"
+        suppressHydrationWarning
       >
         {activeTab === 'about' && (
           <motion.section
@@ -115,65 +116,84 @@ function PersonalContent() {
               </div>
             ) : error ? (
               <p className="text-center text-zinc-500 dark:text-zinc-400">{error}</p>
-            ) : shots && shots.length > 0 ? (
+            ) : shots && Array.isArray(shots) && shots.length > 0 ? (
               <div className="relative">
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                  {shots.map((shot) => (
-                    <div key={shot.id}>
-                      <div className="relative rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50 h-full">
-                        <MorphingDialog
-                          transition={{
-                            type: 'spring',
-                            bounce: 0,
-                            duration: 0.3,
-                          }}
-                        >
-                          <MorphingDialogTrigger>
-                            <div 
-                              className="aspect-[4/3] w-full cursor-zoom-in rounded-xl bg-zinc-100 dark:bg-zinc-800 overflow-hidden relative"
-                            >
-                              <Image
-                                src={shot.images.hidpi || shot.images.normal}
-                                alt={shot.title}
-                                fill
-                                sizes="(max-width: 768px) 100vw, 50vw"
-                                className="object-cover"
-                                priority
-                                unoptimized={false}
-                              />
-                            </div>
-                          </MorphingDialogTrigger>
-                          <MorphingDialogContainer>
-                            <MorphingDialogContent className="fixed inset-0 flex items-center justify-center bg-zinc-50/90 dark:bg-zinc-950/90 p-6">
-                              <div className="relative w-full max-w-4xl max-h-[80vh] aspect-[4/3]">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                  {shots.map((shot) => {
+                    // Проверяем наличие всех необходимых полей
+                    if (!shot || typeof shot.id === 'undefined' || !shot.images) {
+                      return null;
+                    }
+                    
+                    const imageUrl = shot.images?.hidpi || shot.images?.normal || '';
+                    if (!imageUrl) {
+                      return null;
+                    }
+                    
+                    return (
+                      <div key={shot.id} className="h-full">
+                        <div className="h-full relative rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50">
+                          <MorphingDialog
+                            transition={{
+                              type: 'spring',
+                              bounce: 0,
+                              duration: 0.3,
+                            }}
+                          >
+                            <MorphingDialogTrigger>
+                              <div 
+                                className="w-full cursor-zoom-in rounded-xl bg-zinc-100 dark:bg-zinc-800 overflow-hidden relative"
+                                style={{ 
+                                  aspectRatio: '4/3',
+                                  height: 'auto'
+                                }}
+                              >
                                 <Image
-                                  src={shot.images.hidpi || shot.images.normal}
-                                  alt={shot.title}
-                                  fill
-                                  sizes="100vw"
-                                  className="object-contain"
-                                  unoptimized={true}
+                                  src={imageUrl}
+                                  alt={shot.title || 'Dribbble shot'}
+                                  className="object-cover w-full h-auto"
+                                  width={800}
+                                  height={600}
+                                  priority
+                                  unoptimized={false}
                                 />
                               </div>
-                            </MorphingDialogContent>
-                            <MorphingDialogClose
-                              className="fixed top-6 right-6 z-50 h-fit w-fit rounded-full bg-white p-1.5 shadow-md"
-                              variants={{
-                                initial: { opacity: 0 },
-                                animate: {
-                                  opacity: 1,
-                                  transition: { delay: 0.3, duration: 0.1 },
-                                },
-                                exit: { opacity: 0, transition: { duration: 0 } },
-                              }}
-                            >
-                              <FaXmark className="h-5 w-5 text-zinc-500" />
-                            </MorphingDialogClose>
-                          </MorphingDialogContainer>
-                        </MorphingDialog>
+                            </MorphingDialogTrigger>
+                            <MorphingDialogContainer>
+                              <MorphingDialogContent className="fixed inset-0 flex items-center justify-center bg-zinc-50/90 dark:bg-zinc-950/90 p-6">
+                                <div className="relative w-full max-w-5xl" style={{ 
+                                  maxHeight: '80vh',
+                                  maxWidth: '90vw'
+                                }}>
+                                  <Image
+                                    src={imageUrl}
+                                    alt={shot.title || 'Dribbble shot'}
+                                    className="object-contain max-h-[80vh] w-auto h-auto"
+                                    width={1600}
+                                    height={1200}
+                                    unoptimized={true}
+                                  />
+                                </div>
+                              </MorphingDialogContent>
+                              <MorphingDialogClose
+                                className="fixed top-6 right-6 z-50 h-fit w-fit rounded-full bg-white p-1.5 shadow-md"
+                                variants={{
+                                  initial: { opacity: 0 },
+                                  animate: {
+                                    opacity: 1,
+                                    transition: { delay: 0.3, duration: 0.1 },
+                                  },
+                                  exit: { opacity: 0, transition: { duration: 0 } },
+                                }}
+                              >
+                                <FaXmark className="h-5 w-5 text-zinc-500" />
+                              </MorphingDialogClose>
+                            </MorphingDialogContainer>
+                          </MorphingDialog>
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             ) : (
@@ -181,8 +201,6 @@ function PersonalContent() {
             )}
           </motion.section>
         )}
-
-
 
         {activeTab === 'blog' && (
           <motion.section
@@ -193,8 +211,6 @@ function PersonalContent() {
             <BlogPostList posts={BLOG_POSTS} />
           </motion.section>
         )}
-
-
       </motion.main>
     </>
   );

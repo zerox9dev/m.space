@@ -230,7 +230,7 @@ function MorphingDialogContainer({ children }: MorphingDialogContainerProps) {
     return () => setMounted(false)
   }, [])
 
-  if (!mounted) return null
+  if (!mounted || typeof document === 'undefined') return null
 
   return createPortal(
     <AnimatePresence initial={false} mode="sync">
