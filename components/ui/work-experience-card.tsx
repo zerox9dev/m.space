@@ -1,6 +1,8 @@
 'use client'
 
 import React from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
 
 type WorkExperience = {
   company: string
@@ -24,8 +26,8 @@ const WORK_EXPERIENCE: WorkExperience[] = [
     id: 'work2',
   },
   {
-    company: 'Freelancing Freelancehunt & Upwork',
-    title: 'UI/UX Designer',
+    company: 'Freelancehunt & Upwork',
+    title: 'Freelance UI/UX Designer',
     start: '2019',
     end: '2023',
     link: '/',
@@ -42,18 +44,29 @@ export function WorkExperience() {
         {WORK_EXPERIENCE.map((work, index) => (
           <div key={work.id} className={index !== 0 ? "mt-4" : ""}>
             <div className="flex justify-between items-center">
-              <strong>{work.title}</strong>
+              <div className="flex items-center gap-1">
+                <div className="relative w-6 h-6">
+                  <Image 
+                    src={work.logo} 
+                    alt={`${work.company} logo`} 
+                    width={20} 
+                    height={20} 
+                    className="object-contain"
+                  />
+                </div>
+                <strong>{work.title}</strong>
+              </div>
               <span className="text-sm text-gray-500">{work.start} — {work.end}</span>
             </div>
             <div>
-              <a 
+              <Link
                 href={work.link}
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-sm text-black hover:text-blue-600 dark:text-white dark:hover:text-blue-400"
+                className="text-sm text-black hover:text-gray-500 dark:text-white dark:hover:text-white"
               >
                 {work.company}
-              </a>
+              </Link>
             </div>
             {index !== WORK_EXPERIENCE.length - 1 && <hr className="my-3" />}
           </div>
