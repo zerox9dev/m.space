@@ -96,8 +96,8 @@ function PersonalContent() {
             className="flex flex-col gap-4"
           >
                 <ProfileHeader />
-                <WorkExperience />
                 <WhatIDo />
+                <WorkExperience />
                 <ProjectCarousel projects={PROJECTS} />
                 <ConnectLinks />
                 <AiCloneChat />
