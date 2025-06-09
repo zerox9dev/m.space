@@ -18,7 +18,7 @@ type TabNavigationProps = {
 export function TabNavigation({ tabs, activeTab, onChange, className }: TabNavigationProps) {
   return (
     <div className={cn("flex justify-center w-full", className)}>
-      <div className="inline-flex items-center justify-center bg-zinc-100/80 dark:bg-zinc-800/80 rounded-full p-1 backdrop-blur-sm">
+      <div className="inline-flex items-center justify-center bg-white/70 dark:bg-zinc-800/80 rounded-sm p-1 backdrop-blur-sm">
         {tabs.map((tab) => {
           const isActive = activeTab === tab.id
           return (
@@ -26,7 +26,7 @@ export function TabNavigation({ tabs, activeTab, onChange, className }: TabNavig
               key={tab.id}
               onClick={() => onChange(tab.id)}
               className={cn(
-                "relative px-4 py-1.5 text-sm font-medium rounded-full transition-colors duration-200",
+                "relative px-4 py-1.5 text-sm font-medium rounded-sm transition-colors duration-200",
                 isActive 
                   ? "text-zinc-950 dark:text-white" 
                   : "text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-300"
@@ -35,7 +35,7 @@ export function TabNavigation({ tabs, activeTab, onChange, className }: TabNavig
               {isActive && (
                 <motion.div
                   layoutId="active-tab-pill"
-                  className="absolute inset-0 bg-white dark:bg-zinc-700 rounded-full"
+                  className="absolute inset-0 bg-zinc-200 dark:bg-zinc-700/70 rounded-sm"
                   transition={{ type: "spring", bounce: 0.15, duration: 0.5 }}
                   style={{ zIndex: -1 }}
                 />

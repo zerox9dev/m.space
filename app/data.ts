@@ -11,6 +11,7 @@ type BlogPost = {
   description: string
   link: string
   uid: string
+  date: string
 }
 
 type SocialLink = {
@@ -54,20 +55,20 @@ export const PROJECTS: Project[] = [
   },
 ]
 
-
-
 export const BLOG_POSTS: BlogPost[] = [
   {
     title: 'Vidzilla: My Telegram Bot for Downloading Social Media Videos',
     description: "A deep dive into creating a Telegram bot that allows users to easily download videos from multiple social media platforms including Instagram, TikTok, YouTube, and more.",
     link: '/blog/vidzilla-telegram-bot-for-downloading-social-media-videos',
     uid: 'blog-4',
+    date: 'June 2, 2025'
   },
   {
     title: 'Welcome to My Digital Space',
     description: "I'm glad you've visited my site. Here I'll share my thoughts on design, development, and everything in between. Let's build something exceptional together!",
     link: '/blog/welcome-to-my-digital-space',
     uid: 'blog-1',
+    date: 'June 1, 2025'
   },
   {
     title: 'WebNinja: AI Assistant for Web Research',
@@ -75,6 +76,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Hi! I want to share my small hobby project — WebNinja. Inspired by AI Manus (and the community's playful \"anus\" 😄), I decided to create my own mini-version of a web research agent.",
     link: '/blog/webninja-ai-assistant-for-web-research',
     uid: 'blog-2',
+    date: 'June 3, 2025'
   },
   {
     title: "Metrics That Deceive: Why Numbers Aren't Always the Truth",
@@ -82,6 +84,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Metrics aren't everything. But they sure look pretty, right? 🙂 In this post, I'll share some common metrics and why they might not be telling the whole story.",
     link: '/blog/metrics-that-deceive-why-numbers-arent-always-the-truth',
     uid: 'blog-3',
+    date: 'June 5, 2025'
   },
 ]
 
