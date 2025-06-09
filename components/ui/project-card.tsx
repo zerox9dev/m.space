@@ -29,14 +29,14 @@ export function ProjectCard({ name, description, image, link, slug }: Omit<Proje
     }
     
     return (
-      <a
+      <Link
         href={link}
         target="_blank"
         rel="noopener noreferrer"
-        className="mb-1.5 block text-base font-medium group hover:text-blue-600 dark:hover:text-blue-400"
+        className="mb-1.5 block text-base font-medium group hover:text-black dark:hover:text-white"
       >
         {children}
-      </a>
+      </Link>
     );
   };
 
@@ -48,7 +48,7 @@ export function ProjectCard({ name, description, image, link, slug }: Omit<Proje
 
   return (
     <motion.div
-      className="relative rounded-2xl bg-white p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50 h-full"
+      className="relative rounded-sm bg-white p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50 h-full"
       whileHover={{ y: -4 }}
       transition={{ duration: 0.2 }}
     >

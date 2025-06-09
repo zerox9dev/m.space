@@ -25,17 +25,14 @@ export default function ProjectImage({ src }: ProjectImageProps) {
       }}
     >
       <MorphingDialogTrigger>
-        <div className="aspect-[4/3] w-full flex items-center justify-center rounded-xl overflow-hidden cursor-zoom-in">
+        <div className="aspect-[4/3] w-full flex items-center justify-center rounded-sm overflow-hidden">
           <div className="w-full h-full flex items-center justify-center">
             <Image
               src={src}
               alt="Project screenshot"
               width={280}
               height={210}
-              className="max-h-full max-w-full object-contain"
-              style={{
-                borderRadius: '4px'
-              }}
+              className="max-h-full max-w-full object-contain rounded-sm"
               priority
             />
           </div>
@@ -52,13 +49,12 @@ export default function ProjectImage({ src }: ProjectImageProps) {
               className="max-h-[80vh] max-w-full object-contain"
               style={{ 
                 boxShadow: '0 4px 16px rgba(0,0,0,0.2)',
-                borderRadius: '8px'
               }}
             />
           </div>
         </MorphingDialogContent>
         <MorphingDialogClose
-          className="fixed top-6 right-6 z-50 h-fit w-fit rounded-full bg-white p-1.5 shadow-md"
+          className="fixed top-6 right-6 z-50 h-fit w-fit rounded-sm bg-white p-1.5 shadow-md"
           variants={{
             initial: { opacity: 0 },
             animate: {
