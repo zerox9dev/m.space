@@ -20,6 +20,7 @@ import { ProfileHeader } from '@/components/ui/profile-header'
 import { ConnectLinks } from '@/components/ui/connect-links'
 import { useSearchParams } from 'next/navigation'
 import { AiCloneChat } from '@/components/ui/ai-clone-chat'
+import { Certificates } from '@/components/ui/certificates'
 
 // Dynamically import components that aren't needed on initial load
 const MorphingDialog = dynamic(() => import('@/components/ui/morphing-dialog').then(mod => mod.MorphingDialog), { ssr: false })
@@ -99,6 +100,7 @@ function PersonalContent() {
                 <WhatIDo />
                 <WorkExperience />
                 <ProjectCarousel projects={PROJECTS} />
+                <Certificates />
                 <ConnectLinks />
                 <AiCloneChat />
           </motion.section>
