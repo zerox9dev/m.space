@@ -16,6 +16,8 @@
     "@types/mdx": "^2.0.13",
     "@vercel/analytics": "^1.5.0",
     "clsx": "^2.1.1",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^3.0.1",
     "lucide-react": "^0.468.0",
     "motion": "^11.15.0",
     "next": "15.1.1",

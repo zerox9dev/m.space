@@ -39,7 +39,7 @@ const WORK_EXPERIENCE: WorkExperience[] = [
 export function WorkExperience() {
   return (
 
-      <div className="bg-white p-4 rounded-sm">
+      <div className="bg-white p-4 rounded-sm dark:bg-zinc-900">
         <h2>Work experience</h2>
         {WORK_EXPERIENCE.map((work, index) => (
           <div key={work.id} className={index !== 0 ? "mt-4" : ""}>

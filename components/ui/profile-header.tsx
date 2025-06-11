@@ -6,7 +6,7 @@ import { TextEffect } from './text-effect'
 
 export function ProfileHeader() {
   return (
-    <div className="flex items-center gap-4 bg-white p-4 rounded-sm">
+    <div className="flex items-center gap-4 bg-white p-4 rounded-sm dark:bg-zinc-900">
       <div className="h-16 w-16 shrink-0 rounded-sm overflow-hidden">
         <Image 
           src="/avatar.png" 
