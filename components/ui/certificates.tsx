@@ -37,7 +37,7 @@ export function Certificates() {
               <div className="flex">
                 <FaCertificate className="text-amber-500 mt-1 mr-2 shrink-0" />
                 <div>
-                  <h3 className="text-lg font-medium">
+                  <p className="">
                     <Link 
                       href={cert.url} 
                       target="_blank" 
@@ -46,7 +46,7 @@ export function Certificates() {
                     >
                       {cert.name}
                     </Link>
-                  </h3>
+                  </p>
                   <span className="text-sm text-zinc-500 dark:text-zinc-400">{cert.issuer}</span>
                 </div>
               </div>
