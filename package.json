@@ -26,6 +26,7 @@
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",
     "react-markdown": "^10.1.0",
+    "remark-footnotes": "^4.0.1",
     "tailwind-merge": "^2.5.5"
   },
   "devDependencies": {

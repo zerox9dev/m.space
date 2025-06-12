@@ -53,6 +53,13 @@ export const PROJECTS: Project[] = [
     image: '/images/turbowork/cover.png',
     id: 'project3',
   },
+  {
+    name: 'TgROI',
+    description: 'Web application for analyzing the efficiency of advertising in Telegram channels, helping marketers and business owners make informed decisions when choosing channels for ad placement.',
+    link: 'tg-roi.vercel.app',
+    image: '/images/tg-roi/cover.png',
+    id: 'project4',
+  },
 ]
 
 export const BLOG_POSTS: BlogPost[] = [
