@@ -55,6 +55,13 @@ export const PROJECTS: Project[] = [
     id: 'project1',
   },
   {
+    name: 'OceanGroup',
+    description: 'OceanGroup is a platform for trading cryptocurrencies and other digital assets.',
+    link: '/projects/oceangroup',
+    image: '/images/oceangroup/cover.png',
+    id: 'project5',
+  },
+  {
     name: 'TgROI',
     description: 'Analytics tool for measuring Telegram channel advertising efficiency.',
     link: 'tg-roi.vercel.app',
