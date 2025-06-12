@@ -106,7 +106,7 @@ export function WorkExperience() {
             </div>
             {work.description && (
               <>
-                <p className={`text-sm text-gray-700 dark:text-gray-300 mt-2 ${!expandedDescriptions[work.id] ? "line-clamp-2" : ""}`}>
+                <p className={`text-sm text-gray-700 dark:text-gray-300 mt-2 ${!expandedDescriptions[work.id] ? "line-clamp-1" : ""}`}>
                   {work.description}
                 </p>
                 <button 
