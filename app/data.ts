@@ -37,6 +37,14 @@ export const PROJECTS: Project[] = [
     description: 'One Card for All Crypto Natives',
     link: 'https://holyheld.com',
     image: '/images/holyheld/cover.png',
+    id: 'project1',
+  },
+
+  {
+    name: 'CRM TurboWork',
+    description: 'CRM for brokerage companies',
+    link: '/projects/turbowork',
+    image: '/images/turbowork/cover.png',
     id: 'project2',
   },
   {
@@ -44,18 +52,11 @@ export const PROJECTS: Project[] = [
     description: 'Your Guide to Ukrainian Medicine.',
     link: 'https://mou.today',
     image: '/images/mou/cover.png',
-    id: 'project1',
-  },
-  {
-    name: 'CRM TurboWork',
-    description: 'CRM for brokerage companies',
-    link: '/projects/turbowork',
-    image: '/images/turbowork/cover.png',
     id: 'project3',
   },
   {
     name: 'TgROI',
-    description: 'Web application for analyzing the efficiency of advertising in Telegram channels, helping marketers and business owners make informed decisions when choosing channels for ad placement.',
+    description: 'Analytics tool for measuring Telegram channel advertising efficiency.',
     link: 'tg-roi.vercel.app',
     image: '/images/tg-roi/cover.png',
     id: 'project4',

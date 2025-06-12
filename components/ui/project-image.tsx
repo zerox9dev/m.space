@@ -1,7 +1,8 @@
 "use client"
 
+import { useState } from 'react'
 import Image from 'next/image'
-import { FaXmark } from 'react-icons/fa6'
+import { FaXmark, FaImage } from 'react-icons/fa6'
 import dynamic from 'next/dynamic'
 
 // Dynamically import MorphingDialog components
@@ -16,6 +17,18 @@ type ProjectImageProps = {
 }
 
 export default function ProjectImage({ src }: ProjectImageProps) {
+  const [imageError, setImageError] = useState(false)
+
+  const handleImageError = () => {
+    setImageError(true)
+  }
+
+  const Placeholder = () => (
+    <div className="w-full h-full flex items-center justify-center bg-zinc-100 dark:bg-zinc-800">
+      <FaImage className="w-12 h-12 text-zinc-400 dark:text-zinc-600" />
+    </div>
+  )
+
   return (
     <MorphingDialog
       transition={{
@@ -27,30 +40,42 @@ export default function ProjectImage({ src }: ProjectImageProps) {
       <MorphingDialogTrigger>
         <div className="aspect-[4/3] w-full flex items-center justify-center rounded-sm overflow-hidden">
           <div className="w-full h-full flex items-center justify-center">
-            <Image
-              src={src}
-              alt="Project screenshot"
-              width={280}
-              height={210}
-              className="max-h-full max-w-full object-contain rounded-sm"
-              priority
-            />
+            {imageError ? (
+              <Placeholder />
+            ) : (
+              <Image
+                src={src}
+                alt="Project screenshot"
+                width={280}
+                height={210}
+                className="max-h-full max-w-full object-contain rounded-sm"
+                priority
+                onError={handleImageError}
+              />
+            )}
           </div>
         </div>
       </MorphingDialogTrigger>
       <MorphingDialogContainer>
         <MorphingDialogContent className="fixed inset-0 flex items-center justify-center bg-zinc-50/90 dark:bg-zinc-950/90 p-6">
           <div className="relative w-full max-w-4xl aspect-[4/3] max-h-[80vh]">
-            <Image
-              src={src}
-              alt="Project screenshot"
-              width={1200}
-              height={900}
-              className="max-h-[80vh] max-w-full object-contain"
-              style={{ 
-                boxShadow: '0 4px 16px rgba(0,0,0,0.2)',
-              }}
-            />
+            {imageError ? (
+              <div className="w-full h-full max-h-[80vh] flex items-center justify-center bg-zinc-100 dark:bg-zinc-800 rounded-sm">
+                <FaImage className="w-24 h-24 text-zinc-400 dark:text-zinc-600" />
+              </div>
+            ) : (
+              <Image
+                src={src}
+                alt="Project screenshot"
+                width={1200}
+                height={900}
+                className="max-h-[80vh] max-w-full object-contain"
+                style={{ 
+                  boxShadow: '0 4px 16px rgba(0,0,0,0.2)',
+                }}
+                onError={handleImageError}
+              />
+            )}
           </div>
         </MorphingDialogContent>
         <MorphingDialogClose
