@@ -37,7 +37,7 @@ export const PROJECTS: Project[] = [
     description: 'One Card for All Crypto Natives',
     link: 'https://holyheld.com',
     image: '/images/holyheld/cover.png',
-    id: 'project1',
+    id: 'project2',
   },
 
   {
@@ -45,14 +45,14 @@ export const PROJECTS: Project[] = [
     description: 'CRM for brokerage companies',
     link: '/projects/turbowork',
     image: '/images/turbowork/cover.png',
-    id: 'project2',
+    id: 'project3',
   },
   {
     name: 'Mou.today',
     description: 'Your Guide to Ukrainian Medicine.',
     link: 'https://mou.today',
     image: '/images/mou/cover.png',
-    id: 'project3',
+    id: 'project1',
   },
   {
     name: 'TgROI',
