@@ -57,6 +57,10 @@ const TABS = [
   { id: 'blog', label: 'Blog' },
 ]
 
+
+
+
+
 // Create a wrapper component to use searchParams
 function PersonalContent() {
   const { shots, loading, error } = useDribbbleShots();

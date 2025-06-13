@@ -4,6 +4,7 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { FaCertificate } from 'react-icons/fa6'
+import { FaExternalLinkAlt } from 'react-icons/fa'
 import { motion } from 'motion/react'
 
 export function Certificates() {
@@ -50,19 +51,24 @@ export function Certificates() {
                   <FaCertificate className="text-amber-500" />
                 )}
               </div>
-              <p>{cert.name}</p>
+              <p>
+                <Link
+                  href={cert.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-black hover:text-gray-500 dark:text-white dark:hover:text-white flex items-center gap-1"
+                >
+                  {cert.name}
+                  <FaExternalLinkAlt className="inline-block w-3 h-3 text-gray-400" />
+                </Link>
+              </p>
             </div>
             <span className="text-sm text-gray-500">{cert.year}</span>
           </div>
           <div>
-            <Link
-              href={cert.url}
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-sm text-black hover:text-gray-500 dark:text-white dark:hover:text-white"
-            >
+            <span className="text-sm text-gray-500 dark:text-gray-400">
               {cert.issuer}
-            </Link>
+            </span>
           </div>
           {index !== certificates.length - 1 && <hr className="my-3" />}
         </div>

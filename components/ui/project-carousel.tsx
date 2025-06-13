@@ -15,22 +15,12 @@ type ProjectProps = {
 
 export function ProjectCarousel({ projects }: { projects: ProjectProps[] }) {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [maxVisibleProjects, setMaxVisibleProjects] = useState(2)
+  const [maxVisibleProjects, setMaxVisibleProjects] = useState(1)
   const [direction, setDirection] = useState(0) // -1 for left, 1 for right
 
   // Update visible projects based on screen width
   useEffect(() => {
-    const updateVisibleProjects = () => {
-      if (window.innerWidth < 640) {
-        setMaxVisibleProjects(1)
-      } else {
-        setMaxVisibleProjects(2)
-      }
-    }
-
-    updateVisibleProjects()
-    window.addEventListener('resize', updateVisibleProjects)
-    return () => window.removeEventListener('resize', updateVisibleProjects)
+    setMaxVisibleProjects(1)
   }, [])
 
   // Calculate total number of pages
@@ -91,7 +81,7 @@ export function ProjectCarousel({ projects }: { projects: ProjectProps[] }) {
             {visibleProjects.map((project) => (
               <motion.div 
                 key={project.id} 
-                className="w-full sm:w-[calc(50%-12px)] flex-shrink-0"
+                className="w-full flex-shrink-0"
                 style={{ minHeight: '280px' }}
               >
                 <ProjectCard

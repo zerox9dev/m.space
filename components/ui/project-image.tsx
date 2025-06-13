@@ -46,9 +46,9 @@ export default function ProjectImage({ src }: ProjectImageProps) {
               <Image
                 src={src}
                 alt="Project screenshot"
-                width={280}
-                height={210}
-                className="max-h-full max-w-full object-contain rounded-sm"
+                width={1200}
+                height={900}
+                className="w-full h-full object-cover rounded-sm"
                 priority
                 onError={handleImageError}
               />
