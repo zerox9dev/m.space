@@ -118,7 +118,7 @@ const ExperienceCard = ({ experience, isExpanded, onToggle, showDivider, alwaysE
       
       {description && (
         <>
-          <p className={`text-sm text-gray-700 dark:text-gray-300 mt-2`}>
+          <p className={`text-md text-black dark:text-gray-300 mt-2`}>
             {isFirst && !alwaysExpanded
               ? getFirst3Lines(description)
               : description}
