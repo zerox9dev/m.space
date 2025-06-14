@@ -46,7 +46,7 @@ export function RecentWork() {
                   priority
                 />
               </div>
-              <div className="p-2 flex flex-col justify-between flex-1 min-h-0 bg-zinc-100 dark:bg-zinc-900 ">
+              <div className="p-2 flex flex-col justify-between flex-1 min-h-0 bg-zinc-50 dark:bg-zinc-900 rounded-b-sm">
                 <h3 className="text-base font-bold mb-1 leading-tight">{selectedProject.name}</h3>
                 <p className="text-xs text-zinc-600 dark:text-zinc-400 mb-2 line-clamp-2">{selectedProject.description}</p>
                 <Link
