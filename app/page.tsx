@@ -12,7 +12,6 @@ import { useDribbbleShots } from '@/hooks/useDribbbleShots'
 import { FaXmark } from 'react-icons/fa6'
 import { BlogPostList } from '@/components/ui/blog-post-card'
 import { WorkExperience } from '@/components/ui/work-experience-card'
-import { ProjectCarousel } from '@/components/ui/project-carousel'
 import { TabNavigation } from '@/components/ui/tab-navigation'
 
 import { WhatIDo } from '@/components/ui/what-i-do'
