@@ -35,7 +35,7 @@ export const PROJECTS: Project[] = [
   {
     name: 'Holyheld',
     description: 'One Card for All Crypto Natives',
-    link: 'https://holyheld.com',
+    link: '/projects/holyheld',
     image: '/images/holyheld/cover.png',
     id: 'project2',
   },
@@ -50,7 +50,7 @@ export const PROJECTS: Project[] = [
   {
     name: 'Mou.today',
     description: 'Your Guide to Ukrainian Medicine.',
-    link: 'https://mou.today',
+    link: '/projects/mou',
     image: '/images/mou/cover.png',
     id: 'project1',
   },
