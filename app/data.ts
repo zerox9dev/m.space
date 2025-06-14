@@ -62,6 +62,13 @@ export const PROJECTS: Project[] = [
     id: 'project5',
   },
   {
+    name: 'Vidzilla',
+    description: 'This Telegram bot allows users to download videos from various social media platforms including Instagram Reels, TikTok, YouTube, Facebook, Twitter, and Pinterest.',
+    link: 'https://github.com/mirvald-space/Vidzilla',
+    image: '/images/vidzilla/cover.png',
+    id: 'project6',
+  },
+  {
     name: 'TgROI',
     description: 'Analytics tool for measuring Telegram channel advertising efficiency.',
     link: 'https://github.com/mirvald-space/TgROI',
