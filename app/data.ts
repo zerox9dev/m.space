@@ -64,7 +64,7 @@ export const PROJECTS: Project[] = [
   {
     name: 'TgROI',
     description: 'Analytics tool for measuring Telegram channel advertising efficiency.',
-    link: 'tg-roi.vercel.app',
+    link: 'https://github.com/mirvald-space/TgROI',
     image: '/images/tg-roi/cover.png',
     id: 'project4',
   },
