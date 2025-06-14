@@ -38,7 +38,7 @@ export function RecentWork() {
             <div className="block group">
               <div className="relative w-full aspect-[4/3] dark:bg-zinc-900 border-b border-zinc-100 dark:border-zinc-800 rounded overflow-hidden">
                 <Image
-                  src={selectedProject.image}
+                  src={selectedProject.image || `https://www.google.com/s2/favicons?domain=${new URL(selectedProject.link).hostname}&sz=128`}
                   alt={selectedProject.name}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
