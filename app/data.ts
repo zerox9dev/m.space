@@ -81,6 +81,13 @@ export const PROJECTS: Project[] = [
     image: '/images/voicelet/cover.png',
     id: 'project7',
   },
+  {
+    name: 'PolishDomBot',
+    description: 'PolishDom Bot is a multifunctional Telegram bot designed to help users learn the Polish language and prepare for obtaining the Karta Polaka (Polish Card).',
+    link: 'https://github.com/mirvald-space/polishdom_bot',
+    image: '/images/polishdom_bot/cover.png',
+    id: 'project8',
+  },
 ]
 
 export const BLOG_POSTS: BlogPost[] = [
