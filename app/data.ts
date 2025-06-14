@@ -33,13 +33,19 @@ export type DribbbleShot = {
 
 export const PROJECTS: Project[] = [
   {
+    name: 'Mou.today',
+    description: 'Your Guide to Ukrainian Medicine.',
+    link: '/projects/mou',
+    image: '/images/mou/cover.png',
+    id: 'project1',
+  },
+  {
     name: 'Holyheld',
     description: 'One Card for All Crypto Natives',
     link: '/projects/holyheld',
     image: '/images/holyheld/cover.png',
     id: 'project2',
   },
-
   {
     name: 'CRM TurboWork',
     description: 'CRM for brokerage companies',
@@ -48,11 +54,11 @@ export const PROJECTS: Project[] = [
     id: 'project3',
   },
   {
-    name: 'Mou.today',
-    description: 'Your Guide to Ukrainian Medicine.',
-    link: '/projects/mou',
-    image: '/images/mou/cover.png',
-    id: 'project1',
+    name: 'TgROI',
+    description: 'Analytics tool for measuring Telegram channel advertising efficiency.',
+    link: 'https://github.com/mirvald-space/TgROI',
+    image: '/images/tg-roi/cover.png',
+    id: 'project4',
   },
   {
     name: 'OceanGroup',
@@ -69,11 +75,11 @@ export const PROJECTS: Project[] = [
     id: 'project6',
   },
   {
-    name: 'TgROI',
-    description: 'Analytics tool for measuring Telegram channel advertising efficiency.',
-    link: 'https://github.com/mirvald-space/TgROI',
-    image: '/images/tg-roi/cover.png',
-    id: 'project4',
+    name: 'Voicelet',
+    description: 'A smart Telegram bot that recognizes voice messages with automatic language detection',
+    link: 'https://github.com/mirvald-space/voicelet',
+    image: '/images/voicelet/cover.png',
+    id: 'project7',
   },
 ]
 
