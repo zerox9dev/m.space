@@ -48,7 +48,7 @@ export function RecentWork() {
       </div>
 
       {/* Category Tabs */}
-      <div className="flex flex-wrap pt-4 pb-2 border-b border-zinc-100 dark:border-zinc-800">
+      <div className="flex flex-wrap px-4 md:px-0 pt-4 pb-2 border-b border-zinc-100 dark:border-zinc-800">
         <button
           onClick={() => setActiveCategory('UX/UI')}
           className={`px-3 py-1.5 rounded-md text-sm font-medium flex items-center gap-1.5 transition-colors ${
