@@ -55,7 +55,7 @@ export const PROJECTS: Project[] = [
     link: '/projects/turbowork',
     image: '/images/turbowork/cover.png',
     id: 'project3',
-    category: 'Front & MVP',
+    category: 'UX/UI',
   },
   {
     name: 'TgROI',
@@ -63,7 +63,7 @@ export const PROJECTS: Project[] = [
     link: 'https://github.com/mirvald-space/TgROI',
     image: '/images/tgroi/cover.png',
     id: 'project4',
-    category: 'Bots & Automation',
+    category: 'Front & MVP',
   },
   {
     name: 'OceanGroup',
@@ -71,7 +71,7 @@ export const PROJECTS: Project[] = [
     link: '/projects/oceangroup',
     image: '/images/oceangroup/cover.png',
     id: 'project5',
-    category: 'Front & MVP',
+    category: 'UX/UI',
   },
   {
     name: 'Vidzilla',
