@@ -19,7 +19,6 @@ import { ProfileHeader } from '@/components/ui/profile-header'
 import { ConnectLinks } from '@/components/ui/connect-links'
 import { useSearchParams } from 'next/navigation'
 import { AiCloneChat } from '@/components/ui/ai-clone-chat'
-import { Certificates } from '@/components/ui/certificates'
 import { RecentWork } from '@/components/ui/recent-work'
 import { useTranslations } from 'next-intl'
 import { LanguageSwitcher } from '@/components/ui/language-switcher'
@@ -104,7 +103,6 @@ function PersonalContent() {
                 <WhatIDo />
                 <WorkExperience />
                 <RecentWork />
-                <Certificates />
                 <ConnectLinks />
                 <AiCloneChat />
           </motion.section>

@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { FaBriefcase, FaCode } from 'react-icons/fa6'
+import { FaBriefcase, FaCode, FaCertificate, FaArrowUpRightFromSquare } from 'react-icons/fa6'
 import { useTranslations } from 'next-intl'
 
 type WorkExperience = {
@@ -16,6 +16,13 @@ type WorkExperience = {
   description?: string
   type?: 'work' | 'additional'
   icon?: 'briefcase' | 'code'
+}
+
+type Certificate = {
+  name: string
+  year: string
+  url: string
+  logoPath: string
 }
 
 const ALL_EXPERIENCE: WorkExperience[] = [
@@ -39,7 +46,21 @@ const ALL_EXPERIENCE: WorkExperience[] = [
     type: 'work',
     description: 'UX/UI для стартапів та бізнесу: понад 20+ проектов мобільних та веб-продуктів, повний цикл від ідеї до кінцевого UI.',
   },
+]
 
+const CERTIFICATES: Certificate[] = [
+  {
+    name: 'Foundations of User Experience (UX) Design', 
+    year: '2025',
+    url: 'https://coursera.org/verify/VNNIVIRP71V3',
+    logoPath: '/images/companies/Google.svg'
+  },
+  {
+    name: 'Principles of UX/UI Design',
+    year: '2025',
+    url: 'https://coursera.org/verify/5HSHNXKESE4G',
+    logoPath: '/images/companies/Meta.svg'
+  }
 ]
 
 const ExperienceCard = ({ experience, isExpanded, onToggle, showDivider, alwaysExpanded = false, isFirst = false, hideMoreButton = false }: {
@@ -111,6 +132,44 @@ const ExperienceCard = ({ experience, isExpanded, onToggle, showDivider, alwaysE
   )
 }
 
+const CertificateCard = ({ certificate, showDivider }: { 
+  certificate: Certificate, 
+  showDivider: boolean 
+}) => {
+  return (
+    <>
+      <div className="flex justify-between items-center">
+        <div className="flex items-center gap-1">
+          <div className="relative w-6 h-6">
+            {certificate.logoPath ? (
+              <Image 
+                src={certificate.logoPath}
+                alt={`${certificate.name} logo`} 
+                width={20}
+                height={20}
+                className="object-contain"
+              />
+            ) : (
+              <FaCertificate className="text-amber-500" />
+            )}
+          </div>
+          <Link
+            href={certificate.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-black hover:text-gray-500 dark:text-white dark:hover:text-white flex items-center gap-1"
+          >
+            {certificate.name}
+            <FaArrowUpRightFromSquare className="inline-block w-3 h-3 text-gray-400" />
+          </Link>
+        </div>
+        <span className="text-sm text-gray-500">{certificate.year}</span>
+      </div>
+      {showDivider && <hr className="my-3" />}
+    </>
+  )
+}
+
 export function WorkExperience() {
   const [showAdditional, setShowAdditional] = useState(false)
   const t = useTranslations()
@@ -128,8 +187,10 @@ export function WorkExperience() {
   return (
     <div className="bg-white p-4 border-[#F4F4F5] border-3 rounded-md dark:bg-zinc-900 relative mt-6">
       <div className="absolute -top-4 left-4 bg-white dark:bg-zinc-900 px-2 py-1 text-sm">
-        <span>{t('workExperience.title')}</span>
+        <span>{t('workExperience.title')} & {t('certificates.title')}</span>
       </div>
+      
+      {/* Always visible work experience */}
       {!showAdditional && firstExperience.map((experience, index) => (
         <div key={experience.id}>
           <ExperienceCard
@@ -143,27 +204,45 @@ export function WorkExperience() {
         </div>
       ))}
 
-      {showAdditional && sortedExperience.map((experience, index) => (
-        <div key={experience.id} className={index !== 0 ? "mt-4" : ""}>
-          <ExperienceCard
-            experience={experience}
-            isExpanded={true}
-            onToggle={() => {}}
-            showDivider={index !== sortedExperience.length - 1}
-            alwaysExpanded={true}
-            isFirst={false}
-          />
-        </div>
-      ))}
-
-      {restExperience.length > 0 && (
-        <button 
-          onClick={() => setShowAdditional(!showAdditional)}
-          className="px-3 py-1.5 bg-gray-200 hover:bg-gray-300 text-black text-sm rounded-sm transition-colors mt-3"
-        >
-          {showAdditional ? t('workExperience.less', {defaultMessage: 'Less'}) : t('workExperience.more', {defaultMessage: 'More'})}
-        </button>
+      {/* Additional content shown when "More" is clicked */}
+      {showAdditional && (
+        <>
+          {/* All work experience */}
+          {sortedExperience.map((experience, index) => (
+            <div key={experience.id} className={index !== 0 ? "mt-4" : ""}>
+              <ExperienceCard
+                experience={experience}
+                isExpanded={true}
+                onToggle={() => {}}
+                showDivider={index !== sortedExperience.length - 1}
+                alwaysExpanded={true}
+                isFirst={false}
+              />
+            </div>
+          ))}
+          
+          {/* Certificates section */}
+          <div className="mt-6">
+            <h3 className="text-md font-medium mb-3">{t('certificates.title')}</h3>
+            {CERTIFICATES.map((certificate, index) => (
+              <div key={index} className={index !== 0 ? "mt-4" : ""}>
+                <CertificateCard
+                  certificate={certificate}
+                  showDivider={index !== CERTIFICATES.length - 1}
+                />
+              </div>
+            ))}
+          </div>
+        </>
       )}
+
+      {/* More/Less button */}
+      <button 
+        onClick={() => setShowAdditional(!showAdditional)}
+        className="px-3 py-1.5 bg-gray-200 hover:bg-gray-300 text-black text-sm rounded-sm transition-colors mt-3"
+      >
+        {showAdditional ? t('workExperience.less', {defaultMessage: 'Less'}) : t('workExperience.more', {defaultMessage: 'More'})}
+      </button>
     </div>
   )
 } 

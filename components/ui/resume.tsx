@@ -188,7 +188,7 @@ export function Resume() {
           </div>
 
           <div className="mb-6">
-            <h2 className="text-xl font-semibold border-b border-gray-300 pb-1 mb-2">Experience</h2>
+            <h2 className="text-xl font-semibold border-b border-gray-300 pb-1 mb-2">Work Experience & Certificates</h2>
             {experience.map((job, index) => (
               <div key={index} className="mb-4">
                 <h3 className="text-lg font-medium">{job.position}</h3>
@@ -199,10 +199,8 @@ export function Resume() {
                 <p className="text-sm">{job.description}</p>
               </div>
             ))}
-          </div>
-          
-          <div className="mb-6">
-            <h2 className="text-xl font-semibold border-b border-gray-300 pb-1 mb-2">Certificates</h2>
+            
+            <h3 className="text-lg font-medium mt-6 mb-3">Certificates</h3>
             {certificates.map((cert, index) => (
               <div key={index} className="mb-3">
                 <div className="flex justify-between w-full">
@@ -227,7 +225,7 @@ export function Resume() {
               </div>
             ))}
           </div>
-
+          
           <div>
             <h2 className="text-xl font-semibold border-b border-gray-300 pb-1 mb-2">Contact</h2>
             <div className="flex flex-wrap gap-4">

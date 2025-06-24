@@ -31,8 +31,6 @@ const nextConfig = {
   // Optimize production build
   experimental: {
     optimizePackageImports: ['lucide-react'],
-    // Улучшение гидратации для предотвращения проблем с расширениями браузера
-    reactMode: 'concurrent',
   },
   // Image configuration
   images: {
