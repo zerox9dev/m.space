@@ -1,5 +1,6 @@
 import createMDX from '@next/mdx';
 import remarkGfm from 'remark-gfm';
+import withNextIntl from 'next-intl/plugin';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -35,7 +36,7 @@ const nextConfig = {
   },
   // Image configuration
   images: {
-    domains: ['localhost'],
+    domains: ['localhost', 'cdn.dribbble.com', 'media.graphassets.com', 'media.graphcms.com'],
     remotePatterns: [
       {
         protocol: 'https',
@@ -81,4 +82,5 @@ const withMDX = createMDX({
   },
 });
 
-export default withMDX(nextConfig);
+// Apply both next-intl and MDX plugins
+export default withNextIntl()(withMDX(nextConfig));

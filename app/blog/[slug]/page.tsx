@@ -6,9 +6,9 @@ import { notFound } from 'next/navigation'
 export async function generateMetadata({
   params
 }: {
-  params: Promise<{ slug: string }>
+  params: { slug: string }
 }): Promise<Metadata> {
-  const { slug } = await params
+  const { slug } = params
 
   try {
     // Dynamically import the blog post to get its metadata
@@ -37,15 +37,15 @@ export async function generateMetadata({
 export default async function BlogPost({
   params
 }: {
-  params: Promise<{ slug: string }>
+  params: { slug: string }
 }) {
-  const { slug } = await params
+  const { slug } = params
   
   // Try to dynamically import the blog post
   try {
-    await import(`../${slug}/page.mdx`)
-    // If we reach here, the post exists
-    return null
+    const BlogPost = (await import(`../${slug}/page.mdx`)).default
+    // Return the MDX component
+    return <BlogPost />
   } catch (error: unknown) {
     // If the post doesn't exist, return a 404
     notFound()
