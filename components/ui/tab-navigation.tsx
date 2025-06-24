@@ -17,7 +17,7 @@ type TabNavigationProps = {
 
 export function TabNavigation({ tabs, activeTab, onChange, className }: TabNavigationProps) {
   return (
-    <div className={cn("flex justify-center w-full", className)}>
+    <div className={cn("flex w-full", className)}>
       <div className="inline-flex items-center justify-center bg-white/70 dark:bg-zinc-800/80 rounded-sm p-1 backdrop-blur-sm">
         {tabs.map((tab) => {
           const isActive = activeTab === tab.id
