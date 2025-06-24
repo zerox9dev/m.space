@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from 'next'
 import { Overpass, Overpass_Mono } from 'next/font/google'
 import './globals.css'
-import { Footer } from './footer'
 import { ThemeProvider } from 'next-themes'
 import { Analytics } from '@vercel/analytics/react'
 import { generateMetadata as generateSiteMetadata } from '@/lib/metadata'
+import ClientLayout from '@/components/ClientLayout'
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -66,7 +66,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${overpass.variable} ${overpassMono.variable} bg-[#F5F5F4] tracking-tight antialiased dark:bg-zinc-950`}
+        className="bg-white tracking-tight antialiased dark:bg-zinc-950"
       >
         <ThemeProvider
           enableSystem={true}
@@ -74,14 +74,12 @@ export default function RootLayout({
           storageKey="theme"
           defaultTheme="system"
         >
-          <div className="flex min-h-screen w-full flex-col font-[family-name:var(--font-overpass)]">
-            <div className="relative mx-auto w-full max-w-lg flex-1 px-4 pt-4 flex flex-col">
-              <main className="flex-1">
-                {children}
-              </main>
-              <Footer />
-            </div>
-          </div>
+          <ClientLayout 
+            overpassVariable={overpass.variable} 
+            overpassMonoVariable={overpassMono.variable}
+          >
+            {children}
+          </ClientLayout>
         </ThemeProvider>
         <Analytics />
       </body>

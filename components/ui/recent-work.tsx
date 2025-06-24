@@ -10,9 +10,9 @@ export function RecentWork() {
   const selectedProject = PROJECTS.find((p) => p.id === selectedId);
 
   return (
-    <div className="bg-white p-0 md:p-4 rounded-sm dark:bg-zinc-900 flex flex-col">
-      <div className="flex justify-between items-center mb-2 px-4 md:px-0">
-        <h2 className="text-base">Recent Work</h2>
+    <div className="bg-white p-0 md:p-4 border-[#F4F4F5] border-3 rounded-md dark:bg-zinc-900 flex flex-col relative mt-6">
+      <div className="absolute -top-4 left-4 bg-white dark:bg-zinc-900 px-2 py-1 text-sm">
+        <span>Над чим працював</span>
       </div>
       <div className="flex flex-row gap-4 md:gap-4 w-full">
         <div className="flex flex-col min-w-[160px] md:min-w-[200px]">

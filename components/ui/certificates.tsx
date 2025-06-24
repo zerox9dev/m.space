@@ -28,12 +28,14 @@ export function Certificates() {
 
   return (
     <motion.div
-      className="bg-white p-4 rounded-sm dark:bg-zinc-900"
+      className="bg-white p-4 border-[#F4F4F5] border-3 rounded-md dark:bg-zinc-900 relative mt-6"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
     >
-      <h2>Certificates</h2>
+      <div className="absolute -top-4 left-4 bg-white dark:bg-zinc-900 px-2 py-1 text-sm">
+        <span>Сертифікати</span>
+      </div>
       {certificates.map((cert, index) => (
         <div key={index} className={index !== 0 ? "mt-4" : ""}>
           <div className="flex justify-between items-center">

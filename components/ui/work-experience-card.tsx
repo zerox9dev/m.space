@@ -19,14 +19,14 @@ type WorkExperience = {
 
 const ALL_EXPERIENCE: WorkExperience[] = [
   {
-    title: 'Full-time Product UX/UI Designer',
+    title: 'Full-Time Product UX/UI Designer',
     start: '2023',
     end: 'Present',
     link: 'https://freelancehunt.com/',
     logo: '/Freelancehunt_favicon.ico',
     id: 'work2',
     type: 'work',
-    description: 'Product Designer for web and mobile platforms. Create UX/UI, design systems, prototypes, and scalable UI in Figma.',
+    description: 'Працюю над продуктом, UX-дизайном, фічами, користувацькими сценаріями, дизайн-системою.',
   },
   {
     title: 'Freelance UI/UX Designer',
@@ -36,30 +36,9 @@ const ALL_EXPERIENCE: WorkExperience[] = [
     logo: '/Upwork.svg',
     id: 'work1',
     type: 'work',
-    description: 'UX/UI for startups and businesses: 20+ mobile and web products, full cycle from idea to final UI.',
+    description: 'UX/UI для стартапів та бізнесу: понад 20+ проектов мобільних та веб-продуктів, повний цикл від ідеї до кінцевого UI.',
   },
-  {
-    title: 'Product Designer & No-code Developer',
-    start: '2021',
-    end: 'Present',
-    link: '/',
-    logo: '/placeholder.svg',
-    id: 'additional1',
-    type: 'additional',
-    icon: 'briefcase',
-    description: 'Prototype and build MVPs with Next.js, Python, AI. Create dashboards and bots for clients and personal use.',
-  },
-  {
-    title: 'Web Development, AI Tools & Telegram Bots',
-    start: '2021',
-    end: 'Present',
-    link: '/',
-    logo: '/placeholder.svg',
-    id: 'additional2',
-    type: 'additional',
-    icon: 'code',
-    description: 'Build simple sites (Next.js, React), use AI for design and automation. Develop Telegram bots with Python.',
-  }
+
 ]
 
 const ExperienceCard = ({ experience, isExpanded, onToggle, showDivider, alwaysExpanded = false, isFirst = false, hideMoreButton = false }: {
@@ -105,7 +84,7 @@ const ExperienceCard = ({ experience, isExpanded, onToggle, showDivider, alwaysE
               href={link}
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-sm text-black hover:text-gray-500 dark:text-white dark:hover:text-white"
+              className="text-md font-medium text-black hover:text-gray-500 dark:text-white dark:hover:text-white"
             >
               {title}
             </Link>
@@ -145,8 +124,10 @@ export function WorkExperience() {
   const restExperience = sortedExperience.slice(1)
 
   return (
-    <div className="bg-white p-4 rounded-sm dark:bg-zinc-900">
-      <h2>Work experience</h2>
+    <div className="bg-white p-4 border-[#F4F4F5] border-3 rounded-md dark:bg-zinc-900 relative mt-6">
+      <div className="absolute -top-4 left-4 bg-white dark:bg-zinc-900 px-2 py-1 text-sm">
+        <span>Де працював, працюю</span>
+      </div>
       {!showAdditional && firstExperience.map((experience, index) => (
         <div key={experience.id}>
           <ExperienceCard
