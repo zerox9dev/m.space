@@ -13,7 +13,7 @@ type WorkExperience = {
   link: string
   logo: string
   id: string
-  description?: string
+  descriptionKey: string
   type?: 'work' | 'additional'
   icon?: 'briefcase' | 'code'
 }
@@ -34,7 +34,7 @@ const ALL_EXPERIENCE: WorkExperience[] = [
     logo: '/Freelancehunt_favicon.ico',
     id: 'work2',
     type: 'work',
-    description: 'Працюю над продуктом, UX-дизайном, фічами, користувацькими сценаріями, дизайн-системою.',
+    descriptionKey: 'workExperience.freelancehunt',
   },
   {
     title: 'Freelance UI/UX Designer',
@@ -44,7 +44,7 @@ const ALL_EXPERIENCE: WorkExperience[] = [
     logo: '/Upwork.svg',
     id: 'work1',
     type: 'work',
-    description: 'UX/UI для стартапів та бізнесу: понад 20+ проектов мобільних та веб-продуктів, повний цикл від ідеї до кінцевого UI.',
+    descriptionKey: 'workExperience.freelance',
   },
 ]
 
@@ -72,7 +72,9 @@ const ExperienceCard = ({ experience, isExpanded, onToggle, showDivider, alwaysE
   isFirst?: boolean
   hideMoreButton?: boolean
 }) => {
-  const { title, start, end, link, logo, description, type, icon } = experience
+  const { title, start, end, link, logo, descriptionKey, type, icon } = experience
+  const t = useTranslations()
+  const description = t(descriptionKey)
 
   // Helper to get first 3 lines of description
   const getFirst3Lines = (text: string) => {
