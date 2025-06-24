@@ -34,14 +34,6 @@ export type DribbbleShot = {
 
 export const PROJECTS: Project[] = [
   {
-    name: 'Mou.today',
-    description: 'Your Guide to Ukrainian Medicine.',
-    link: '/projects/mou',
-    image: '/images/mou/cover.png',
-    id: 'project1',
-    category: 'UX/UI',
-  },
-  {
     name: 'Holyheld',
     description: 'One Card for All Crypto Natives',
     link: '/projects/holyheld',
@@ -58,20 +50,28 @@ export const PROJECTS: Project[] = [
     category: 'UX/UI',
   },
   {
-    name: 'TgROI',
-    description: 'Analytics tool for measuring Telegram channel advertising efficiency.',
-    link: 'https://github.com/mirvald-space/TgROI',
-    image: '/images/tgroi/cover.png',
-    id: 'project4',
-    category: 'Front & MVP',
-  },
-  {
     name: 'OceanGroup',
     description: 'OceanGroup is a platform for trading cryptocurrencies and other digital assets.',
     link: '/projects/oceangroup',
     image: '/images/oceangroup/cover.png',
     id: 'project5',
     category: 'UX/UI',
+  },
+  {
+    name: 'Mou.today',
+    description: 'Your Guide to Ukrainian Medicine.',
+    link: '/projects/mou',
+    image: '/images/mou/cover.png',
+    id: 'project1',
+    category: 'UX/UI',
+  },
+  {
+    name: 'TgROI',
+    description: 'Analytics tool for measuring Telegram channel advertising efficiency.',
+    link: 'https://github.com/mirvald-space/TgROI',
+    image: '/images/tgroi/cover.png',
+    id: 'project4',
+    category: 'Front & MVP',
   },
   {
     name: 'Vidzilla',
