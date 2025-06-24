@@ -37,8 +37,8 @@ export function ProfileHeader() {
           as="h1"
           preset="fade"
           per="char"
-          className="text-black dark:text-white"
-          delay={0.5}
+          className="text-black dark:text-white italic"
+          delay={1}
         >
           {t('profile.tagline', {defaultMessage: 'Дизайн, код і автоматизація. Все, що потрібно для продукту.'})}
         </TextEffect>
