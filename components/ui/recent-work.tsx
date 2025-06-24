@@ -1,24 +1,98 @@
 "use client"
 
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import Image from "next/image";
 import { PROJECTS } from "@/app/data";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 
+type Category = 'UX/UI' | 'Front & MVP' | 'Bots & Automation';
+
 export function RecentWork() {
-  const [selectedId, setSelectedId] = useState<string>(PROJECTS[0]?.id ?? "");
-  const selectedProject = PROJECTS.find((p) => p.id === selectedId);
+  const [selectedId, setSelectedId] = useState<string>("");
+  const [activeCategory, setActiveCategory] = useState<Category>('UX/UI');
   const t = useTranslations();
+
+  const categoryCounts = useMemo(() => {
+    const counts = {
+      'UX/UI': 0,
+      'Front & MVP': 0,
+      'Bots & Automation': 0
+    };
+    
+    PROJECTS.forEach(project => {
+      counts[project.category]++;
+    });
+    
+    return counts;
+  }, []);
+
+  const filteredProjects = useMemo(() => {
+    return PROJECTS.filter(project => project.category === activeCategory);
+  }, [activeCategory]);
+
+  // Make sure we have a valid selected project after filtering
+  const selectedProject = filteredProjects.find(p => p.id === selectedId) || filteredProjects[0];
+  
+  // Initialize selectedId on first render and when category changes
+  React.useEffect(() => {
+    if (filteredProjects.length > 0) {
+      setSelectedId(filteredProjects[0].id);
+    }
+  }, [filteredProjects]);
 
   return (
     <div className="bg-white p-0 md:p-4 border-[#F4F4F5] border-3 rounded-md dark:bg-zinc-900 flex flex-col relative mt-6">
       <div className="absolute -top-4 left-4 bg-white dark:bg-zinc-900 px-2 py-1 text-sm">
         <span>{t('recentWork.title')}</span>
       </div>
-      <div className="flex flex-row gap-4 md:gap-4 w-full">
+
+      {/* Category Tabs */}
+      <div className="flex flex-wrap gap-2 px-4 pt-4 pb-2 border-b border-zinc-100 dark:border-zinc-800">
+        <button
+          onClick={() => setActiveCategory('UX/UI')}
+          className={`px-3 py-1.5 rounded-md text-sm font-medium flex items-center gap-1.5 transition-colors ${
+            activeCategory === 'UX/UI'
+              ? 'bg-zinc-100 dark:bg-zinc-800 text-black dark:text-white'
+              : 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800/40'
+          }`}
+        >
+          {t('recentWork.categories.uxui')}
+          <span className="bg-zinc-200 dark:bg-zinc-700 px-1.5 py-0.5 rounded-full text-xs">
+            {categoryCounts['UX/UI']}
+          </span>
+        </button>
+        <button
+          onClick={() => setActiveCategory('Front & MVP')}
+          className={`px-3 py-1.5 rounded-md text-sm font-medium flex items-center gap-1.5 transition-colors ${
+            activeCategory === 'Front & MVP'
+              ? 'bg-zinc-100 dark:bg-zinc-800 text-black dark:text-white'
+              : 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800/40'
+          }`}
+        >
+          {t('recentWork.categories.frontend')}
+          <span className="bg-zinc-200 dark:bg-zinc-700 px-1.5 py-0.5 rounded-full text-xs">
+            {categoryCounts['Front & MVP']}
+          </span>
+        </button>
+        <button
+          onClick={() => setActiveCategory('Bots & Automation')}
+          className={`px-3 py-1.5 rounded-md text-sm font-medium flex items-center gap-1.5 transition-colors ${
+            activeCategory === 'Bots & Automation'
+              ? 'bg-zinc-100 dark:bg-zinc-800 text-black dark:text-white'
+              : 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800/40'
+          }`}
+        >
+          {t('recentWork.categories.bots')}
+          <span className="bg-zinc-200 dark:bg-zinc-700 px-1.5 py-0.5 rounded-full text-xs">
+            {categoryCounts['Bots & Automation']}
+          </span>
+        </button>
+      </div>
+
+      <div className="flex flex-row gap-4 md:gap-4 w-full p-4">
         <div className="flex flex-col min-w-[160px] md:min-w-[200px]">
-          {PROJECTS.map((project) => (
+          {filteredProjects.map((project) => (
             <button
               key={project.id}
               onMouseEnter={() => setSelectedId(project.id)}
@@ -26,7 +100,7 @@ export function RecentWork() {
               onClick={() => setSelectedId(project.id)}
               tabIndex={0}
               className={`text-left cursor-pointer text-md font-medium md:font-semibold px-4 py-2 rounded transition-colors outline-none mb-1 w-full
-                ${selectedId === project.id
+                ${selectedProject && selectedProject.id === project.id
                   ? "text-black dark:text-white font-bold bg-zinc-100 dark:bg-zinc-800"
                   : "text-zinc-900/80 dark:text-zinc-100/80 hover:text-black dark:hover:text-white hover:bg-zinc-50 dark:hover:bg-zinc-800/40"}
               `}
@@ -49,7 +123,12 @@ export function RecentWork() {
                 />
               </div>
               <div className="p-2.5 flex flex-col justify-between flex-1 min-h-0 bg-zinc-50 dark:bg-zinc-900 rounded-b-sm">
-                <h3 className="text-base font-bold mb-1 leading-tight">{selectedProject.name}</h3>
+                <div className="flex justify-between items-center mb-1">
+                  <h3 className="text-base font-bold leading-tight">{selectedProject.name}</h3>
+                  <span className="text-xs bg-zinc-200 dark:bg-zinc-800 px-2 py-0.5 rounded-full">
+                    {selectedProject.category}
+                  </span>
+                </div>
                 <p className="text-xs text-zinc-600 dark:text-zinc-400 mb-2 line-clamp-2">{selectedProject.description}</p>
                 <Link
                   href={selectedProject.link}

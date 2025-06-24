@@ -24,7 +24,12 @@
   },
   "recentWork": {
     "title": "Останні роботи",
-    "seeMore": "Дивитись більше"
+    "seeMore": "Дивитись більше",
+    "categories": {
+      "uxui": "UX/UI",
+      "frontend": "Фронт і MVP",
+      "bots": "Боти та автоматизації"
+    }
   },
   "certificates": {
     "title": "Сертифікати"

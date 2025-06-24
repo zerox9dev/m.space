@@ -24,7 +24,12 @@
   },
   "recentWork": {
     "title": "Recent Work",
-    "seeMore": "See more"
+    "seeMore": "See more",
+    "categories": {
+      "uxui": "UX/UI",
+      "frontend": "Front & MVP",
+      "bots": "Bots & Automation"
+    }
   },
   "certificates": {
     "title": "Certificates"

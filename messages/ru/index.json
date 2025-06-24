@@ -24,7 +24,12 @@
   },
   "recentWork": {
     "title": "Последние работы",
-    "seeMore": "Смотреть больше"
+    "seeMore": "Смотреть больше",
+    "categories": {
+      "uxui": "UX/UI",
+      "frontend": "Фронт и MVP",
+      "bots": "Боты и автоматизации"
+    }
   },
   "certificates": {
     "title": "Сертификаты"

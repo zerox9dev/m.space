@@ -4,6 +4,7 @@ type Project = {
   link: string
   image: string
   id: string
+  category: 'UX/UI' | 'Front & MVP' | 'Bots & Automation'
 }
 
 type BlogPost = {
@@ -38,6 +39,7 @@ export const PROJECTS: Project[] = [
     link: '/projects/mou',
     image: '/images/mou/cover.png',
     id: 'project1',
+    category: 'UX/UI',
   },
   {
     name: 'Holyheld',
@@ -45,6 +47,7 @@ export const PROJECTS: Project[] = [
     link: '/projects/holyheld',
     image: '/images/holyheld/cover.png',
     id: 'project2',
+    category: 'UX/UI',
   },
   {
     name: 'CRM TurboWork',
@@ -52,6 +55,7 @@ export const PROJECTS: Project[] = [
     link: '/projects/turbowork',
     image: '/images/turbowork/cover.png',
     id: 'project3',
+    category: 'Front & MVP',
   },
   {
     name: 'TgROI',
@@ -59,6 +63,7 @@ export const PROJECTS: Project[] = [
     link: 'https://github.com/mirvald-space/TgROI',
     image: '/images/tgroi/cover.png',
     id: 'project4',
+    category: 'Bots & Automation',
   },
   {
     name: 'OceanGroup',
@@ -66,6 +71,7 @@ export const PROJECTS: Project[] = [
     link: '/projects/oceangroup',
     image: '/images/oceangroup/cover.png',
     id: 'project5',
+    category: 'Front & MVP',
   },
   {
     name: 'Vidzilla',
@@ -73,6 +79,7 @@ export const PROJECTS: Project[] = [
     link: 'https://github.com/mirvald-space/Vidzilla',
     image: '/images/vidzilla/cover.png',
     id: 'project6',
+    category: 'Bots & Automation',
   },
   {
     name: 'Voicelet',
@@ -80,6 +87,7 @@ export const PROJECTS: Project[] = [
     link: 'https://github.com/mirvald-space/voicelet',
     image: '/images/voicelet/cover.png',
     id: 'project7',
+    category: 'Bots & Automation',
   },
   {
     name: 'PolishDomBot',
@@ -87,6 +95,7 @@ export const PROJECTS: Project[] = [
     link: 'https://github.com/mirvald-space/polishdom_bot',
     image: '/images/polishdom_bot/cover.png',
     id: 'project8',
+    category: 'Bots & Automation',
   },
 ]
 
