@@ -77,7 +77,7 @@ function PersonalContent() {
 
   return (
     <div className="max-w-2xl mx-auto w-full">
-      <div className="flex justify-between items-center sticky top-0 pb-2 z-10 bg-white dark:bg-zinc-950">
+      <div className="flex justify-between items-center top-0 pb-2 z-10">
         <TabNavigation 
           tabs={TABS} 
           activeTab={activeTab} 
