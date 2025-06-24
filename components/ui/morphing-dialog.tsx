@@ -9,8 +9,8 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import type { Transition, Variant } from 'motion/react'
-import { motion, AnimatePresence, MotionConfig } from 'motion/react'
+import type { Transition, Variant } from 'framer-motion'
+import { motion, AnimatePresence, MotionConfig } from 'framer-motion'
 import { createPortal } from 'react-dom'
 import { cn } from '@/lib/utils'
 import { FaXmark } from 'react-icons/fa6'

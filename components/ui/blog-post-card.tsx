@@ -1,5 +1,5 @@
+import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { motion } from 'motion/react'
 
 type BlogPostProps = {
   title: string

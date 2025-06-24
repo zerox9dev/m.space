@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import MeteorsBackground from './MeteorsBackground'
 import { Footer } from '@/app/footer'
 
@@ -11,6 +11,24 @@ interface ClientLayoutProps {
 }
 
 export default function ClientLayout({ children, overpassVariable, overpassMonoVariable }: ClientLayoutProps) {
+  // Use this to prevent hydration mismatch
+  const [mounted, setMounted] = useState(false)
+  
+  // Only show the UI after first render on the client
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+  
+  if (!mounted) {
+    return (
+      <div className={`${overpassVariable} ${overpassMonoVariable} flex min-h-screen w-full flex-col font-[family-name:var(--font-overpass)] relative`}>
+        <div className="relative mx-auto w-full max-w-lg flex-1 px-4 pt-4 flex flex-col">
+          {/* Empty placeholder with same structure to avoid layout shift */}
+        </div>
+      </div>
+    )
+  }
+  
   return (
     <div className={`${overpassVariable} ${overpassMonoVariable} flex min-h-screen w-full flex-col font-[family-name:var(--font-overpass)] relative`}>
       <div className="relative mx-auto w-full max-w-lg flex-1 px-4 pt-4 flex flex-col">

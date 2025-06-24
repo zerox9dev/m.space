@@ -1,4 +1,5 @@
 import createMDX from '@next/mdx';
+import remarkGfm from 'remark-gfm';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -46,10 +47,38 @@ const nextConfig = {
     contentDispositionType: 'attachment',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
+  // Add redirects for old paths to new localized ones
+  async redirects() {
+    return [
+      {
+        source: '/blog',
+        destination: '/en/blog',
+        permanent: true,
+      },
+      {
+        source: '/projects',
+        destination: '/en/projects',
+        permanent: true,
+      },
+      {
+        source: '/blog/:slug',
+        destination: '/en/blog/:slug',
+        permanent: true,
+      },
+      {
+        source: '/projects/:slug',
+        destination: '/en/projects/:slug',
+        permanent: true,
+      }
+    ];
+  },
 };
 
 const withMDX = createMDX({
-  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [],
+  },
 });
 
 export default withMDX(nextConfig);

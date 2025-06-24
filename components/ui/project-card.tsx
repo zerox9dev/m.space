@@ -1,10 +1,12 @@
 "use client"
 
-import { motion } from 'motion/react'
+import Link from 'next/link'
+import { motion } from 'framer-motion'
 import { Magnetic } from '@/components/ui/magnetic'
 import { FaArrowRight } from 'react-icons/fa6'
 import ProjectImage from '@/components/ui/project-image'
-import Link from 'next/link'
+import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 type ProjectProps = {
   id: string
@@ -18,6 +20,7 @@ type ProjectProps = {
 export function ProjectCard({ name, description, image, link, slug }: Omit<ProjectProps, 'id'>) {
   // If we have a slug, use internal routing, otherwise use external link
   const isInternal = !!slug;
+  const router = useRouter();
   
   const LinkWrapper = ({ children }: { children: React.ReactNode }) => {
     if (isInternal) {
@@ -42,7 +45,7 @@ export function ProjectCard({ name, description, image, link, slug }: Omit<Proje
 
   const handleImageClick = () => {
     if (isInternal && slug) {
-      window.location.href = `/projects/${slug}`;
+      router.push(`/projects/${slug}`);
     }
   };
 

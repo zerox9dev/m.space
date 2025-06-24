@@ -1,0 +1,68 @@
+{
+  "tabs": {
+    "about": "About",
+    "shots": "Shots",
+    "blog": "Blog"
+  },
+  "profile": {
+    "title": "Profile",
+    "greeting": "Hi, I'm Vadym",
+    "tagline": "Design, code, and automation. Everything needed for a product."
+  },
+  "whatIDo": {
+    "title": "About Me",
+    "description": "Started as a UI/UX designer. Later became a product designer — thinking systematically, learning metrics. Then coding: building interfaces, writing Telegram bots, working with APIs. With the advent of AI, I began automating tasks, writing GPT prompts and working faster.",
+    "summary": "Today, I work at the intersection of design → code → AI. I launch projects, MVPs and experiments on my own.",
+    "resume": "Resume"
+  },
+  "workExperience": {
+    "title": "Work Experience",
+    "less": "Less",
+    "more": "More"
+  },
+  "recentWork": {
+    "title": "Recent Work",
+    "seeMore": "See more"
+  },
+  "certificates": {
+    "title": "Certificates"
+  },
+  "connect": {
+    "title": "Connect"
+  },
+  "aiChat": {
+    "title": "AI Clone Chat",
+    "assistant": "Vadym's AI Assistant",
+    "welcome": "Hi! I'm Vadym's AI assistant.",
+    "description": "Ask me about UX/UI design, development, pricing, or past projects like MOU.today and Holyheld!",
+    "placeholder": "Type your message...",
+    "send": "Send"
+  },
+  "shots": {
+    "loading": "Loading...",
+    "error": "Error loading shots",
+    "empty": "No dribbble shots found."
+  },
+  "notFound": {
+    "title": "404",
+    "description": "Page not found",
+    "goHome": "Go back home"
+  },
+  "Common": {
+    "copy": "Copy",
+    "copied": "Copied"
+  },
+  "Blog": {
+    "title": "Blog",
+    "backToBlog": "Back to Blog"
+  },
+  "Projects": {
+    "title": "Projects",
+    "backToProjects": "Back to Projects",
+    "tabs": {
+      "about": "About",
+      "shots": "Shots",
+      "blog": "Blog"
+    }
+  }
+} 

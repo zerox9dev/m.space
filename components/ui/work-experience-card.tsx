@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FaBriefcase, FaCode } from 'react-icons/fa6'
+import { useTranslations } from 'next-intl'
 
 type WorkExperience = {
   title: string
@@ -112,6 +113,7 @@ const ExperienceCard = ({ experience, isExpanded, onToggle, showDivider, alwaysE
 
 export function WorkExperience() {
   const [showAdditional, setShowAdditional] = useState(false)
+  const t = useTranslations()
 
   // Сортируем опыт: сначала work, потом additional (если нужно)
   const sortedExperience = ALL_EXPERIENCE.filter(exp => exp.type === 'work').concat(
@@ -126,7 +128,7 @@ export function WorkExperience() {
   return (
     <div className="bg-white p-4 border-[#F4F4F5] border-3 rounded-md dark:bg-zinc-900 relative mt-6">
       <div className="absolute -top-4 left-4 bg-white dark:bg-zinc-900 px-2 py-1 text-sm">
-        <span>Де працював, працюю</span>
+        <span>{t('workExperience.title')}</span>
       </div>
       {!showAdditional && firstExperience.map((experience, index) => (
         <div key={experience.id}>
@@ -159,7 +161,7 @@ export function WorkExperience() {
           onClick={() => setShowAdditional(!showAdditional)}
           className="px-3 py-1.5 bg-gray-200 hover:bg-gray-300 text-black text-sm rounded-sm transition-colors mt-3"
         >
-          {showAdditional ? 'Less' : 'More'}
+          {showAdditional ? t('workExperience.less', {defaultMessage: 'Less'}) : t('workExperience.more', {defaultMessage: 'More'})}
         </button>
       )}
     </div>

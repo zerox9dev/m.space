@@ -1,10 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Overpass, Overpass_Mono } from 'next/font/google'
-import './globals.css'
-import { ThemeProvider } from 'next-themes'
-import { Analytics } from '@vercel/analytics/react'
 import { generateMetadata as generateSiteMetadata } from '@/lib/metadata'
-import ClientLayout from '@/components/ClientLayout'
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -48,41 +43,10 @@ export const metadata: Metadata = {
   },
 }
 
-const overpass = Overpass({
-  variable: '--font-overpass',
-  subsets: ['latin'],
-})
-
-const overpassMono = Overpass_Mono({
-  variable: '--font-overpass-mono',
-  subsets: ['latin'],
-})
-
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className="bg-white tracking-tight antialiased dark:bg-zinc-950"
-      >
-        <ThemeProvider
-          enableSystem={true}
-          attribute="class"
-          storageKey="theme"
-          defaultTheme="system"
-        >
-          <ClientLayout 
-            overpassVariable={overpass.variable} 
-            overpassMonoVariable={overpassMono.variable}
-          >
-            {children}
-          </ClientLayout>
-        </ThemeProvider>
-        <Analytics />
-      </body>
-    </html>
-  )
+}: {
+  children: React.ReactNode;
+}) {
+  return children;
 }

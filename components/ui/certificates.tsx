@@ -1,11 +1,13 @@
 'use client'
 
-import React from 'react'
+import { useState } from 'react'
+import { useTranslations } from 'next-intl'
+import { FaArrowRight } from 'react-icons/fa6'
 import Link from 'next/link'
 import Image from 'next/image'
 import { FaCertificate } from 'react-icons/fa6'
 import { FaExternalLinkAlt } from 'react-icons/fa'
-import { motion } from 'motion/react'
+import { motion } from 'framer-motion'
 
 export function Certificates() {
   // Данные сертификатов (такие же, как в резюме)
@@ -34,7 +36,7 @@ export function Certificates() {
       transition={{ duration: 0.4 }}
     >
       <div className="absolute -top-4 left-4 bg-white dark:bg-zinc-900 px-2 py-1 text-sm">
-        <span>Сертифікати</span>
+        <span>{useTranslations()('certificates.title')}</span>
       </div>
       {certificates.map((cert, index) => (
         <div key={index} className={index !== 0 ? "mt-4" : ""}>

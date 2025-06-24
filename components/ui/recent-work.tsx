@@ -4,15 +4,17 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { PROJECTS } from "@/app/data";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 export function RecentWork() {
   const [selectedId, setSelectedId] = useState<string>(PROJECTS[0]?.id ?? "");
   const selectedProject = PROJECTS.find((p) => p.id === selectedId);
+  const t = useTranslations();
 
   return (
     <div className="bg-white p-0 md:p-4 border-[#F4F4F5] border-3 rounded-md dark:bg-zinc-900 flex flex-col relative mt-6">
       <div className="absolute -top-4 left-4 bg-white dark:bg-zinc-900 px-2 py-1 text-sm">
-        <span>Над чим працював</span>
+        <span>{t('recentWork.title')}</span>
       </div>
       <div className="flex flex-row gap-4 md:gap-4 w-full">
         <div className="flex flex-col min-w-[160px] md:min-w-[200px]">
@@ -55,7 +57,7 @@ export function RecentWork() {
                   rel="noopener noreferrer"
                   className="text-xs text-black dark:text-white underline hover:text-zinc-700 dark:hover:text-zinc-300 mt-1 w-fit"
                 >
-                  See more
+                  {t('recentWork.seeMore', {defaultMessage: 'See more'})}
                 </Link>
               </div>
             </div>

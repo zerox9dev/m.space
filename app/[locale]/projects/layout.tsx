@@ -5,22 +5,24 @@ import { useEffect, useState, Suspense } from 'react'
 import Link from 'next/link'
 import { FaArrowLeft } from 'react-icons/fa6'
 import { TabNavigation } from '@/components/ui/tab-navigation'
-import { useSearchParams, useRouter } from 'next/navigation'
+import { useSearchParams, useParams, useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 function CopyButton() {
-  const [text, setText] = useState('Copy')
+  const t = useTranslations('Common')
+  const [text, setText] = useState(t('copy'))
   const currentUrl = typeof window !== 'undefined' ? window.location.href : ''
 
   useEffect(() => {
     setTimeout(() => {
-      setText('Copy')
+      setText(t('copy'))
     }, 2000)
-  }, [text])
+  }, [text, t])
 
   return (
     <button
       onClick={() => {
-        setText('Copied')
+        setText(t('copied'))
         navigator.clipboard.writeText(currentUrl)
       }}
       className="font-base flex items-center gap-1 text-center text-sm text-zinc-500 transition-colors dark:text-zinc-400"
@@ -53,12 +55,15 @@ function SearchParamsHandler({ setActiveTab }: { setActiveTab: (tab: string) => 
 }
 
 function ProjectLayout({ children }: { children: React.ReactNode }) {
+  const params = useParams()
+  const locale = params.locale as string
+  const t = useTranslations('Projects')
   const [activeTab, setActiveTab] = useState('about')
   const router = useRouter()
   
   const handleTabChange = (tabId: string) => {
     // Use Next.js router instead of window.location
-    router.push(`/?tab=${tabId}`)
+    router.push(`/${locale}?tab=${tabId}`)
   }
 
   return (
@@ -76,7 +81,7 @@ function ProjectLayout({ children }: { children: React.ReactNode }) {
       </Suspense>
 
       <TabNavigation 
-        tabs={TABS} 
+        tabs={TABS.map(tab => ({ ...tab, label: t(`tabs.${tab.id}`) }))}
         activeTab={activeTab} 
         onChange={handleTabChange} 
         className="sticky top-0 pt-6 pb-2 z-10"
@@ -87,9 +92,9 @@ function ProjectLayout({ children }: { children: React.ReactNode }) {
       </div>
       
       <div className="absolute left-4 top-24">
-        <Link href="/?tab=about" className="flex items-center gap-2 text-sm text-zinc-500 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200 transition-colors">
+        <Link href={`/${locale}?tab=about`} className="flex items-center gap-2 text-sm text-zinc-500 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200 transition-colors">
           <FaArrowLeft className="h-3 w-3" />
-          <span>Back to Projects</span>
+          <span>{t('backToProjects')}</span>
         </Link>
       </div>
       

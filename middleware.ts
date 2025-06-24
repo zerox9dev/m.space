@@ -1,31 +1,19 @@
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
+import createMiddleware from 'next-intl/middleware';
 
-export function middleware(request: NextRequest) {
-  // Получаем текущий url
-  const url = request.nextUrl.clone()
+export default createMiddleware({
+  // A list of all locales that are supported
+  locales: ['en', 'uk', 'ru'],
   
-  // Проверяем, что запрос идет к API для получения shots
-  if (url.pathname === '/api/dribbble/shots') {
-    // Добавляем заголовки для защиты от CORS и кэширования
-    const response = NextResponse.next()
-    
-    // Устанавливаем заголовки для предотвращения кэширования
-    response.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate')
-    response.headers.set('Pragma', 'no-cache')
-    response.headers.set('Expires', '0')
-    
-    // Устанавливаем заголовки CORS для предотвращения конфликтов с расширениями
-    response.headers.set('Access-Control-Allow-Origin', '*')
-    response.headers.set('Access-Control-Allow-Methods', 'GET')
-    response.headers.set('Access-Control-Allow-Headers', 'Content-Type')
-    
-    return response
-  }
+  // If this locale is matched, pathnames work without a prefix (e.g. `/about`)
+  defaultLocale: 'en',
   
-  return NextResponse.next()
-}
+  // Automatically detect the user's locale from browser settings
+  localeDetection: true
+});
 
 export const config = {
-  matcher: '/api/:path*',
-} 
+  // Match all pathnames except for
+  // - ... files in the public folder
+  // - ... files with extensions (e.g. favicon.ico)
+  matcher: ['/((?!api|_next|.*\\..*).*)']
+}; 

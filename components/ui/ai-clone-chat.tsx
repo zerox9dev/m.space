@@ -1,11 +1,12 @@
 'use client'
 
 import React, { useState, useRef, useEffect, ReactNode } from 'react'
-import { motion } from 'motion/react'
+import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { FaXmark, FaPaperPlane, FaRobot } from 'react-icons/fa6'
 import { MorphingDialog, MorphingDialogTrigger, MorphingDialogContent, MorphingDialogClose, MorphingDialogContainer } from './morphing-dialog'
 import ReactMarkdown from 'react-markdown'
+import { useTranslations } from 'next-intl'
 
 interface Message {
   content: string
@@ -131,7 +132,7 @@ export function AiCloneChat({ customTrigger, floatingButton = true }: AiCloneCha
             <div className="flex items-center justify-between border-b border-zinc-200 p-4 dark:border-zinc-700">
               <div className="flex items-center gap-2">
                 <FaRobot className="h-5 w-5 text-zinc-700 dark:text-zinc-300" />
-                <h3 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">Vadym's AI Assistant</h3>
+                <h3 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">{useTranslations()('aiChat.assistant')}</h3>
               </div>
             </div>
             
@@ -140,8 +141,8 @@ export function AiCloneChat({ customTrigger, floatingButton = true }: AiCloneCha
               {messages.length === 0 ? (
                 <div className="flex h-full flex-col items-center justify-center text-center text-zinc-500 dark:text-zinc-400">
                   <FaRobot className="mb-3 h-10 w-10 text-[#0088cc]" />
-                  <p className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Hi! I'm Vadym's AI assistant.</p>
-                  <p className="mt-2 text-sm">Ask me about UX/UI design, development, pricing, or past projects like MOU.today and Holyheld!</p>
+                  <p className="text-sm font-medium text-zinc-700 dark:text-zinc-300">{useTranslations()('aiChat.welcome')}</p>
+                  <p className="mt-2 text-sm">{useTranslations()('aiChat.description')}</p>
                 </div>
               ) : (
                 <div className="space-y-4">
@@ -184,7 +185,7 @@ export function AiCloneChat({ customTrigger, floatingButton = true }: AiCloneCha
                   type="text" 
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
-                  placeholder="Type your message..."
+                  placeholder={useTranslations()('aiChat.placeholder')}
                   className="flex-1 rounded-full border border-zinc-300 bg-transparent px-4 py-2 text-sm outline-none focus:border-[#0088cc] dark:border-zinc-700 dark:text-zinc-100"
                   disabled={isLoading}
                 />
