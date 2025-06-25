@@ -13,7 +13,8 @@
     "title": "About Me",
     "description": "Started as a UI/UX designer. Later became a product designer — thinking systematically, learning metrics. Then coding: building interfaces, writing Telegram bots, working with APIs. With the advent of AI, I began automating tasks, writing GPT prompts and working faster.",
     "summary": "Today, I work at the intersection of design → code → AI. I launch projects, MVPs and experiments on my own.",
-    "resume": "Resume"
+    "resume": "Resume",
+    "askAssistant": "Ask my assistant"
   },
   "workExperience": {
     "title": "Work Experience",

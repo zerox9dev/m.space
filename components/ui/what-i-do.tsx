@@ -3,6 +3,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
+import { AiCloneChat } from './ai-clone-chat'
 
 export function WhatIDo() {
   const t = useTranslations();
@@ -22,10 +23,15 @@ export function WhatIDo() {
           defaultMessage: 'Сьогодні — працюю на перетині дизайн → код → AI. Сам запускаю проєкти, MVP і експерименти.'
         })}</b>
       </blockquote>
-      <div className="mt-3">
+      <div className="mt-3 flex gap-2">
         <Link href="/resume" className="px-3 py-1.5 bg-gray-200 hover:bg-gray-300 text-black text-sm rounded-sm transition-colors">
           {t('whatIDo.resume', {defaultMessage: 'Resume'})}
         </Link>
+        <AiCloneChat customTrigger={
+          <button className="px-3 py-1.5 bg-green-500 hover:bg-green-600 text-white text-sm rounded-sm transition-colors">
+            {t('whatIDo.askAssistant', {defaultMessage: 'Запитай у мого помічника'})}
+          </button>
+        } />
       </div>
     </div>
   )
