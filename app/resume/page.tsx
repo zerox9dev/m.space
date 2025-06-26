@@ -1,6 +1,6 @@
-'use client'
+import dynamic from 'next/dynamic'
 
-import { Resume } from '@/components/ui/resume'
+const Resume = dynamic(() => import('@/components/ui/resume').then(mod => ({ default: mod.Resume })), { ssr: false })
 
 export default function ResumePage() {
   return (

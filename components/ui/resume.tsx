@@ -23,7 +23,9 @@ export function Resume() {
 
   // Функция для печати резюме через браузер
   const printResume = () => {
-    window.print()
+    if (typeof window !== 'undefined') {
+      window.print()
+    }
   }
   
   // Функция для возврата на предыдущую страницу
