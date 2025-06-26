@@ -3,6 +3,7 @@
 import { Magnetic } from './magnetic'
 import { SOCIAL_LINKS, EMAIL } from '@/app/data'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 
 function MagneticSocialLink({
   children,
@@ -24,8 +25,13 @@ function MagneticSocialLink({
 }
 
 export function ConnectLinks() {
+  const t = useTranslations();
+  
   return (
-    <div className="">
+    <div className="bg-white p-4 border-[#F4F4F5] border-3 rounded-md dark:bg-zinc-900 relative">
+      <div className="absolute -top-4 left-4 bg-white dark:bg-zinc-900 px-2 py-1 text-sm">
+        <span>{t('connect.title', {defaultMessage: 'Let\'s connect'})}</span>
+      </div>
       <div className="flex gap-2 flex-wrap">
         <MagneticSocialLink link="https://t.me/mirvaId">
           TG
