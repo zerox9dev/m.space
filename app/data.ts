@@ -74,12 +74,20 @@ export const PROJECTS: Project[] = [
     category: 'Front & MVP',
   },
   {
-    name: 'Vidzilla',
+    name: 'Vidzilla Bot',
     description: 'This Telegram bot allows users to download videos from various social media platforms including Instagram Reels, TikTok, YouTube, Facebook, Twitter, and Pinterest.',
     link: 'https://github.com/mirvald-space/Vidzilla',
     image: '/images/vidzilla/cover.png',
     id: 'project6',
     category: 'Bots & AI',
+  },
+  {
+    name: 'Vidzilla Web',
+    description: "A powerful web application that allows you to download videos from various social media platforms. Simply paste a link, and get your video instantly!",
+    link: 'https://github.com/mirvald-space/vidzilla_app',
+    image: '/images/vidzilla-app/cover.png',
+    id: 'project11',
+    category: 'Front & MVP',
   },
   {
     name: 'Voicelet',
