@@ -59,7 +59,7 @@ const INITIAL_COMPONENTS: Partial<Components> = {
     return (
       <a 
         href={href}
-        className="text-black dark:text-zinc-200 underline hover:text-gray-700 dark:hover:text-zinc-300"
+        className="text-black dark:text-zinc-200 underline hover:text-gray-700 dark:hover:text-zinc-300 !important"
         target="_blank"
         rel="noopener noreferrer"
         {...props}

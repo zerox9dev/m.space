@@ -17,7 +17,7 @@ export function WhatIDo() {
       <p className="whitespace-pre-line dark:text-zinc-200">
       {t('whatIDo.description')}
       </p>
-      <blockquote className="dark:text-zinc-200">
+      <blockquote className="mindset-summary dark:text-zinc-200">
         <b><Markdown>{t('whatIDo.summary')}</Markdown></b>
       </blockquote>
       <div className="mt-3 flex gap-2">

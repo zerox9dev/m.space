@@ -199,4 +199,9 @@
   body {
     @apply bg-background text-foreground;
   }
+  
+  /* Fix for TG channel and TalentX links */
+  .dark blockquote a {
+    color: #e4e4e7 !important; /* zinc-200 */
+  }
 }

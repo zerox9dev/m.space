@@ -241,7 +241,7 @@ export function WorkExperience() {
       {/* More/Less button */}
       <button 
         onClick={() => setShowAdditional(!showAdditional)}
-        className="px-3 py-1.5 bg-gray-200 hover:bg-gray-300 text-black text-sm rounded-sm transition-colors mt-3"
+        className="px-3 py-1.5 bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-black dark:text-zinc-200 text-sm rounded-sm transition-colors mt-3"
       >
         {showAdditional ? t('workExperience.less', {defaultMessage: 'Less'}) : t('workExperience.more', {defaultMessage: 'More'})}
       </button>
