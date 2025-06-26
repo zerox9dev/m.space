@@ -42,13 +42,13 @@ export function RecentWork() {
   }, [filteredProjects]);
 
   return (
-    <div className="bg-white p-0 md:p-4 border-[#F4F4F5] border-3 rounded-md dark:bg-zinc-900 flex flex-col relative mt-6 gap-4">
+    <div className="bg-white p-4 border-[#F4F4F5] border-3 rounded-md dark:bg-zinc-900 flex flex-col relative gap-4">
       <div className="absolute -top-4 left-4 bg-white dark:bg-zinc-900 px-2 py-1 text-sm">
         <span>{t('recentWork.title')}</span>
       </div>
 
       {/* Category Tabs */}
-      <div className="flex flex-wrap px-4 md:px-0 pt-4 pb-2 border-b border-zinc-100 dark:border-zinc-800">
+      <div className="flex flex-wrap px-0 pb-2 border-b border-zinc-100 dark:border-zinc-800">
         <button
           onClick={() => setActiveCategory('UX/UI')}
           className={`px-3 py-1.5 rounded-md text-sm font-medium flex items-center gap-1.5 transition-colors ${
@@ -90,7 +90,7 @@ export function RecentWork() {
         </button>
       </div>
 
-      <div className="flex flex-row gap-4 md:gap-4 w-full">
+      <div className="flex flex-col md:flex-row gap-4 md:gap-4 w-full">
         <div className="flex flex-col min-w-[160px] md:min-w-[200px]">
           {filteredProjects.map((project) => (
             <button
