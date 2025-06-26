@@ -4,7 +4,7 @@ type Project = {
   link: string
   image: string
   id: string
-  category: 'UX/UI' | 'Front & MVP' | 'Bots & Automation'
+  category: 'UX/UI' | 'Front & MVP' | 'Bots & AI'
 }
 
 type BlogPost = {
@@ -79,7 +79,7 @@ export const PROJECTS: Project[] = [
     link: 'https://github.com/mirvald-space/Vidzilla',
     image: '/images/vidzilla/cover.png',
     id: 'project6',
-    category: 'Bots & Automation',
+    category: 'Bots & AI',
   },
   {
     name: 'Voicelet',
@@ -87,7 +87,7 @@ export const PROJECTS: Project[] = [
     link: 'https://github.com/mirvald-space/voicelet',
     image: '/images/voicelet/cover.png',
     id: 'project7',
-    category: 'Bots & Automation',
+    category: 'Bots & AI',
   },
   {
     name: 'PolishDomBot',
@@ -95,7 +95,23 @@ export const PROJECTS: Project[] = [
     link: 'https://github.com/mirvald-space/polishdom_bot',
     image: '/images/polishdom_bot/cover.png',
     id: 'project8',
-    category: 'Bots & Automation',
+    category: 'Bots & AI',
+  },
+  {
+    name: 'Bot ChatGPT+Claude',
+    description: 'Telegram bot with multiple AI models (GPT-4O, Grok) for convenient work with neural networks.',
+    link: 'https://github.com/mirvald-space/Grok-ChatGPT',
+    image: '/images/grok-chatgpt/cover.png',
+    id: 'project9',
+    category: 'Bots & AI',
+  },
+  {
+    name: 'NinjaTranslate',
+    description: 'A Telegram translator bot that uses X.AI API to translate between multiple languages.',
+    link: 'https://github.com/mirvald-space/NinjaTranslate',
+    image: '/images/ninja-translate/cover.png',
+    id: 'project10',
+    category: 'Bots & AI',
   },
 ]
 

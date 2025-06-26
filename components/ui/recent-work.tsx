@@ -6,7 +6,7 @@ import { PROJECTS } from "@/app/data";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 
-type Category = 'UX/UI' | 'Front & MVP' | 'Bots & Automation';
+type Category = 'UX/UI' | 'Front & MVP' | 'Bots & AI';
 
 export function RecentWork() {
   const [selectedId, setSelectedId] = useState<string>("");
@@ -17,7 +17,7 @@ export function RecentWork() {
     const counts = {
       'UX/UI': 0,
       'Front & MVP': 0,
-      'Bots & Automation': 0
+      'Bots & AI': 0
     };
     
     PROJECTS.forEach(project => {
@@ -76,16 +76,16 @@ export function RecentWork() {
           </span>
         </button>
         <button
-          onClick={() => setActiveCategory('Bots & Automation')}
+          onClick={() => setActiveCategory('Bots & AI')}
           className={`px-3 py-1.5 rounded-md text-sm font-medium flex items-center gap-1.5 transition-colors ${
-            activeCategory === 'Bots & Automation'
+            activeCategory === 'Bots & AI'
               ? 'bg-zinc-100 dark:bg-zinc-800 text-black dark:text-zinc-200'
               : 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800/40'
           }`}
         >
           {t('recentWork.categories.bots')}
           <span className="bg-zinc-200 dark:bg-zinc-700 px-1.5 py-0.5 rounded-full text-xs">
-            {categoryCounts['Bots & Automation']}
+            {categoryCounts['Bots & AI']}
           </span>
         </button>
       </div>
