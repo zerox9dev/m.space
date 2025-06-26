@@ -10,7 +10,23 @@ import { useTranslations } from 'next-intl'
 
 export function Resume() {
   const router = useRouter()
-  const t = useTranslations()
+  
+  // Try to use translations, but fall back to direct values if translation fails
+  let t;
+  try {
+    t = useTranslations();
+  } catch (e) {
+    // Create a fallback function that just returns the key
+    t = (key: string) => {
+      if (key === 'workExperience.freelancehunt') {
+        return 'Working on the internal product design of Freelancehunt platform, focusing on improving user experience and interface design.';
+      }
+      if (key === 'workExperience.freelance') {
+        return 'Created intuitive UX/UI designs for clients in fintech, EdTech, and SaaS sectors, improving performance metrics.';
+      }
+      return key;
+    };
+  }
   
   // Информация для резюме
   const personalInfo = {

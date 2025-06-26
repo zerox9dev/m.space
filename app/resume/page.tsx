@@ -1,10 +1,10 @@
-import dynamic from 'next/dynamic'
+'use client'
 
-const Resume = dynamic(() => import('@/components/ui/resume').then(mod => ({ default: mod.Resume })), { ssr: false })
+import { Resume } from '@/components/ui/resume'
 
 export default function ResumePage() {
   return (
-    <div className="max-w-4xl mx-auto my-8">
+    <div className="max-w-2xl mx-auto my-8">
       <Resume />
     </div>
   )

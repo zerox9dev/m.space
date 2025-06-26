@@ -15,5 +15,6 @@ export const config = {
   // Match all pathnames except for
   // - ... files in the public folder
   // - ... files with extensions (e.g. favicon.ico)
-  matcher: ['/((?!api|_next|.*\\..*).*)']
+  // - ... the resume page which has its own client-side handling
+  matcher: ['/((?!api|_next|resume|.*\\..*).*)']
 }; 
