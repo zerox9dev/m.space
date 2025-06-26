@@ -33,22 +33,25 @@ export function Resume() {
 
   return (
     <>
-      <button 
-        onClick={goBack}
-        className="mb-4 px-4 py-2 bg-gray-200 hover:bg-gray-300 text-black rounded-sm transition-colors flex items-center gap-2 print:hidden"
-      >
-        <FaArrowLeft /> Back
-      </button>
+      <div className="flex items-center mb-4 gap-4 justify-between">
+        <button 
+          onClick={goBack}
+          className="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-black rounded-sm transition-colors flex items-center gap-2 print:hidden"
+        >
+          <FaArrowLeft /> Back
+        </button>
+        
+        <button 
+          onClick={printResume}
+          className="px-4 py-2 bg-black hover:bg-gray-800 text-white rounded-sm transition-colors flex items-center gap-2 print:hidden"
+        >
+          <FaPrint /> Print / Save PDF
+        </button>
+      </div>
       
       <div id="resume-content" className="bg-white dark:bg-zinc-900 text-black dark:text-zinc-200 p-4 rounded-sm ring-3 ring-zinc-200/50 ring-inset dark:ring-zinc-800/50 print:bg-white print:dark:bg-white print:text-black print:w-full print:max-w-none print:m-0 print:p-4">
-        <div className="flex justify-between items-center mb-6 print:hidden">
+        <div className="mb-6 print:hidden">
           <h2 className="text-2xl font-bold">Resume</h2>
-          <button 
-            onClick={printResume}
-            className="px-4 py-2 bg-black hover:bg-gray-800 text-white rounded-sm transition-colors flex items-center gap-2"
-          >
-            <FaPrint /> Print / Save PDF
-          </button>
         </div>
 
         <div className="print:block">
