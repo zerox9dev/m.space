@@ -12,10 +12,9 @@ export function Resume() {
   // Информация для резюме
   const personalInfo = {
     name: 'Vadym Mirvald',
-    title: 'Digital Product UX/UI Designer & Developer',
+    title: 'Product Designer & Developer',
     email: 'mirvald.vadim@icloud.com',
     website: 'mirvald.space',
-    photoUrl: '/avatar.png', // Путь к фотографии
     summary: '👋 Привет! Я Product UI/UX дизайнер, объединяющий в себе страсть к минимализму и созданию дизайн-систем с базовыми знаниями front-end и back-end разработки. Мой опыт и умения позволяют мне выявлять и раскрывать весь потенциал больших проектов, но я также открыт для меньших задач, внося свой вклад и помощь. Я ценю долгосрочные отношения с клиентами и стремлюсь к совместному росту и успеху.'
   }
 
@@ -117,7 +116,7 @@ export function Resume() {
         <FaArrowLeft /> Back
       </button>
       
-      <div id="resume-content" className="bg-white dark:bg-zinc-900 text-black dark:text-zinc-200 p-4 rounded-sm print:bg-white print:dark:bg-white print:text-black print:w-full print:max-w-none print:m-0 print:p-4">
+      <div id="resume-content" className="bg-white dark:bg-zinc-900 text-black dark:text-zinc-200 p-4 rounded-sm ring-3 ring-zinc-200/50 ring-inset dark:ring-zinc-800/50 print:bg-white print:dark:bg-white print:text-black print:w-full print:max-w-none print:m-0 print:p-4">
         <div className="flex justify-between items-center mb-6 print:hidden">
           <h2 className="text-2xl font-bold">Resume</h2>
           <button 
@@ -129,22 +128,11 @@ export function Resume() {
         </div>
 
         <div className="print:block">
-          <div className="flex flex-col md:flex-row md:items-center mb-6">
-            <div className="flex justify-center mb-4 md:mb-0 md:mr-6">
-              <div className="relative w-32 h-32 rounded-full overflow-hidden border-2 border-gray-300">
-                <Image 
-                  src={personalInfo.photoUrl} 
-                  alt={personalInfo.name} 
-                  fill 
-                  className="object-cover"
-                  priority
-                />
-              </div>
-            </div>
-            <div className="text-center md:text-left flex-1">
+          <div className="mb-6">
+            <div className="text-left">
               <h1 className="text-3xl font-bold mb-1 print:text-black">{personalInfo.name}</h1>
               <p className="text-xl mb-2 print:text-black">{personalInfo.title}</p>
-              <div className="flex justify-center md:justify-start gap-4 text-sm text-gray-600 print:text-gray-800">
+              <div className="flex gap-4 text-sm text-gray-600 print:text-gray-800">
                 <span>{personalInfo.email}</span>
                 <span>•</span>
                 <a href={`https://${personalInfo.website}`} target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 dark:hover:text-blue-400 print:text-gray-800">

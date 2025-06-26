@@ -5,6 +5,7 @@ import '../globals.css';
 import { ThemeProvider } from 'next-themes';
 import { Analytics } from '@vercel/analytics/react';
 import ClientLayout from '@/components/ClientLayout';
+import Script from 'next/script';
 
 // Load the Overpass fonts
 const overpass = Overpass({
@@ -43,7 +44,22 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} className={`${overpass.variable} ${overpassMono.variable}`} suppressHydrationWarning>
-      <body suppressHydrationWarning>
+      <head>
+        <Script id="theme-script" strategy="beforeInteractive">
+          {`
+            (function() {
+              try {
+                const savedTheme = localStorage.getItem('theme') || 'system';
+                const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                const theme = savedTheme === 'system' ? systemTheme : savedTheme;
+                document.documentElement.classList.add(theme);
+                document.documentElement.style.colorScheme = theme;
+              } catch (e) {}
+            })()
+          `}
+        </Script>
+      </head>
+      <body>
         <ThemeProvider
           enableSystem={true}
           attribute="class"
