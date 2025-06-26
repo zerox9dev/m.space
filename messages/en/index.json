@@ -24,12 +24,11 @@
     "freelance": "UX/UI for startups and businesses: over 20+ mobile and web product projects, full cycle from idea to final UI."
   },
   "recentWork": {
-    "title": "Recent Work",
-    "seeMore": "See more",
+    "title": "Projects",
     "categories": {
       "uxui": "UX/UI",
       "frontend": "Front & MVP",
-      "bots": "Bots & Automation"
+      "bots": "Bots & Scripts"
     }
   },
   "certificates": {
