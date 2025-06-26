@@ -105,7 +105,33 @@ export function RecentWork() {
                   : "text-zinc-900/80 dark:text-zinc-100/80 hover:text-black dark:hover:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-800/40"}
               `}
             >
-              <span>{project.name}</span>
+              <Link 
+                href={project.link} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                onClick={(e) => e.stopPropagation()}
+                className={`block w-full flex items-center group ${
+                  selectedProject && selectedProject.id === project.id
+                    ? "text-black dark:text-zinc-200"
+                    : "text-zinc-900/80 dark:text-zinc-100/80 hover:text-black dark:hover:text-zinc-200"
+                }`}
+              >
+                <span>{project.name}</span>
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  className="h-3 w-3 ml-1.5 opacity-0 group-hover:opacity-60 transition-opacity" 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    strokeWidth={2} 
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" 
+                  />
+                </svg>
+              </Link>
             </button>
           ))}
         </div>
@@ -128,14 +154,6 @@ export function RecentWork() {
 
                 </div>
                 <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-2 line-clamp-3">{selectedProject.description}</p>
-                <Link
-                  href={selectedProject.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs text-black dark:text-zinc-200 underline hover:text-zinc-700 dark:hover:text-zinc-300 mt-1 w-fit"
-                >
-                  {t('recentWork.seeMore', {defaultMessage: 'See more'})}
-                </Link>
               </div>
             </div>
           )}

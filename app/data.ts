@@ -98,7 +98,7 @@ export const PROJECTS: Project[] = [
     category: 'Bots & AI',
   },
   {
-    name: 'Bot ChatGPT+Claude',
+    name: 'ChatGPT+Claude',
     description: 'Telegram bot with multiple AI models (GPT-4O, Grok) for convenient work with neural networks.',
     link: 'https://github.com/mirvald-space/Grok-ChatGPT',
     image: '/images/grok-chatgpt/cover.png',
