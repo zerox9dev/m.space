@@ -121,6 +121,14 @@ export const PROJECTS: Project[] = [
     id: 'project10',
     category: 'Bots & AI',
   },
+  {
+    name: 'TeleForge',
+    description: 'A flexible and powerful template for creating Telegram bots of any complexity.',
+    link: 'https://github.com/mirvald-space/TeleForge',
+    image: '/images/teleforge/cover.png',
+    id: 'project12',
+    category: 'Bots & AI',
+  },
 ]
 
 export const BLOG_POSTS: BlogPost[] = [

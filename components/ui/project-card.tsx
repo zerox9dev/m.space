@@ -71,8 +71,16 @@ export function ProjectCard({ name, description, image, link, slug }: Omit<Proje
         </div>
         
         <div 
-          className="cursor-pointer mt-auto rounded-xl" 
+          className="cursor-pointer mt-auto" 
           onClick={handleImageClick}
+          style={{
+            height: '200px',
+            overflow: 'hidden',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: '#f8f8f8', // Светлый фон для светлой темы
+          }}
         >
           <ProjectImage src={image} />
         </div>

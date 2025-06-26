@@ -43,13 +43,16 @@ export default function ProjectImage({ src }: ProjectImageProps) {
             {imageError ? (
               <Placeholder />
             ) : (
-              <Image
+              <img
                 src={src}
                 alt="Project screenshot"
-                width={1200}
-                height={900}
-                className="w-full h-full object-cover rounded-sm"
-                priority
+                className="max-width-full max-height-full object-contain"
+                style={{
+                  maxWidth: '100%',
+                  maxHeight: '200px', 
+                  objectFit: 'contain',
+                  borderRadius: '4px',
+                }}
                 onError={handleImageError}
               />
             )}
@@ -69,7 +72,7 @@ export default function ProjectImage({ src }: ProjectImageProps) {
                 alt="Project screenshot"
                 width={1200}
                 height={900}
-                className="max-h-[80vh] max-w-full object-contain"
+                className="max-h-[80vh] max-w-full object-contain rounded-sm"
                 style={{ 
                   boxShadow: '0 4px 16px rgba(0,0,0,0.2)',
                 }}
