@@ -7,12 +7,12 @@
   "profile": {
     "title": "Profile",
     "greeting": "Hi, I'm Vadym -",
-    "tagline": "I design UX/UI, write frontend, create AI bots. Help launch MVPs, save time and resources."
+    "tagline": "product designer with development and AI skills."
   },
   "whatIDo": {
     "title": "About Me",
-    "description": "Started as a UI/UX designer. Later became a product designer — thinking systematically, learning metrics. Then coding: building interfaces, writing Telegram bots, working with APIs. With the advent of AI, I began automating tasks, writing GPT prompts and working faster.",
-    "summary": "Today, I work at the intersection of design → code → AI. I launch projects, MVPs and experiments on my own.",
+    "description": "I believe every project should be simple and understandable.\nWhether it's design or code — the most important thing is that it works for people and businesses.\nMy approach: minimum bureaucracy, maximum result.\nI help launch MVPs, saving time and resources.",
+    "summary": "Also — I share my thoughts in my [Telegram channel](https://t.me/+iYATkhA5NoJjYTlk) and develop the IT community — [@TalentX](https://t.me/+SUU6SXFIp9owOTE0).",
     "resume": "Resume",
     "askAssistant": "Ask my assistant"
   },

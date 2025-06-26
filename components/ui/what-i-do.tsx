@@ -4,6 +4,7 @@ import React from 'react'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { AiCloneChat } from './ai-clone-chat'
+import { Markdown } from './markdown'
 
 export function WhatIDo() {
   const t = useTranslations();
@@ -13,15 +14,15 @@ export function WhatIDo() {
       <div className="absolute -top-4 left-4 bg-white dark:bg-zinc-900 px-2 py-1 text-sm">
         <span>{t('whatIDo.title')}</span>
       </div>
-      <p>
+      <p className="whitespace-pre-line">
       {t('whatIDo.description', {
         defaultMessage: 'Починав як UI/UX-дизайнер. Згодом став продуктовим дизайнером — мислив системно, вчився метрикам. Потім — кодинг: збирав інтерфейси, писав Telegram-ботів, працював із API. З приходом AI почав автоматизувати задачі, писати GPT-промти і працювати швидше.'
       })}
       </p>
       <blockquote>
-        <b>{t('whatIDo.summary', {
+        <b><Markdown>{t('whatIDo.summary', {
           defaultMessage: 'Сьогодні — працюю на перетині дизайн → код → AI. Сам запускаю проєкти, MVP і експерименти.'
-        })}</b>
+        })}</Markdown></b>
       </blockquote>
       <div className="mt-3 flex gap-2">
         <Link href="/resume" className="px-3 py-1.5 bg-gray-200 hover:bg-gray-300 text-black text-sm rounded-sm transition-colors">
