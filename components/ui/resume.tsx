@@ -5,9 +5,12 @@ import Image from 'next/image'
 import { FaGithub, FaXTwitter, FaLinkedin, FaGlobe, FaFilePdf, FaPrint, FaCertificate, FaArrowLeft } from 'react-icons/fa6'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { CERTIFICATES, ALL_EXPERIENCE } from './work-experience-card'
+import { useTranslations } from 'next-intl'
 
 export function Resume() {
   const router = useRouter()
+  const t = useTranslations()
   
   // Информация для резюме
   const personalInfo = {
@@ -17,85 +20,6 @@ export function Resume() {
     website: 'mirvald.space',
     summary: 'Product-дизайнер з технічним бекґраундом: UX, фронтенд і AI‑боти.Проєктую прості інтерфейси, запускаю MVP, автоматизую за допомогою GPT. Вірю, що **дані важливіші за припущення** — працюю з Amplitude та GA для прийняття рішень.'
   }
-
-
-
-  const experience = [
-    {
-      position: 'Full-time Product UX/UI Designer',
-      company: 'Freelancehunt',
-      period: '2023 - Present',
-      description: 'Working on the internal product design of Freelancehunt platform, where I previously found projects as a freelancer since 2019. Currently leading design initiatives for the main service and other brand products, focusing on improving user experience and interface design.'
-    },
-    {
-      position: 'Freelance Telegram Bot Developer',
-      company: 'Freelancehunt & Upwork',
-      period: '2023 - Present',
-      description: 'Developing custom Telegram bots using Python and Aiogram, implementing data parsing solutions, and integrating AI automation features for various clients.'
-    },
-    {
-      position: 'Freelance UI/UX Designer',
-      company: 'Freelancehunt & Upwork',
-      period: '2019 - 2023',
-      description: 'Worked on various NDA and public projects acquired through multiple freelance platforms and word of mouth. Created intuitive UX/UI designs for clients in fintech, EdTech, and SaaS sectors, improving performance metrics by 15-30% through thoughtful design solutions.'
-    }
-  ]
-
-  const projects = [
-    {
-      name: 'Holyheld',
-      description: 'One Card for All Crypto Natives',
-      link: 'https://holyheld.com'
-    },
-    {
-      name: 'Mou.today',
-      description: 'Your Guide to Ukrainian Medicine',
-      link: 'https://mou.today'
-    },
-    {
-      name: 'CRM TurboWork',
-      description: 'CRM for brokerage companies',
-      link: '-'
-    }
-  ]
-  
-  const certificates = [
-    {
-      name: 'Foundations of User Experience (UX) Design',
-      issuer: 'Google',
-      year: '2025',
-      url: 'https://coursera.ora/verifv/VNNIVIRP71V3'
-    },
-    {
-      name: 'Principles of UX/UI Design',
-      issuer: 'Meta',
-      year: '2025',
-      url: 'https://coursera.org/verify/5HSHNXKESE4G'
-    }
-  ]
-
-  const socialLinks = [
-    {
-      name: 'Website',
-      url: 'https://mirvald.space',
-      icon: <FaGlobe className="inline mr-1" />
-    },
-    {
-      name: 'Github',
-      url: 'https://github.com/mirvald-space',
-      icon: <FaGithub className="inline mr-1" />
-    },
-    {
-      name: 'X (Twitter)',
-      url: 'https://x.com/mirvald_',
-      icon: <FaXTwitter className="inline mr-1" />
-    },
-    {
-      name: 'LinkedIn',
-      url: 'https://www.linkedin.com/in/mirvald/',
-      icon: <FaLinkedin className="inline mr-1" />
-    }
-  ]
 
   // Функция для печати резюме через браузер
   const printResume = () => {
@@ -167,19 +91,19 @@ export function Resume() {
 
           <div className="mb-6">
             <h2 className="text-xl font-semibold border-b border-gray-300 pb-1 mb-2">Work Experience & Certificates</h2>
-            {experience.map((job, index) => (
-              <div key={index} className="mb-4">
-                <h3 className="text-lg font-medium">{job.position}</h3>
+            {ALL_EXPERIENCE.map((job, index) => (
+              <div key={job.id} className="mb-4">
+                <h3 className="text-lg font-medium">{job.title}</h3>
                 <div className="flex justify-between text-sm text-gray-600 mb-1 print:text-gray-800">
-                  <span>{job.company}</span>
-                  <span>{job.period}</span>
+                  <span>{job.link.includes('freelancehunt') ? 'Freelancehunt' : 'Freelancehunt & Upwork'}</span>
+                  <span>{job.start} - {job.end}</span>
                 </div>
-                <p className="text-sm">{job.description}</p>
+                <p className="text-sm">{t(job.descriptionKey)}</p>
               </div>
             ))}
             
             <h3 className="text-lg font-medium mt-6 mb-3">Education / Certifications</h3>
-            {certificates.map((cert, index) => (
+            {CERTIFICATES.map((cert, index) => (
               <div key={index} className="mb-3">
                 <div className="flex justify-between w-full">
                   <div className="flex">
@@ -195,7 +119,7 @@ export function Resume() {
                           {cert.name}
                         </Link>
                       </h3>
-                      <span className="text-sm text-gray-600 print:text-gray-800">{cert.issuer}</span>
+                      <span className="text-sm text-gray-600 print:text-gray-800">{cert.logoPath.includes('Google') ? 'Google' : 'Meta'}</span>
                     </div>
                   </div>
                   <span className="text-sm text-gray-600 print:text-gray-800">{cert.year}</span>

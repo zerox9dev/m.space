@@ -25,7 +25,7 @@ type Certificate = {
   logoPath: string
 }
 
-const ALL_EXPERIENCE: WorkExperience[] = [
+export const ALL_EXPERIENCE: WorkExperience[] = [
   {
     title: 'Product UX/UI Designer',
     start: '2023',
@@ -48,7 +48,7 @@ const ALL_EXPERIENCE: WorkExperience[] = [
   },
 ]
 
-const CERTIFICATES: Certificate[] = [
+export const CERTIFICATES: Certificate[] = [
   {
     name: 'Foundations UX/UI Design', 
     year: '2025',
