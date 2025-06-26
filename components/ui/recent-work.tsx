@@ -127,7 +127,7 @@ export function RecentWork() {
                   <h3 className="text-base font-bold leading-tight">{selectedProject.name}</h3>
 
                 </div>
-                <p className="text-xs text-zinc-600 dark:text-zinc-400 mb-2 line-clamp-3">{selectedProject.description}</p>
+                <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-2 line-clamp-3">{selectedProject.description}</p>
                 <Link
                   href={selectedProject.link}
                   target="_blank"
