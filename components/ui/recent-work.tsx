@@ -125,11 +125,9 @@ export function RecentWork() {
               <div className="p-2.5 flex flex-col justify-between flex-1 min-h-0 bg-zinc-50 dark:bg-zinc-900 rounded-b-sm">
                 <div className="flex justify-between items-center mb-1">
                   <h3 className="text-base font-bold leading-tight">{selectedProject.name}</h3>
-                  <span className="text-xs bg-zinc-200 dark:bg-zinc-800 px-2 py-0.5 rounded-full">
-                    {selectedProject.category}
-                  </span>
+
                 </div>
-                <p className="text-xs text-zinc-600 dark:text-zinc-400 mb-2 line-clamp-2">{selectedProject.description}</p>
+                <p className="text-xs text-zinc-600 dark:text-zinc-400 mb-2 line-clamp-3">{selectedProject.description}</p>
                 <Link
                   href={selectedProject.link}
                   target="_blank"
