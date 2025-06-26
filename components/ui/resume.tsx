@@ -15,7 +15,7 @@ export function Resume() {
     title: 'Product Designer & Developer',
     email: 'mirvald.vadim@icloud.com',
     website: 'mirvald.space',
-    summary: '👋 Привет! Я Product UI/UX дизайнер, объединяющий в себе страсть к минимализму и созданию дизайн-систем с базовыми знаниями front-end и back-end разработки. Мой опыт и умения позволяют мне выявлять и раскрывать весь потенциал больших проектов, но я также открыт для меньших задач, внося свой вклад и помощь. Я ценю долгосрочные отношения с клиентами и стремлюсь к совместному росту и успеху.'
+    summary: 'Product-дизайнер з технічним бекґраундом: UX, фронтенд і AI‑боти.Проєктую прості інтерфейси, запускаю MVP, автоматизую за допомогою GPT. Вірю, що **дані важливіші за припущення** — працюю з Amplitude та GA для прийняття рішень.'
   }
 
 
@@ -145,34 +145,24 @@ export function Resume() {
           <div className="mb-6">
             <h2 className="text-xl font-semibold border-b border-gray-300 pb-1 mb-2">About me</h2>
             <p>
-            I have 6+ years of experience in a freelance role on various projects, including NDA work. During this time, gained an understanding of product numbers and learned how to effectively work with analytical tools like Amplitude to make informed design decisions.
+            Product-дизайнер з технічним бекґраундом: UX/UI, фронтенд і AI‑боти.  
+Проєктую прості працюючі інтерфейси, запускаю MVP, автоматизую за допомогою GPT.  
+Вважаю, що дані важливіші за припущення — працюю з Amplitude та GA для прийняття рішень.
+
             </p>
-            
-            <p className="mt-4">
-            I actively use AI to accelerate workflows and increase productivity when creating products. This allows me to offer innovative solutions and optimize the user experience with modern technologies.
-            </p>
-            
-            <p className="mt-4">
-            I am also learning coding, as I believe that a product designer should understand the technical aspects of implementing their solutions. This helps me create interfaces that not only meet business requirements but are also realistic in technical implementation.
-            </p>
+
           </div>
 
           <div className="mb-6">
             <h2 className="text-xl font-semibold border-b border-gray-300 pb-1 mb-2">Skills</h2>
-            
-            <div className="mb-4">
-              <h3 className="text-lg font-medium mb-2">Design</h3>
               <p>
-              I specialize in UX audits for iOS/Android applications and MVP development for startups. My experience includes designing dashboards, SaaS solutions, and various platforms. I create effective websites and landing pages with a focus on marketing goals. One of my strengths is conducting deep UX/UI audits with recommendations for improvement and detailed feedback.
+              UX / Product: wireframes, flows, usability testing, MVP-логіка  
+              Analytics: Amplitude, Google Analytics, JTBD, event design  
+              Dev / AI: HTML/CSS, Tailwind, Next.js, Supabase, GPT, Telegram Bots  
+              Інструменти: Figma, FigJam, Notion, Vercel, VS Code
               </p>
-            </div>
             
-            <div>
-              <h3 className="text-lg font-medium mb-2">Development</h3>
-              <p>
-              In the development field, I focus on creating Telegram bots on Python, implementing data parsing solutions, and AI automation (including working with OpenAI and web scraping). I also work on frontend development using Next.js, React, and Tailwind, which allows me to turn design concepts into working products.
-              </p>
-            </div>
+            
           </div>
 
           <div className="mb-6">
@@ -188,7 +178,7 @@ export function Resume() {
               </div>
             ))}
             
-            <h3 className="text-lg font-medium mt-6 mb-3">Certificates</h3>
+            <h3 className="text-lg font-medium mt-6 mb-3">Education / Certifications</h3>
             {certificates.map((cert, index) => (
               <div key={index} className="mb-3">
                 <div className="flex justify-between w-full">
@@ -212,23 +202,6 @@ export function Resume() {
                 </div>
               </div>
             ))}
-          </div>
-          
-          <div>
-            <h2 className="text-xl font-semibold border-b border-gray-300 pb-1 mb-2">Contact</h2>
-            <div className="flex flex-wrap gap-4">
-              {socialLinks.map((link, index) => (
-                <a 
-                  key={index}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-700 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400 flex items-center print:text-gray-800"
-                >
-                  {link.icon} {link.name}
-                </a>
-              ))}
-            </div>
           </div>
         </div>
       </div>
