@@ -80,10 +80,10 @@ export function Resume() {
           <div className="mb-6">
             <h2 className="text-xl font-semibold border-b border-gray-300 pb-1 mb-2">Skills</h2>
               <p>
-              UX / Product: wireframes, flows, usability testing, MVP-логіка  
-              Analytics: Amplitude, Google Analytics, JTBD, event design  
-              Dev / AI: HTML/CSS, Tailwind, Next.js, Supabase, GPT, Telegram Bots  
-              Інструменти: Figma, FigJam, Notion, Vercel, VS Code
+              <b>UX/UI:</b> wireframes, flows, usability testing, prototypes<br/>  
+              <b>Analytics:</b> Amplitude, Google Analytics, JTBD<br/>  
+              <b>Dev/AI:</b> HTML/CSS/JS, Tailwind, Next.js, Supabase, GPT, Python<br/>  
+              <b>Tools:</b> Figma, FigJam, Notion, Vercel, VS Code<br/>  
               </p>
             
             
