@@ -108,7 +108,7 @@ const ExperienceCard = ({ experience, isExpanded, onToggle, showDivider, alwaysE
               href={link}
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-md font-medium text-black hover:text-gray-500 dark:text-white dark:hover:text-white"
+              className="text-md font-medium text-black hover:text-gray-500 dark:text-zinc-200 dark:hover:text-zinc-100"
             >
               {title}
             </Link>
@@ -159,7 +159,7 @@ const CertificateCard = ({ certificate, showDivider }: {
             href={certificate.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-black hover:text-gray-500 dark:text-white dark:hover:text-white flex items-center gap-1"
+            className="text-black hover:text-gray-500 dark:text-zinc-200 dark:hover:text-zinc-100 flex items-center gap-1"
           >
             {certificate.name}
             <FaArrowUpRightFromSquare className="inline-block w-3 h-3 text-gray-400" />

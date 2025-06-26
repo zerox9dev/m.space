@@ -53,7 +53,7 @@ export function RecentWork() {
           onClick={() => setActiveCategory('UX/UI')}
           className={`px-3 py-1.5 rounded-md text-sm font-medium flex items-center gap-1.5 transition-colors ${
             activeCategory === 'UX/UI'
-              ? 'bg-zinc-100 dark:bg-zinc-800 text-black dark:text-white'
+              ? 'bg-zinc-100 dark:bg-zinc-800 text-black dark:text-zinc-200'
               : 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800/40'
           }`}
         >
@@ -66,7 +66,7 @@ export function RecentWork() {
           onClick={() => setActiveCategory('Front & MVP')}
           className={`px-3 py-1.5 rounded-md text-sm font-medium flex items-center gap-1.5 transition-colors ${
             activeCategory === 'Front & MVP'
-              ? 'bg-zinc-100 dark:bg-zinc-800 text-black dark:text-white'
+              ? 'bg-zinc-100 dark:bg-zinc-800 text-black dark:text-zinc-200'
               : 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800/40'
           }`}
         >
@@ -79,7 +79,7 @@ export function RecentWork() {
           onClick={() => setActiveCategory('Bots & Automation')}
           className={`px-3 py-1.5 rounded-md text-sm font-medium flex items-center gap-1.5 transition-colors ${
             activeCategory === 'Bots & Automation'
-              ? 'bg-zinc-100 dark:bg-zinc-800 text-black dark:text-white'
+              ? 'bg-zinc-100 dark:bg-zinc-800 text-black dark:text-zinc-200'
               : 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800/40'
           }`}
         >
@@ -101,8 +101,8 @@ export function RecentWork() {
               tabIndex={0}
               className={`text-left cursor-pointer text-md font-medium md:font-semibold px-4 py-2 rounded transition-colors outline-none mb-1 w-full
                 ${selectedProject && selectedProject.id === project.id
-                  ? "text-black dark:text-white font-bold bg-zinc-100 dark:bg-zinc-800"
-                  : "text-zinc-900/80 dark:text-zinc-100/80 hover:text-black dark:hover:text-white hover:bg-zinc-50 dark:hover:bg-zinc-800/40"}
+                  ? "text-black dark:text-zinc-200 font-bold bg-zinc-100 dark:bg-zinc-800"
+                  : "text-zinc-900/80 dark:text-zinc-100/80 hover:text-black dark:hover:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-800/40"}
               `}
             >
               <span>{project.name}</span>
@@ -134,7 +134,7 @@ export function RecentWork() {
                   href={selectedProject.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs text-black dark:text-white underline hover:text-zinc-700 dark:hover:text-zinc-300 mt-1 w-fit"
+                  className="text-xs text-black dark:text-zinc-200 underline hover:text-zinc-700 dark:hover:text-zinc-300 mt-1 w-fit"
                 >
                   {t('recentWork.seeMore', {defaultMessage: 'See more'})}
                 </Link>

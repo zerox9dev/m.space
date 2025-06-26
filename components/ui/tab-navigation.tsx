@@ -28,7 +28,7 @@ export function TabNavigation({ tabs, activeTab, onChange, className }: TabNavig
               className={cn(
                 "relative px-4 py-1.5 text-sm font-medium rounded-sm transition-colors duration-200",
                 isActive 
-                  ? "text-zinc-950 dark:text-white" 
+                  ? "text-zinc-950 dark:text-zinc-200" 
                   : "text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-300"
               )}
             >

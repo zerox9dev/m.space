@@ -14,23 +14,22 @@ export function WhatIDo() {
       <div className="absolute -top-4 left-4 bg-white dark:bg-zinc-900 px-2 py-1 text-sm">
         <span>{t('whatIDo.title')}</span>
       </div>
-      <p className="whitespace-pre-line">
-      {t('whatIDo.description', {
-        defaultMessage: 'Починав як UI/UX-дизайнер. Згодом став продуктовим дизайнером — мислив системно, вчився метрикам. Потім — кодинг: збирав інтерфейси, писав Telegram-ботів, працював із API. З приходом AI почав автоматизувати задачі, писати GPT-промти і працювати швидше.'
-      })}
+      <p className="whitespace-pre-line dark:text-zinc-200">
+      {t('whatIDo.description')}
       </p>
-      <blockquote>
-        <b><Markdown>{t('whatIDo.summary', {
-          defaultMessage: 'Сьогодні — працюю на перетині дизайн → код → AI. Сам запускаю проєкти, MVP і експерименти.'
-        })}</Markdown></b>
+      <blockquote className="dark:text-zinc-200">
+        <b><Markdown>{t('whatIDo.summary')}</Markdown></b>
       </blockquote>
       <div className="mt-3 flex gap-2">
-        <Link href="/resume" className="px-3 py-1.5 bg-gray-200 hover:bg-gray-300 text-black text-sm rounded-sm transition-colors">
-          {t('whatIDo.resume', {defaultMessage: 'Resume'})}
+        <Link 
+          href="/resume" 
+          className="px-3 py-1.5 bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-black dark:text-zinc-200 text-sm rounded-sm transition-colors"
+        >
+          {t('whatIDo.resume')}
         </Link>
         <AiCloneChat customTrigger={
-          <button className="px-3 py-1.5 bg-green-500 hover:bg-green-600 text-white text-sm rounded-sm transition-colors">
-            {t('whatIDo.askAssistant', {defaultMessage: 'Запитай у мого помічника'})}
+          <button className="px-3 py-1.5 bg-green-500 hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-700 text-white text-sm rounded-sm transition-colors">
+            {t('whatIDo.askAssistant')}
           </button>
         } />
       </div>

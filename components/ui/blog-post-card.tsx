@@ -19,7 +19,7 @@ export function BlogPostCard({ title, description, link, date }: BlogPostProps) 
       <div className="p-4">
         <Link
           href={link}
-          className="mb-2 block text-base font-medium hover:text-black dark:hover:text-white"
+          className="mb-2 block text-base font-medium hover:text-black dark:hover:text-zinc-200"
         >
           {title}
         </Link>

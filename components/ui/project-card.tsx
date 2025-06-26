@@ -36,7 +36,7 @@ export function ProjectCard({ name, description, image, link, slug }: Omit<Proje
         href={link}
         target="_blank"
         rel="noopener noreferrer"
-        className="mb-1.5 block text-base font-medium group hover:text-black dark:hover:text-white"
+        className="mb-1.5 block text-base font-medium group hover:text-black dark:hover:text-zinc-200"
       >
         {children}
       </Link>

@@ -29,7 +29,7 @@ export function ProfileHeader() {
       </div>
       <div className="flex-1">
         <div>
-          <p className=" text-black dark:text-white">
+          <p className=" text-black dark:text-zinc-200">
             {t('profile.greeting', {defaultMessage: 'Привіт, я Вадим'})}
             {' '}
             <TextEffect

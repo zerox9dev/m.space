@@ -189,7 +189,7 @@ export function AiCloneChat({ customTrigger, floatingButton = false }: AiCloneCh
               </div>
               <div className="flex items-center gap-2">
                 <FaRobot className="h-5 w-5 text-green-500 dark:text-green-400" />
-                <h3 className="text-md font-medium text-black dark:text-white">{t('aiChat.assistant')}</h3>
+                <h3 className="text-md font-medium text-black dark:text-zinc-200">{t('aiChat.assistant')}</h3>
               </div>
             </div>
             
@@ -224,7 +224,7 @@ export function AiCloneChat({ customTrigger, floatingButton = false }: AiCloneCh
                               "p-3 rounded-md shadow-sm text-sm",
                               message.isUser 
                                 ? "bg-green-500 text-white dark:bg-green-600" 
-                                : "bg-white dark:bg-zinc-800 dark:text-white border border-[#F4F4F5] dark:border-zinc-700"
+                                : "bg-white dark:bg-zinc-800 dark:text-zinc-200 border border-[#F4F4F5] dark:border-zinc-700"
                             )}
                             markdown={!message.isUser}
                           >
@@ -233,7 +233,7 @@ export function AiCloneChat({ customTrigger, floatingButton = false }: AiCloneCh
                         ) : (
                           <div className={cn(
                             "p-3 rounded-md shadow-sm text-sm",
-                            "bg-white dark:bg-zinc-800 dark:text-white border border-[#F4F4F5] dark:border-zinc-700"
+                            "bg-white dark:bg-zinc-800 dark:text-zinc-200 border border-[#F4F4F5] dark:border-zinc-700"
                           )}>
                             <ResponseStream
                               textStream={message.content}

@@ -117,7 +117,7 @@ export function Resume() {
         <FaArrowLeft /> Back
       </button>
       
-      <div id="resume-content" className="bg-white dark:bg-zinc-900 p-4 rounded-sm print:bg-white print:dark:bg-white print:text-black print:w-full print:max-w-none print:m-0 print:p-4">
+      <div id="resume-content" className="bg-white dark:bg-zinc-900 text-black dark:text-zinc-200 p-4 rounded-sm print:bg-white print:dark:bg-white print:text-black print:w-full print:max-w-none print:m-0 print:p-4">
         <div className="flex justify-between items-center mb-6 print:hidden">
           <h2 className="text-2xl font-bold">Resume</h2>
           <button 
@@ -147,7 +147,7 @@ export function Resume() {
               <div className="flex justify-center md:justify-start gap-4 text-sm text-gray-600 print:text-gray-800">
                 <span>{personalInfo.email}</span>
                 <span>•</span>
-                <a href={`https://${personalInfo.website}`} target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 print:text-gray-800">
+                <a href={`https://${personalInfo.website}`} target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 dark:hover:text-blue-400 print:text-gray-800">
                   {personalInfo.website}
                 </a>
               </div>
@@ -212,7 +212,7 @@ export function Resume() {
                           href={cert.url} 
                           target="_blank" 
                           rel="noopener noreferrer" 
-                          className="hover:text-blue-600 flex items-center print:text-gray-800"
+                          className="hover:text-blue-600 dark:hover:text-blue-400 flex items-center print:text-gray-800"
                         >
                           {cert.name}
                         </Link>
@@ -235,7 +235,7 @@ export function Resume() {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-700 hover:text-blue-600 flex items-center print:text-gray-800"
+                  className="text-gray-700 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400 flex items-center print:text-gray-800"
                 >
                   {link.icon} {link.name}
                 </a>
