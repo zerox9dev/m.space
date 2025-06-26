@@ -27,7 +27,7 @@ type Certificate = {
 
 const ALL_EXPERIENCE: WorkExperience[] = [
   {
-    title: 'Full-Time Product UX/UI Designer',
+    title: 'Product UX/UI Designer',
     start: '2023',
     end: 'Present',
     link: 'https://freelancehunt.com/',
@@ -50,13 +50,13 @@ const ALL_EXPERIENCE: WorkExperience[] = [
 
 const CERTIFICATES: Certificate[] = [
   {
-    name: 'Foundations of User Experience (UX) Design', 
+    name: 'Foundations UX/UI Design', 
     year: '2025',
     url: 'https://coursera.org/verify/VNNIVIRP71V3',
     logoPath: '/images/companies/Google.svg'
   },
   {
-    name: 'Principles of UX/UI Design',
+    name: 'Principles UX/UI Design',
     year: '2025',
     url: 'https://coursera.org/verify/5HSHNXKESE4G',
     logoPath: '/images/companies/Meta.svg'
@@ -225,7 +225,7 @@ export function WorkExperience() {
           
           {/* Certificates section */}
           <div className="mt-6">
-            <h3 className="text-md font-medium mb-3">{t('certificates.title')}</h3>
+            <h3 className="text-md font-medium mb-3 text-wrap">{t('certificates.title')}</h3>
             {CERTIFICATES.map((certificate, index) => (
               <div key={index} className={index !== 0 ? "mt-4" : ""}>
                 <CertificateCard
