@@ -28,20 +28,22 @@ export function ProfileHeader() {
         </div>
       </div>
       <div className="flex-1">
-        <Link href="/" className="font-medium text-black dark:text-white">
-          <p className="inline font-medium text-black dark:text-white">
+        <div>
+          <p className=" text-black dark:text-white">
             {t('profile.greeting', {defaultMessage: 'Привіт, я Вадим'})}
+            {' '}
+            <TextEffect
+              as="span"
+              preset="fade"
+              per="char"
+              className="italic"
+              delay={1}
+              style={{ display: 'inline' }}
+            >
+              {t('profile.tagline', {defaultMessage: 'Проектую UX/UI, пишу фронтенд, створюю AI-ботів. Допоможу запустити MVP, заощадити час і ресурси.'})}
+            </TextEffect>
           </p>
-        </Link>
-        <TextEffect
-          as="h1"
-          preset="fade"
-          per="char"
-          className="text-black dark:text-white italic"
-          delay={1}
-        >
-          {t('profile.tagline', {defaultMessage: 'Дизайн, код і автоматизація. Все, що потрібно для продукту.'})}
-        </TextEffect>
+        </div>
       </div>
     </div>
   )
