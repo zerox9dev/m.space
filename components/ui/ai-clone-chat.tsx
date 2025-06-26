@@ -180,7 +180,7 @@ export function AiCloneChat({ customTrigger, floatingButton = false }: AiCloneCh
         {customTrigger || defaultTrigger}
       </MorphingDialogTrigger>
       <MorphingDialogContainer>
-        <MorphingDialogContent className="relative h-[500px] w-[350px] bg-white border-[#F4F4F5] border-3 rounded-md dark:bg-zinc-900 sm:w-[400px]">
+        <MorphingDialogContent className="relative h-[500px] w-[350px] bg-white border-[#F4F4F5] dark:border-zinc-800 border-3 rounded-md dark:bg-zinc-900 sm:w-[400px]">
           <div className="flex h-full flex-col">
             {/* Header with title */}
             <div className="p-4 border-b border-[#F4F4F5] dark:border-zinc-800 relative">

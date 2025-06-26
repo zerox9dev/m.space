@@ -10,7 +10,7 @@ export function ProfileHeader() {
   const t = useTranslations();
   
   return (
-    <div className="flex items-center bg-white gap-4 border-[#F4F4F5] border-3 p-4 rounded-md dark:bg-zinc-900">
+    <div className="flex items-center bg-white gap-4 border-[#F4F4F5] dark:border-zinc-800 border-3 p-4 rounded-md dark:bg-zinc-900">
       <div className="h-16 w-16 shrink-0 rounded-md relative">
         <Image 
           src="/avatar.png" 

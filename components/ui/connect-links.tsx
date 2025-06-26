@@ -28,7 +28,7 @@ export function ConnectLinks() {
   const t = useTranslations();
   
   return (
-    <div className="bg-white p-4 border-[#F4F4F5] border-3 rounded-md dark:bg-zinc-900 relative">
+    <div className="bg-white p-4 border-[#F4F4F5] dark:border-zinc-800 border-3 rounded-md dark:bg-zinc-900 relative">
       <div className="absolute -top-4 left-4 bg-white dark:bg-zinc-900 px-2 py-1 text-sm">
         <span>{t('connect.title', {defaultMessage: 'Let\'s connect'})}</span>
       </div>

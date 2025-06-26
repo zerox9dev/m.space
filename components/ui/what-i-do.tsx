@@ -10,7 +10,7 @@ export function WhatIDo() {
   const t = useTranslations();
   
   return (
-    <div className="flex flex-col gap-2 bg-white p-4 border-[#F4F4F5] border-3 rounded-md dark:bg-zinc-900 relative mt-6">
+    <div className="flex flex-col gap-2 bg-white p-4 border-[#F4F4F5] dark:border-zinc-800 border-3 rounded-md dark:bg-zinc-900 relative mt-6">
       <div className="absolute -top-4 left-4 bg-white dark:bg-zinc-900 px-2 py-1 text-sm">
         <span>{t('whatIDo.title')}</span>
       </div>
