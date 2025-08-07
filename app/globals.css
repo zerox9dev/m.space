@@ -79,40 +79,6 @@
   }
 }
 
-/* Стили для печати резюме */
-@media print {
-  body * {
-    visibility: hidden;
-  }
-
-  #resume-content,
-  #resume-content * {
-    visibility: visible;
-  }
-
-  #resume-content {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    padding: 1.5rem;
-    background-color: white !important;
-    color: black !important;
-  }
-
-  /* Темные стили не нужны при печати */
-  .dark\:bg-zinc-900 {
-    background-color: white !important;
-  }
-
-  .dark\:text-white {
-    color: black !important;
-  }
-
-  a {
-    color: #0066cc !important;
-  }
-}
 /*
   ---break---
 */

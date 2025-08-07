@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react'
 import MeteorsBackground from './MeteorsBackground'
 import { Footer } from '@/app/footer'
-import { ThemeScript } from './ThemeScript'
 
 interface ClientLayoutProps {
   children: React.ReactNode
@@ -23,10 +22,7 @@ export default function ClientLayout({ children, overpassVariable, overpassMonoV
   // Use a consistent layout structure for both mounted and unmounted states
   // to avoid hydration mismatches
   return (
-    <div className={`${overpassVariable} ${overpassMonoVariable} flex min-h-screen w-full flex-col font-[family-name:var(--font-overpass)] relative`}>
-      {/* Theme initialization script */}
-      <ThemeScript />
-      
+    <div className={`${overpassVariable} ${overpassMonoVariable} flex min-h-screen w-full flex-col font-[family-name:var(--font-overpass)] relative`} suppressHydrationWarning>
       <div className="relative mx-auto w-full max-w-lg flex-1 px-4 pt-4 flex flex-col">
         <main className="flex-1">
           {mounted ? children : <div aria-hidden="true" />}

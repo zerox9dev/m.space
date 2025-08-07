@@ -52,14 +52,18 @@ export default async function LocaleLayout({
                 const savedTheme = localStorage.getItem('theme') || 'system';
                 const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
                 const theme = savedTheme === 'system' ? systemTheme : savedTheme;
-                document.documentElement.classList.add(theme);
-                document.documentElement.style.colorScheme = theme;
+                
+                // Only add the theme class, let next-themes handle color-scheme
+                document.documentElement.classList.remove('light', 'dark');
+                if (theme === 'dark' || theme === 'light') {
+                  document.documentElement.classList.add(theme);
+                }
               } catch (e) {}
             })()
           `}
         </Script>
       </head>
-      <body>
+      <body suppressHydrationWarning>
         <ThemeProvider
           enableSystem={true}
           attribute="class"

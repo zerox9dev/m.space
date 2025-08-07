@@ -21,12 +21,6 @@ export function WhatIDo() {
         <b><Markdown>{t('whatIDo.summary')}</Markdown></b>
       </blockquote>
       <div className="mt-3 flex gap-2">
-        <Link 
-          href="/resume" 
-          className="px-3 py-1.5 bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-black dark:text-zinc-200 text-sm rounded-sm transition-colors"
-        >
-          {t('whatIDo.resume')}
-        </Link>
         <AiCloneChat customTrigger={
           <button className="px-3 py-1.5 bg-green-500 hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-700 text-white text-sm rounded-sm transition-colors">
             {t('whatIDo.askAssistant')}
