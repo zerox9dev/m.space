@@ -1,5 +1,3 @@
-# mirvald.space
-
 My personal website where I share my thoughts about design, development, and AI. Built with Next.js, MDX, and Tailwind CSS.
 
 ## 🛠 Tech Stack
@@ -33,7 +31,7 @@ My personal website where I share my thoughts about design, development, and AI.
 
 ```bash
 # Clone the repository
-git clone https://github.com/mirvald-space/m.space.git
+git clone https://github.com/zerox9dev/m.space.git
 
 # Install dependencies
 pnpm install

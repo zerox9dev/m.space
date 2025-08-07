@@ -30,10 +30,10 @@ export function Resume() {
   
   // Информация для резюме
   const personalInfo = {
-    name: 'Vadym Mirvald',
+    name: 'Vadym zerox9dev',
     title: 'Product Designer & Developer',
-    email: 'mirvald.vadim@icloud.com',
-    website: 'mirvald.space',
+    email: 'zerox9dev.vadim@icloud.com',
+    website: 'zerox9dev.space',
     summary: 'Product-дизайнер з технічним бекґраундом: UX, фронтенд і AI‑боти.Проєктую прості інтерфейси, запускаю MVP, автоматизую за допомогою GPT. Вірю, що **дані важливіші за припущення** — працюю з Amplitude та GA для прийняття рішень.'
   }
 
@@ -51,7 +51,7 @@ export function Resume() {
 
   return (
     <>
-      <div className="flex items-center mb-4 gap-4 justify-between">
+      <div className="flex  items-center mb-4 gap-4 justify-between">
         <button 
           onClick={goBack}
           className="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-black rounded-sm transition-colors flex items-center gap-2 print:hidden"

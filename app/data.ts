@@ -68,7 +68,7 @@ export const PROJECTS: Project[] = [
   {
     name: 'TgROI',
     description: 'Analytics tool for measuring Telegram channel advertising efficiency.',
-    link: 'https://github.com/mirvald-space/TgROI',
+    link: 'https://github.com/zerox9dev-space/TgROI',
     image: '/images/tgroi/cover.png',
     id: 'project4',
     category: 'Front & MVP',
@@ -76,7 +76,7 @@ export const PROJECTS: Project[] = [
   {
     name: 'Vidzilla Bot',
     description: 'This Telegram bot allows users to download videos from various social media platforms including Instagram Reels, TikTok, YouTube, Facebook, Twitter, and Pinterest.',
-    link: 'https://github.com/mirvald-space/Vidzilla',
+    link: 'https://github.com/zerox9dev-space/Vidzilla',
     image: '/images/vidzilla/cover.png',
     id: 'project6',
     category: 'Bots & AI',
@@ -84,7 +84,7 @@ export const PROJECTS: Project[] = [
   {
     name: 'Vidzilla Web',
     description: "A powerful web application that allows you to download videos from various social media platforms. Simply paste a link, and get your video instantly!",
-    link: 'https://github.com/mirvald-space/vidzilla_app',
+    link: 'https://github.com/zerox9dev-space/vidzilla_app',
     image: '/images/vidzilla-app/cover.png',
     id: 'project11',
     category: 'Front & MVP',
@@ -92,7 +92,7 @@ export const PROJECTS: Project[] = [
   {
     name: 'Voicelet',
     description: 'A smart Telegram bot that recognizes voice messages with automatic language detection',
-    link: 'https://github.com/mirvald-space/voicelet',
+    link: 'https://github.com/zerox9dev-space/voicelet',
     image: '/images/voicelet/cover.png',
     id: 'project7',
     category: 'Bots & AI',
@@ -100,7 +100,7 @@ export const PROJECTS: Project[] = [
   {
     name: 'PolishDomBot',
     description: 'PolishDom Bot is a multifunctional Telegram bot designed to help users learn the Polish language and prepare for obtaining the Karta Polaka (Polish Card).',
-    link: 'https://github.com/mirvald-space/polishdom_bot',
+    link: 'https://github.com/zerox9dev-space/polishdom_bot',
     image: '/images/polishdom_bot/cover.png',
     id: 'project8',
     category: 'Bots & AI',
@@ -108,7 +108,7 @@ export const PROJECTS: Project[] = [
   {
     name: 'ChatGPT+Claude',
     description: 'Telegram bot with multiple AI models (GPT-4O, Grok) for convenient work with neural networks.',
-    link: 'https://github.com/mirvald-space/Grok-ChatGPT',
+    link: 'https://github.com/zerox9dev-space/Grok-ChatGPT',
     image: '/images/grok-chatgpt/cover.png',
     id: 'project9',
     category: 'Bots & AI',
@@ -116,7 +116,7 @@ export const PROJECTS: Project[] = [
   {
     name: 'NinjaTranslate',
     description: 'A Telegram translator bot that uses X.AI API to translate between multiple languages.',
-    link: 'https://github.com/mirvald-space/NinjaTranslate',
+    link: 'https://github.com/zerox9dev-space/NinjaTranslate',
     image: '/images/ninja-translate/cover.png',
     id: 'project10',
     category: 'Bots & AI',
@@ -124,7 +124,7 @@ export const PROJECTS: Project[] = [
   {
     name: 'TeleForge',
     description: 'A flexible and powerful template for creating Telegram bots of any complexity.',
-    link: 'https://github.com/mirvald-space/TeleForge',
+    link: 'https://github.com/zerox9dev-space/TeleForge',
     image: '/images/teleforge/cover.png',
     id: 'project12',
     category: 'Bots & AI',
@@ -167,20 +167,20 @@ export const BLOG_POSTS: BlogPost[] = [
 export const SOCIAL_LINKS: SocialLink[] = [
   {
     label: 'Github',
-    link: 'https://github.com/mirvald-space',
+    link: 'https://github.com/zerox9dev',
   },
   {
     label: 'X',
-    link: 'https://x.com/mirvald_',
+    link: 'https://x.com/zerox9dev',
   },
   {
     label: 'LinkedIn',
-    link: 'https://www.linkedin.com/in/mirvald/',
+    link: 'https://www.linkedin.com/in/zerox9dev/',
   },
   {
     label: 'Threads',
-    link: 'https://www.threads.com/@mirvald_',
+    link: 'https://www.threads.com/@zerox9dev_',
   },
 ]
 
-export const EMAIL = 'mirvald.vadim@icloud.com'
+export const EMAIL = 'zerox9dev.work@icloud.com'
