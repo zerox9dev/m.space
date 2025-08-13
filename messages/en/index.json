@@ -7,12 +7,12 @@
   "profile": {
     "title": "Profile",
     "greeting": "Hi, I'm Vadym -",
-    "tagline": "product designer with development and AI skills."
+    "tagline": "Creating MVPs from design to automation"
   },
   "whatIDo": {
-    "title": "Zerox9dev",
-    "description": "I believe every project should be simple and understandable.\nWhether it's design or code — the most important thing is that it works for people and businesses.\n\nMy approach: minimum bureaucracy, maximum result.",
-    "summary": "Also — I share my thoughts in my [Telegram channel](https://t.me/+iYATkhA5NoJjYTlk) and develop the IT community — [@TalentX](https://t.me/+SUU6SXFIp9owOTE0).",
+    "title": "About me",
+    "description": "Product designer with 6+ years of experience. Helping startups launch products faster using design, bots, and automation.\n\nMy approach: minimum bureaucracy, maximum result.",
+    "summary": "Also — I share my thoughts in my [TG-channel](https://t.me/+iYATkhA5NoJjYTlk)",
     "askAssistant": "My AI-assistant"
   },
   "workExperience": {
