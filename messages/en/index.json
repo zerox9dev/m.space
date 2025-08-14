@@ -71,14 +71,22 @@
       "dribbble": "Dribbble"
     }
   },
+  "cta": {
+    "title": "Ready to discuss your project?",
+    "subtitle": "Reach out on Telegram or via the AI Assistant — I’ll get back shortly.",
+    "telegram": "TG",
+    "email": "Email",
+    "aiAssistant": "AI"
+  },
   "services": {
     "title": "💰 SERVICES & PRICING",
     "process": "Process",
     "more": "More details",
+    "discuss": "Discuss",
     "mvp": {
       "title": "MVP Development",
       "description": "From idea to first sales in 6 weeks",
-      "price": "from $3,000",
+      "price": "from $1,999",
       "steps": [
         "Week 1: Research and planning",
         "Weeks 2–4: Core features development",
@@ -89,7 +97,7 @@
     "design": {
       "title": "Product Design",
       "description": "UX/UI for your product",
-      "price": "from $500",
+      "price": "from $99",
       "steps": [
         "Audit: Analyze current solution and competitors",
         "Prototype: Screen structure and logic",
@@ -100,7 +108,7 @@
     "bots": {
       "title": "Telegram Bots",
       "description": "A bot instead of 3 employees",
-      "price": "from $200",
+      "price": "from $99",
       "steps": [
         "Analysis: What tasks the bot will handle",
         "Logic: Scenarios and integrations",
@@ -111,7 +119,7 @@
     "n8n": {
       "title": "Automation",
       "description": "Removing routine with n8n/Make",
-      "price": "from $200",
+      "price": "from $99",
       "steps": [
         "Audit: Find repetitive tasks",
         "Scheme: Design the automation",

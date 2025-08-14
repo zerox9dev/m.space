@@ -1,9 +1,11 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import type { ReactElement } from 'react'
 import { RiShip2Fill, RiLayout5Fill, RiRobot2Fill, RiFlowChart, RiInformationLine } from 'react-icons/ri'
+import { FaTelegram } from 'react-icons/fa6'
 import {
   MorphingDialog,
   MorphingDialogTrigger,
@@ -131,6 +133,19 @@ export function ServicesPricing() {
                                                     </li>
                                                 ))}
                                             </ul>
+										</div>
+
+										<div className="mt-6 flex justify-end">
+											<Link
+												href="https://t.me/zerox9dev"
+												target="_blank"
+												rel="noopener noreferrer"
+												className="inline-flex items-center gap-1 rounded-md bg-zinc-900 px-3 py-1.5 text-sm text-white transition-colors hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200"
+												aria-label={t('discuss')}
+											>
+												<FaTelegram className="h-4 w-4" />
+												<span>{t('discuss')}</span>
+											</Link>
 										</div>
 									</MorphingDialogContent>
 								</MorphingDialogContainer>

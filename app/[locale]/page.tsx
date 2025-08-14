@@ -9,7 +9,7 @@ import {
   BLOG_POSTS,
 } from '../data'
 // Removed Dribbble shots from the home tabs; moved to Projects page
-import { FaRobot } from 'react-icons/fa6'
+ 
 import { BlogPostList } from '@/components/ui/blog-post-card'
 import { BottomDock } from '@/components/ui/bottom-dock'
 
@@ -17,10 +17,11 @@ import { WhatIDo } from '@/components/ui/what-i-do'
 import { ProfileHeader } from '@/components/ui/profile-header'  
 import { ConnectLinks } from '@/components/ui/connect-links'
 import { useSearchParams } from 'next/navigation'
-import { AiCloneChat } from '@/components/ui/ai-clone-chat'
+ 
 import { RecentWork } from '@/components/ui/recent-work'
   import { ServicesPricing } from '@/components/ui/services-pricing'
 import { useTranslations } from 'next-intl'
+import { CtaDiscuss } from '@/components/ui/cta-discuss'
 
 // Dynamically import components that aren't needed on initial load
 const MorphingDialog = dynamic(() => import('@/components/ui/morphing-dialog').then(mod => mod.MorphingDialog), { ssr: false })
@@ -92,6 +93,7 @@ function PersonalContent() {
                 <WhatIDo />
                 <ServicesPricing />
                 <RecentWork />
+                <CtaDiscuss />
                  <ConnectLinks />
           </motion.section>
         )}
@@ -113,21 +115,6 @@ function PersonalContent() {
         tabs={TABS} 
         activeTab={activeTab} 
         onChange={handleTabChange}
-        rightSlot={
-          <AiCloneChat customTrigger={
-            <button
-              className="group flex items-center gap-2 rounded-xl px-2 sm:px-3 py-2 transition-all duration-200 hover:bg-zinc-800/70"
-              aria-label={t('aiChat.button')}
-              title={t('aiChat.button')}
-              type="button"
-            >
-              <span className="text-zinc-400 transition-transform duration-200 group-hover:scale-110">
-                <FaRobot className="h-5 w-5" />
-              </span>
-              <span className="hidden text-sm">{t('aiChat.button')}</span>
-            </button>
-          } />
-        }
       />
     </div>
   );
