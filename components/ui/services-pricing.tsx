@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl'
 import { motion } from 'framer-motion'
 import type { ReactElement } from 'react'
-import { RiShip2Fill, RiLayout5Fill, RiRobot2Fill, RiFlowChart } from 'react-icons/ri'
+import { RiShip2Fill, RiLayout5Fill, RiRobot2Fill, RiFlowChart, RiInformationLine } from 'react-icons/ri'
 import {
   MorphingDialog,
   MorphingDialogTrigger,
@@ -11,7 +11,7 @@ import {
   MorphingDialogContent,
   MorphingDialogClose,
 } from '@/components/ui/morphing-dialog'
-import { FaArrowRight } from 'react-icons/fa6'
+ 
 
 type ServiceItem = {
   id: string
@@ -81,23 +81,25 @@ export function ServicesPricing() {
 						</span>
 					</div>
 
-					<div className="flex flex-col h-full">
+						<div className="flex flex-col h-full pb-10">
                     <div className="flex items-start gap-3">
                         <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1">{service.description}</p>
                     </div>
 
-                        {service.price && (
-                            <div className="mt-3 text-sm">
-                                <span className="text-emerald-600 dark:text-emerald-400 font-medium">{service.price}</span>
-                            </div>
-                        )}
+								{service.price && (
+									<div className="absolute bottom-3 left-3 text-sm">
+										<span className="text-emerald-600 dark:text-emerald-400 font-medium">{service.price}</span>
+									</div>
+								)}
 
-						<div className="mt-4 ml-auto">
+						<div className="absolute bottom-3 right-3">
 							<MorphingDialog transition={{ type: 'spring', bounce: 0, duration: 0.3 }}>
-								<MorphingDialogTrigger className="inline-flex items-center gap-1 text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200">
-									<span>{t('more')}</span>
-									<FaArrowRight className="h-3 w-3" />
-								</MorphingDialogTrigger>
+                            <MorphingDialogTrigger
+                                aria-label={t('more')}
+                                className="inline-flex items-center text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
+                            >
+                                <RiInformationLine className="h-4 w-4" />
+                            </MorphingDialogTrigger>
 
 								<MorphingDialogContainer>
 									<MorphingDialogContent className="relative w-full max-w-xl rounded-xl bg-white p-6 shadow-lg ring-1 ring-zinc-200/50 dark:bg-zinc-900 dark:ring-zinc-800/50">

@@ -138,7 +138,7 @@ export const PROJECTS: Project[] = [
     category: 'Automation',
   },
   {
-    name: 'n8n AI Agent (Tour Booking)',
+    name: 'n8n AI Agent Tour',
     description: 'Smart agent for processing flight booking requests via Gmail. Automatically chats with clients, collects 4 required facts, and logs the conversation.',
     link: 'https://github.com/zerox9dev/n8n-ai-agent-tour',
     image: '',
