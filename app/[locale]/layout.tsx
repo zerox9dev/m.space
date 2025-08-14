@@ -5,7 +5,6 @@ import '../globals.css';
 import { ThemeProvider } from 'next-themes';
 import { Analytics } from '@vercel/analytics/react';
 import ClientLayout from '@/components/ClientLayout';
-import Script from 'next/script';
 
 // Load the Overpass fonts
 const overpass = Overpass({
@@ -43,44 +42,21 @@ export default async function LocaleLayout({
   }
 
   return (
-    <html lang={locale} className={`${overpass.variable} ${overpassMono.variable}`} suppressHydrationWarning>
-      <head>
-        <Script id="theme-script" strategy="beforeInteractive">
-          {`
-            (function() {
-              try {
-                const savedTheme = localStorage.getItem('theme') || 'system';
-                const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-                const theme = savedTheme === 'system' ? systemTheme : savedTheme;
-                
-                // Only add the theme class, let next-themes handle color-scheme
-                document.documentElement.classList.remove('light', 'dark');
-                if (theme === 'dark' || theme === 'light') {
-                  document.documentElement.classList.add(theme);
-                }
-              } catch (e) {}
-            })()
-          `}
-        </Script>
-      </head>
-      <body suppressHydrationWarning>
-        <ThemeProvider
-          enableSystem={true}
-          attribute="class"
-          storageKey="theme"
-          defaultTheme="system"
+    <ThemeProvider
+      enableSystem={true}
+      attribute="class"
+      storageKey="theme"
+      defaultTheme="system"
+    >
+      <NextIntlClientProvider locale={locale} messages={messages}>
+        <ClientLayout
+          overpassVariable={overpass.variable}
+          overpassMonoVariable={overpassMono.variable}
         >
-          <NextIntlClientProvider locale={locale} messages={messages}>
-            <ClientLayout
-              overpassVariable={overpass.variable}
-              overpassMonoVariable={overpassMono.variable}
-            >
-              {children}
-            </ClientLayout>
-          </NextIntlClientProvider>
-          <Analytics />
-        </ThemeProvider>
-      </body>
-    </html>
+          {children}
+        </ClientLayout>
+      </NextIntlClientProvider>
+      <Analytics />
+    </ThemeProvider>
   );
 } 

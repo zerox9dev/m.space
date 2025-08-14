@@ -34,11 +34,9 @@ function CopyButton() {
   )
 }
 
-// Define the tabs exactly like on the main page
+// Tabs for Projects section (Dribbble removed)
 const TABS = [
-  { id: 'about', label: 'About' },
-  { id: 'shots', label: 'Shots' },
-  { id: 'blog', label: 'Blog' },
+  { id: 'projects', label: 'Projects' },
 ]
 
 function SearchParamsHandler({ setActiveTab }: { setActiveTab: (tab: string) => void }) {
@@ -58,12 +56,11 @@ function ProjectLayout({ children }: { children: React.ReactNode }) {
   const params = useParams()
   const locale = params.locale as string
   const t = useTranslations('Projects')
-  const [activeTab, setActiveTab] = useState('about')
+  const [activeTab, setActiveTab] = useState('projects')
   const router = useRouter()
   
   const handleTabChange = (tabId: string) => {
-    // Use Next.js router instead of window.location
-    router.push(`/${locale}?tab=${tabId}`)
+    router.push(`/${locale}/projects?tab=${tabId}`)
   }
 
   return (
@@ -92,7 +89,7 @@ function ProjectLayout({ children }: { children: React.ReactNode }) {
       </div>
       
       <div className="absolute left-4 top-24">
-        <Link href={`/${locale}?tab=about`} className="flex items-center gap-2 text-sm text-zinc-500 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200 transition-colors">
+        <Link href={`/${locale}/projects?tab=projects`} className="flex items-center gap-2 text-sm text-zinc-500 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200 transition-colors">
           <FaArrowLeft className="h-3 w-3" />
           <span>{t('backToProjects')}</span>
         </Link>

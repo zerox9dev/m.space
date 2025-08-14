@@ -8,11 +8,10 @@ import {
   PROJECTS,
   BLOG_POSTS,
 } from '../data'
-import { useDribbbleShots } from '@/hooks/useDribbbleShots'
-import { FaXmark } from 'react-icons/fa6'
+// Removed Dribbble shots from the home tabs; moved to Projects page
+import { FaRobot } from 'react-icons/fa6'
 import { BlogPostList } from '@/components/ui/blog-post-card'
-import { WorkExperience } from '@/components/ui/work-experience-card'
-import { TabNavigation } from '@/components/ui/tab-navigation'
+import { BottomDock } from '@/components/ui/bottom-dock'
 
 import { WhatIDo } from '@/components/ui/what-i-do'
 import { ProfileHeader } from '@/components/ui/profile-header'  
@@ -20,8 +19,8 @@ import { ConnectLinks } from '@/components/ui/connect-links'
 import { useSearchParams } from 'next/navigation'
 import { AiCloneChat } from '@/components/ui/ai-clone-chat'
 import { RecentWork } from '@/components/ui/recent-work'
+  import { ServicesPricing } from '@/components/ui/services-pricing'
 import { useTranslations } from 'next-intl'
-import { LanguageSwitcher } from '@/components/ui/language-switcher'
 
 // Dynamically import components that aren't needed on initial load
 const MorphingDialog = dynamic(() => import('@/components/ui/morphing-dialog').then(mod => mod.MorphingDialog), { ssr: false })
@@ -52,7 +51,6 @@ const TRANSITION_SECTION = {
 
 // Create a wrapper component to use searchParams
 function PersonalContent() {
-  const { shots, loading, error } = useDribbbleShots();
   const [activeTab, setActiveTab] = useState('about');
   const searchParams = useSearchParams();
   const t = useTranslations();
@@ -60,7 +58,6 @@ function PersonalContent() {
   // Define tabs using translations
   const TABS = [
     { id: 'about', label: t('tabs.about') },
-    { id: 'shots', label: t('tabs.shots') },
     { id: 'blog', label: t('tabs.blog') },
   ];
   
@@ -77,14 +74,6 @@ function PersonalContent() {
 
   return (
     <div className="max-w-2xl mx-auto w-full">
-      <div className="flex justify-between items-center top-0 pb-2 z-10">
-        <TabNavigation 
-          tabs={TABS} 
-          activeTab={activeTab} 
-          onChange={handleTabChange}
-        />
-        <LanguageSwitcher />
-      </div>
       
       <motion.main
         className="flex"
@@ -101,111 +90,13 @@ function PersonalContent() {
           >
                 <ProfileHeader />
                 <WhatIDo />
-                <WorkExperience />
+                <ServicesPricing />
                 <RecentWork />
-                <ConnectLinks />
+                 <ConnectLinks />
           </motion.section>
         )}
 
-        {activeTab === 'shots' && (
-          <motion.section
-            variants={VARIANTS_SECTION}
-            transition={TRANSITION_SECTION}
-            className="flex flex-col gap-4 w-full"
-          >
-            {loading ? (
-              <div className="flex justify-center py-8">
-                <div className="h-6 w-6 animate-spin rounded-full border-2 border-zinc-300 border-t-zinc-900 dark:border-zinc-600 dark:border-t-zinc-100"></div>
-              </div>
-            ) : error ? (
-              <p className="text-center text-zinc-500 dark:text-zinc-400">{error}</p>
-            ) : shots && Array.isArray(shots) && shots.length > 0 ? (
-              <div className="relative">
-                <div className="bg-white p-4 rounded-sm dark:bg-zinc-900">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    {shots.map((shot) => {
-                      // Проверяем наличие всех необходимых полей
-                      if (!shot || typeof shot.id === 'undefined' || !shot.images) {
-                        return null;
-                      }
-                      
-                      const imageUrl = shot.images?.hidpi || shot.images?.normal || '';
-                      if (!imageUrl) {
-                        return null;
-                      }
-                      
-                      return (
-                        <div key={shot.id} className="h-full">
-                          <div className="h-full relative rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50">
-                            <MorphingDialog
-                              transition={{
-                                type: 'spring',
-                                bounce: 0,
-                                duration: 0.3,
-                              }}
-                            >
-                              <MorphingDialogTrigger>
-                                <div 
-                                  className="w-full cursor-zoom-in rounded-xl bg-zinc-100 dark:bg-zinc-800 overflow-hidden relative"
-                                  style={{ 
-                                    aspectRatio: '4/3',
-                                    height: 'auto'
-                                  }}
-                                >
-                                  <Image
-                                    src={imageUrl}
-                                    alt={shot.title || 'Dribbble shot'}
-                                    className="object-cover w-full h-auto"
-                                    width={800}
-                                    height={600}
-                                    priority
-                                    unoptimized={false}
-                                  />
-                                </div>
-                              </MorphingDialogTrigger>
-                              <MorphingDialogContainer>
-                                <MorphingDialogContent className="fixed inset-0 flex items-center justify-center bg-zinc-50/90 dark:bg-zinc-950/90 p-6">
-                                  <div className="relative w-full max-w-5xl" style={{ 
-                                    maxHeight: '80vh',
-                                    maxWidth: '90vw'
-                                  }}>
-                                    <Image
-                                      src={imageUrl}
-                                      alt={shot.title || 'Dribbble shot'}
-                                      className="object-contain max-h-[80vh] w-auto h-auto"
-                                      width={1600}
-                                      height={1200}
-                                      unoptimized={true}
-                                    />
-                                  </div>
-                                </MorphingDialogContent>
-                                <MorphingDialogClose
-                                  className="fixed top-6 right-6 z-50 h-fit w-fit rounded-full bg-white p-1.5 shadow-md"
-                                  variants={{
-                                    initial: { opacity: 0 },
-                                    animate: {
-                                      opacity: 1,
-                                      transition: { delay: 0.3, duration: 0.1 },
-                                    },
-                                    exit: { opacity: 0, transition: { duration: 0 } },
-                                  }}
-                                >
-                                  <FaXmark className="h-5 w-5 text-zinc-500" />
-                                </MorphingDialogClose>
-                              </MorphingDialogContainer>
-                            </MorphingDialog>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <p className="text-center text-zinc-500 dark:text-zinc-400">{t('shots.empty')}</p>
-            )}
-          </motion.section>
-        )}
+        
 
         {activeTab === 'blog' && (
           <motion.section
@@ -217,6 +108,27 @@ function PersonalContent() {
           </motion.section>
         )}
       </motion.main>
+
+      <BottomDock 
+        tabs={TABS} 
+        activeTab={activeTab} 
+        onChange={handleTabChange}
+        rightSlot={
+          <AiCloneChat customTrigger={
+            <button
+              className="group flex items-center gap-2 rounded-xl px-2 sm:px-3 py-2 transition-all duration-200 hover:bg-zinc-800/70"
+              aria-label={t('aiChat.button')}
+              title={t('aiChat.button')}
+              type="button"
+            >
+              <span className="text-zinc-400 transition-transform duration-200 group-hover:scale-110">
+                <FaRobot className="h-5 w-5" />
+              </span>
+              <span className="hidden text-sm">{t('aiChat.button')}</span>
+            </button>
+          } />
+        }
+      />
     </div>
   );
 }

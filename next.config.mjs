@@ -34,7 +34,6 @@ const nextConfig = {
   },
   // Image configuration
   images: {
-    domains: ['localhost', 'cdn.dribbble.com', 'media.graphassets.com', 'media.graphcms.com'],
     remotePatterns: [
       {
         protocol: 'https',

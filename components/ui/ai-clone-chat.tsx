@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect, ReactNode } from 'react'
 import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
-import { FaXmark, FaPaperPlane, FaRobot, FaUser, FaCopy, FaCheck } from 'react-icons/fa6'
+import { FaXmark, FaRobot, FaCopy, FaCheck } from 'react-icons/fa6'
 import { MorphingDialog, MorphingDialogTrigger, MorphingDialogContent, MorphingDialogClose, MorphingDialogContainer } from './morphing-dialog'
 import { ResponseStream } from './response-stream'
 import { Message, MessageAvatar, MessageContent, MessageActions, MessageAction } from './message'
@@ -18,12 +18,10 @@ interface MessageType {
 }
 
 interface AiCloneChatProps {
-  customTrigger?: ReactNode;
-  floatingButton?: boolean;
+  customTrigger: ReactNode;
 }
 
-export function AiCloneChat({ customTrigger, floatingButton = false }: AiCloneChatProps) {
-  const [isOpen, setIsOpen] = useState(false)
+export function AiCloneChat({ customTrigger }: AiCloneChatProps) {
   const [messages, setMessages] = useState<MessageType[]>([])
   const [inputValue, setInputValue] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -154,20 +152,6 @@ export function AiCloneChat({ customTrigger, floatingButton = false }: AiCloneCh
     return Math.max(1500, content.length * 50);
   }
 
-  // Default floating button trigger
-  const defaultTrigger = (
-    <motion.div 
-      className={cn(
-        "flex h-11 w-11 cursor-pointer items-center justify-center bg-white text-black shadow-lg hover:bg-gray-100 dark:bg-zinc-800 dark:hover:bg-zinc-700 rounded-md",
-        floatingButton && "fixed bottom-6 right-6"
-      )}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-    >
-      <FaRobot className="h-5 w-5" />
-    </motion.div>
-  );
-
   return (
     <MorphingDialog
       transition={{
@@ -177,27 +161,27 @@ export function AiCloneChat({ customTrigger, floatingButton = false }: AiCloneCh
       }}
     >
       <MorphingDialogTrigger>
-        {customTrigger || defaultTrigger}
+        {customTrigger}
       </MorphingDialogTrigger>
       <MorphingDialogContainer>
-        <MorphingDialogContent className="relative h-[500px] w-[350px] bg-white border-[#F4F4F5] dark:border-zinc-800 border-3 rounded-md dark:bg-zinc-900 sm:w-[400px]">
-          <div className="flex h-full flex-col">
+        <MorphingDialogContent className="relative w-full max-w-xl rounded-xl bg-white p-6 shadow-lg ring-1 ring-zinc-200/50 dark:bg-zinc-900 dark:ring-zinc-800/50">
+          <div className="flex h-[500px] flex-col">
             {/* Header with title */}
             <div className="p-4 border-b border-[#F4F4F5] dark:border-zinc-800 relative">
               <div className="absolute -top-4 left-4 bg-white dark:bg-zinc-900 px-2 py-1 text-sm">
                 <span>{t('aiChat.title')}</span>
               </div>
               <div className="flex items-center gap-2">
-                <FaRobot className="h-5 w-5 text-green-500 dark:text-green-400" />
-                <h3 className="text-md font-medium text-black dark:text-zinc-200">{t('aiChat.assistant')}</h3>
+                <FaRobot className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
+                <div className="text-black dark:text-zinc-100 font-medium">{t('aiChat.assistant')}</div>
               </div>
             </div>
             
             {/* Messages area */}
-            <div className="flex-1 overflow-auto p-4 bg-gray-50 dark:bg-zinc-800/20">
+            <div className="flex-1 overflow-auto p-4">
               {messages.length === 0 ? (
                 <div className="flex h-full flex-col items-center justify-center text-center text-zinc-500 dark:text-zinc-400">
-                  <FaRobot className="mb-3 h-10 w-10 text-green-500" />
+                  <FaRobot className="mb-3 h-10 w-10 text-emerald-600 dark:text-emerald-400" />
                   <p className="text-sm font-medium text-zinc-700 dark:text-zinc-300">{t('aiChat.welcome')}</p>
                   <p className="mt-2 text-sm">{t('aiChat.description')}</p>
                 </div>
@@ -223,7 +207,7 @@ export function AiCloneChat({ customTrigger, floatingButton = false }: AiCloneCh
                             className={cn(
                               "p-3 rounded-md shadow-sm text-sm",
                               message.isUser 
-                                ? "bg-green-500 text-white dark:bg-green-600" 
+                                ? "bg-emerald-500 text-white dark:bg-emerald-600" 
                                 : "bg-white dark:bg-zinc-800 dark:text-zinc-200 border border-[#F4F4F5] dark:border-zinc-700"
                             )}
                             markdown={!message.isUser}
@@ -253,7 +237,7 @@ export function AiCloneChat({ customTrigger, floatingButton = false }: AiCloneCh
                               >
                                 <button 
                                   onClick={() => handleCopy(message.content, message.id)}
-                                  className="p-1 rounded hover:bg-gray-200 dark:hover:bg-zinc-700"
+                                  className="p-1 rounded hover:bg-zinc-100 dark:hover:bg-zinc-700"
                                 >
                                   {copiedMessageId === message.id ? (
                                     <FaCheck className="h-3 w-3" />
@@ -290,21 +274,21 @@ export function AiCloneChat({ customTrigger, floatingButton = false }: AiCloneCh
             </div>
             
             {/* Input area */}
-            <form onSubmit={handleSubmit} className="border-t border-[#F4F4F5] p-4 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+            <form onSubmit={handleSubmit} className="border-t border-[#F4F4F5] pt-4 dark:border-zinc-800">
               <div className="flex items-center gap-2">
                 <input 
                   type="text" 
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   placeholder={t('aiChat.placeholder')}
-                  className="flex-1 border border-[#F4F4F5] bg-transparent px-3 py-1.5 text-sm outline-none focus:border-green-500 dark:border-zinc-700 dark:text-zinc-100 rounded-md"
+                  className="flex-1 border border-[#F4F4F5] bg-transparent px-3 py-1.5 text-sm outline-none focus:border-emerald-500 dark:border-zinc-700 dark:text-zinc-100 rounded-md"
                   disabled={isLoading}
                 />
                 <button 
                   type="submit" 
                   className={cn(
-                    "px-3 py-1.5 bg-green-500 text-white text-sm rounded-md transition-colors",
-                    isLoading || !inputValue.trim() ? "cursor-not-allowed opacity-50" : "hover:bg-green-600"
+                    "px-3 py-1.5 bg-emerald-500 text-white text-sm rounded-md transition-colors",
+                    isLoading || !inputValue.trim() ? "cursor-not-allowed opacity-50" : "hover:bg-emerald-600"
                   )}
                   disabled={isLoading || !inputValue.trim()}
                 >
@@ -315,7 +299,7 @@ export function AiCloneChat({ customTrigger, floatingButton = false }: AiCloneCh
           </div>
         </MorphingDialogContent>
         <MorphingDialogClose
-          className="absolute top-4 right-4 h-fit w-fit bg-white p-1.5 shadow-sm dark:bg-zinc-800 rounded-md"
+          className="h-fit w-fit rounded-full bg-white p-1.5 shadow-md dark:bg-zinc-950"
           variants={{
             initial: { opacity: 0 },
             animate: {

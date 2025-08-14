@@ -181,6 +181,10 @@ export const SOCIAL_LINKS: SocialLink[] = [
     label: 'Threads',
     link: 'https://www.threads.com/@zerox9dev_',
   },
+  {
+    label: 'Dribbble',
+    link: 'https://dribbble.com/zerox9dev',
+  },
 ]
 
 export const EMAIL = 'zerox9dev.work@icloud.com'

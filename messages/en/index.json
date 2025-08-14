@@ -1,7 +1,6 @@
 {
   "tabs": {
-    "about": "About",
-    "shots": "Shots",
+    "about": "Home",
     "blog": "Blog"
   },
   "profile": {
@@ -13,7 +12,7 @@
     "title": "About me",
     "description": "Product designer with 6+ years of experience. Helping startups launch products faster using design, bots, and automation.\n\nMy approach: minimum bureaucracy, maximum result.",
     "summary": "Also — I share my thoughts in my [TG-channel](https://t.me/+iYATkhA5NoJjYTlk)",
-    "askAssistant": "My AI-assistant"
+    "askAssistant": "AI-assistant"
   },
   "workExperience": {
     "title": "Work Experience",
@@ -27,7 +26,8 @@
     "categories": {
       "uxui": "UX/UI",
       "frontend": "Front & MVP",
-      "bots": "Bots & Scripts"
+      "bots": "Bots & Scripts",
+      "dribbble": "Dribbble"
     }
   },
   "certificates": {
@@ -42,7 +42,8 @@
     "welcome": "Hi! I'm Vadym's AI assistant.",
     "description": "Ask me about UX/UI design, development, pricing, or past projects like MOU.today and Holyheld!",
     "placeholder": "Type your message...",
-    "send": "Send"
+    "send": "Send",
+    "button": "My AI assistant"
   },
   "shots": {
     "loading": "Loading...",
@@ -66,9 +67,57 @@
     "title": "Projects",
     "backToProjects": "Back to Projects",
     "tabs": {
-      "about": "About",
-      "shots": "Shots",
-      "blog": "Blog"
+      "projects": "Projects",
+      "dribbble": "Dribbble"
+    }
+  },
+  "services": {
+    "title": "💰 SERVICES & PRICING",
+    "process": "Process",
+    "more": "More details",
+    "mvp": {
+      "title": "MVP Development",
+      "description": "From idea to first sales in 6 weeks",
+      "price": "from $3,000",
+      "steps": [
+        "Week 1: Research and planning",
+        "Weeks 2–4: Core features development",
+        "Week 5: Testing and refinements",
+        "Week 6: Launch and analytics setup"
+      ]
+    },
+    "design": {
+      "title": "Product Design",
+      "description": "UX/UI for your product",
+      "price": "from $500",
+      "steps": [
+        "Audit: Analyze current solution and competitors",
+        "Prototype: Screen structure and logic",
+        "Design: Visual solution",
+        "Handover: Prepare for development"
+      ]
+    },
+    "bots": {
+      "title": "Telegram Bots",
+      "description": "A bot instead of 3 employees",
+      "price": "from $200",
+      "steps": [
+        "Analysis: What tasks the bot will handle",
+        "Logic: Scenarios and integrations",
+        "Development: Programming and tests",
+        "Launch: Setup and team training"
+      ]
+    },
+    "n8n": {
+      "title": "Automation",
+      "description": "Removing routine with n8n/Make",
+      "price": "from $200",
+      "steps": [
+        "Audit: Find repetitive tasks",
+        "Scheme: Design the automation",
+        "Setup: Connect services",
+        "Training: Show how to work with it"
+      ]
     }
   }
 } 
