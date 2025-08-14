@@ -25,7 +25,7 @@ export function RecentWork() {
     PROJECTS.forEach(project => {
       counts[project.category]++;
     });
-    const AUTOMATION_IDS: string[] = ['project13'];
+    const AUTOMATION_IDS: string[] = ['project13', 'project14'];
     counts['Automation'] = PROJECTS.filter(p => AUTOMATION_IDS.includes(p.id)).length;
     return counts;
   }, []);
@@ -35,7 +35,7 @@ export function RecentWork() {
       'Front & MVP': ['project11', 'project4'],
       'UX/UI': ['project3', 'project2', 'project5', 'project1'],
       'Bots & AI': ['project6', 'project7', 'project10', 'project9', 'project8', 'project12'],
-      'Automation': ['project13'],
+      'Automation': ['project13', 'project14'],
     };
 
     const AUTOMATION_IDS = CATEGORY_PRIORITIES['Automation'];
