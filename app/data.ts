@@ -84,7 +84,7 @@ export const PROJECTS: Project[] = [
   {
     name: 'Vidzilla Web',
     description: "A powerful web application that allows you to download videos from various social media platforms. Simply paste a link, and get your video instantly!",
-    link: 'https://github.com/zerox9dev-space/vidzilla_app',
+    link: 'https://github.com/zerox9dev/vidzilla_app',
     image: '/images/vidzilla-app/cover.png',
     id: 'project11',
     category: 'Front & MVP',
