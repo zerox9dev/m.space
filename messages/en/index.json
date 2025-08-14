@@ -22,7 +22,7 @@
     "freelance": "UX/UI for startups and businesses: over 20+ mobile and web product projects, full cycle from idea to final UI."
   },
   "recentWork": {
-    "title": "Projects",
+    "title": "PROJECTS",
     "categories": {
       "uxui": "UX/UI",
       "frontend": "Front & MVP",
@@ -34,7 +34,7 @@
     "title": "Certificates"
   },
   "connect": {
-    "title": "Connect"
+    "title": "CONNECT"
   },
   "aiChat": {
     "title": "AI Clone Chat",
@@ -72,14 +72,14 @@
     }
   },
   "cta": {
-    "title": "Ready to discuss your project?",
+    "title": "READY TO DISCUSS YOUR PROJECT?",
     "subtitle": "Reach out on Telegram or via the AI Assistant — I’ll get back shortly.",
     "telegram": "TG",
     "email": "Email",
     "aiAssistant": "AI"
   },
   "services": {
-    "title": "💰 SERVICES & PRICING",
+    "title": "SERVICES & PRICING",
     "process": "Process",
     "more": "More details",
     "discuss": "Discuss",

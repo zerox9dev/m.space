@@ -22,6 +22,7 @@ import { RecentWork } from '@/components/ui/recent-work'
   import { ServicesPricing } from '@/components/ui/services-pricing'
 import { useTranslations } from 'next-intl'
 import { CtaDiscuss } from '@/components/ui/cta-discuss'
+import { CodeDivider } from '@/components/ui/code-divider'
 
 // Dynamically import components that aren't needed on initial load
 const MorphingDialog = dynamic(() => import('@/components/ui/morphing-dialog').then(mod => mod.MorphingDialog), { ssr: false })
@@ -90,11 +91,16 @@ function PersonalContent() {
             className="flex flex-col gap-4 w-full"
           >
                 <ProfileHeader />
+                <CodeDivider label={t('whatIDo.title')} />
                 <WhatIDo />
+                <CodeDivider label={t('services.title')} />
                 <ServicesPricing />
+                <CodeDivider label={t('recentWork.title')} />
                 <RecentWork />
+                <CodeDivider label={t('cta.title')} />
                 <CtaDiscuss />
-                 <ConnectLinks />
+                <CodeDivider label={t('connect.title')} />
+                <ConnectLinks />
           </motion.section>
         )}
 

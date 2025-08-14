@@ -59,10 +59,7 @@ export function ConnectLinks() {
   }
   
   return (
-    <div className="bg-white p-4 border-[#F4F4F5] dark:border-zinc-800 border-3 rounded-md dark:bg-zinc-900 relative">
-      <div className="absolute -top-4 left-4 bg-white dark:bg-zinc-900 px-2 py-1 text-sm">
-        <span>{t('connect.title', {defaultMessage: 'Let\'s connect'})}</span>
-      </div>
+    <div className="bg-white p-4 border-[#F4F4F5] dark:border-zinc-800 border-3 rounded-md dark:bg-zinc-900">
       <div className="flex gap-2 flex-wrap">
         <MagneticSocialLink link="https://t.me/zerox9dev" ariaLabel="Telegram">
           <FaTelegram className="h-4 w-4" />

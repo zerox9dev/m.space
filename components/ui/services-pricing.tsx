@@ -76,11 +76,9 @@ export function ServicesPricing() {
 					key={service.id}
 					className="bg-white p-4 border-[#F4F4F5] dark:border-zinc-800 border-3 rounded-md dark:bg-zinc-900 relative h-full"
 				>
-					<div className="absolute -top-4 left-4 bg-white dark:bg-zinc-900 px-2 py-1 text-sm">
-						<span className="inline-flex items-center gap-2">
-							{service.icon}
-							{service.title}
-						</span>
+					<div className="mb-2 inline-flex items-center gap-2 text-sm">
+						{service.icon}
+						<span className="font-medium">{service.title}</span>
 					</div>
 
 						<div className="flex flex-col h-full pb-10">
