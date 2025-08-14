@@ -4,7 +4,7 @@ type Project = {
   link: string
   image: string
   id: string
-  category: 'UX/UI' | 'Front & MVP' | 'Bots & AI'
+  category: 'UX/UI' | 'Front & MVP' | 'Bots & AI' | 'Automation'
 }
 
 type BlogPost = {
@@ -128,6 +128,14 @@ export const PROJECTS: Project[] = [
     image: '/images/teleforge/cover.png',
     id: 'project12',
     category: 'Bots & AI',
+  },
+  {
+    name: 'FH-Auto-Bid',
+    description: 'FreelanceHunt automation: from 5 bids/day to 50+ using AI and n8n. Save 20+ hours/week.',
+    link: 'https://github.com/zerox9dev/FH-Auto-Bid',
+    image: '',
+    id: 'project13',
+    category: 'Automation',
   },
 ]
 

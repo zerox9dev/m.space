@@ -7,11 +7,11 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
  
 
-type Category = 'UX/UI' | 'Front & MVP' | 'Bots & AI';
+type Category = 'UX/UI' | 'Front & MVP' | 'Bots & AI' | 'Automation';
 
 export function RecentWork() {
   const [selectedId, setSelectedId] = useState<string>("");
-  const [activeCategory, setActiveCategory] = useState<Category>('UX/UI');
+  const [activeCategory, setActiveCategory] = useState<Category>('Front & MVP');
   const t = useTranslations();
  
 
@@ -20,15 +20,39 @@ export function RecentWork() {
       'UX/UI': 0,
       'Front & MVP': 0,
       'Bots & AI': 0,
+      'Automation': 0,
     };
     PROJECTS.forEach(project => {
       counts[project.category]++;
     });
+    const AUTOMATION_IDS: string[] = ['project13'];
+    counts['Automation'] = PROJECTS.filter(p => AUTOMATION_IDS.includes(p.id)).length;
     return counts;
   }, []);
 
   const filteredProjects = useMemo(() => {
-    return PROJECTS.filter(project => project.category === activeCategory);
+    const CATEGORY_PRIORITIES: Record<Category, string[]> = {
+      'Front & MVP': ['project11', 'project4'],
+      'UX/UI': ['project3', 'project2', 'project5', 'project1'],
+      'Bots & AI': ['project6', 'project7', 'project10', 'project9', 'project8', 'project12'],
+      'Automation': ['project13'],
+    };
+
+    const AUTOMATION_IDS = CATEGORY_PRIORITIES['Automation'];
+
+    const byCategory =
+      activeCategory === 'Automation'
+        ? PROJECTS.filter(project => AUTOMATION_IDS.includes(project.id))
+        : PROJECTS.filter(project => project.category === activeCategory);
+
+    const weights = new Map<string, number>();
+    CATEGORY_PRIORITIES[activeCategory].forEach((id, idx) => weights.set(id, idx));
+
+    return byCategory.slice().sort((a, b) => {
+      const wa = weights.has(a.id) ? (weights.get(a.id) as number) : Number.MAX_SAFE_INTEGER;
+      const wb = weights.has(b.id) ? (weights.get(b.id) as number) : Number.MAX_SAFE_INTEGER;
+      return wa - wb;
+    });
   }, [activeCategory]);
 
   // Make sure we have a valid selected project after filtering
@@ -50,19 +74,6 @@ export function RecentWork() {
       {/* Category Tabs */}
       <div className="flex flex-wrap px-0 pb-2 border-b border-zinc-100 dark:border-zinc-800">
         <button
-          onClick={() => setActiveCategory('UX/UI')}
-          className={`px-3 py-1.5 rounded-md text-sm font-medium flex items-center gap-1.5 transition-colors ${
-            activeCategory === 'UX/UI'
-              ? 'bg-zinc-100 dark:bg-zinc-800 text-black dark:text-zinc-200'
-              : 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800/40'
-          }`}
-        >
-          {t('recentWork.categories.uxui')}
-          <span className="bg-zinc-200 dark:bg-zinc-700 px-1.5 py-0.5 rounded-full text-xs">
-            {categoryCounts['UX/UI']}
-          </span>
-        </button>
-        <button
           onClick={() => setActiveCategory('Front & MVP')}
           className={`px-3 py-1.5 rounded-md text-sm font-medium flex items-center gap-1.5 transition-colors ${
             activeCategory === 'Front & MVP'
@@ -70,9 +81,22 @@ export function RecentWork() {
               : 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800/40'
           }`}
         >
-          {t('recentWork.categories.frontend')}
+          {t('services.mvp.title')}
           <span className="bg-zinc-200 dark:bg-zinc-700 px-1.5 py-0.5 rounded-full text-xs">
             {categoryCounts['Front & MVP']}
+          </span>
+        </button>
+        <button
+          onClick={() => setActiveCategory('UX/UI')}
+          className={`px-3 py-1.5 rounded-md text-sm font-medium flex items-center gap-1.5 transition-colors ${
+            activeCategory === 'UX/UI'
+              ? 'bg-zinc-100 dark:bg-zinc-800 text-black dark:text-zinc-200'
+              : 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800/40'
+          }`}
+        >
+          {t('services.design.title')}
+          <span className="bg-zinc-200 dark:bg-zinc-700 px-1.5 py-0.5 rounded-full text-xs">
+            {categoryCounts['UX/UI']}
           </span>
         </button>
         <button
@@ -83,12 +107,24 @@ export function RecentWork() {
               : 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800/40'
           }`}
         >
-          {t('recentWork.categories.bots')}
+          {t('services.bots.title')}
           <span className="bg-zinc-200 dark:bg-zinc-700 px-1.5 py-0.5 rounded-full text-xs">
             {categoryCounts['Bots & AI']}
           </span>
         </button>
-        
+        <button
+          onClick={() => setActiveCategory('Automation')}
+          className={`px-3 py-1.5 rounded-md text-sm font-medium flex items-center gap-1.5 transition-colors ${
+            activeCategory === 'Automation'
+              ? 'bg-zinc-100 dark:bg-zinc-800 text-black dark:text-zinc-200'
+              : 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800/40'
+          }`}
+        >
+          {t('services.n8n.title')}
+          <span className="bg-zinc-200 dark:bg-zinc-700 px-1.5 py-0.5 rounded-full text-xs">
+            {categoryCounts['Automation']}
+          </span>
+        </button>
       </div>
 
       <div className="flex flex-col md:flex-row gap-4 md:gap-4 w-full">
