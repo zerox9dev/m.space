@@ -73,9 +73,9 @@
   "cta": {
     "title": "ГОТОВЫ ОБСУДИТЬ ПРОЕКТ?",
     "subtitle": "Напишите в Telegram или через AI-ассистента — отвечу в ближайшее время.",
-    "telegram": "TG",
+    "telegram": "TG-канал",
     "email": "Email",
-    "aiAssistant": "AI"
+    "aiAssistant": "AI-ассистент"
   },
   "services": {
     "title": "УСЛУГИ И ЦЕНЫ",
